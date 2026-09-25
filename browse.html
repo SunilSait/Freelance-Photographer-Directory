@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en" id="root-html">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Browse verified freelance photographers on FrameFolio. Filter by city and specialty — wedding, food, fashion, corporate, and newborn photography.">
+  <title>Browse Photographers | FrameFolio</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .results-count { font-size:0.875rem; color:var(--text-muted); font-weight:400; }
+    .no-results { text-align:center; padding:4rem 2rem; color:var(--text-muted); }
+    .no-results svg { margin:0 auto 1rem; opacity:0.4; display:block; }
+  </style>
+</head>
+<body>
+
+<div id="main-nav"></div>
+
+<!-- ── Page Hero ── -->
+<div class="page-hero">
+  <div class="container">
+    <div class="page-breadcrumb">
+      <a href="index.html">Home</a>
+      <span>›</span>
+      <span class="current">Browse Photographers</span>
+    </div>
+    <h1>Browse Photographers</h1>
+    <p>Discover verified photographers filterable by city and specialty.</p>
+  </div>
+</div>
+
+<!-- ── Filters Bar ── -->
+<div class="filters-bar" id="filters-bar">
+  <div class="filters-inner">
+    <!-- Specialty Filter -->
+    <div class="filter-group">
+      <span class="filter-label">Specialty</span>
+      <button class="filter-btn active" data-filter-type="specialty" onclick="filterPhotographers('specialty','all',this)">All</button>
+      <button class="filter-btn" data-filter-type="specialty" onclick="filterPhotographers('specialty','wedding',this)">Wedding</button>
+      <button class="filter-btn" data-filter-type="specialty" onclick="filterPhotographers('specialty','food',this)">Food</button>
+      <button class="filter-btn" data-filter-type="specialty" onclick="filterPhotographers('specialty','fashion',this)">Fashion</button>
+      <button class="filter-btn" data-filter-type="specialty" onclick="filterPhotographers('specialty','corporate',this)">Corporate</button>
+      <button class="filter-btn" data-filter-type="specialty" onclick="filterPhotographers('specialty','newborn',this)">Newborn</button>
+    </div>
+    <div class="filter-divider"></div>
+    <!-- City Filter -->
+    <div class="filter-group">
+      <span class="filter-label">City</span>
+      <button class="filter-btn active" data-filter-type="city" onclick="filterByCity('all',this)">All Cities</button>
+      <button class="filter-btn" data-filter-type="city" onclick="filterByCity('new-york',this)">New York</button>
+      <button class="filter-btn" data-filter-type="city" onclick="filterByCity('los-angeles',this)">Los Angeles</button>
+      <button class="filter-btn" data-filter-type="city" onclick="filterByCity('chicago',this)">Chicago</button>
+      <button class="filter-btn" data-filter-type="city" onclick="filterByCity('atlanta',this)">Atlanta</button>
+    </div>
+    <!-- Search -->
+    <div class="filters-search-wrap">
+      <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" class="filters-search" placeholder="Search photographer..." id="search-input" oninput="searchPhotographers(this.value)">
+    </div>
+  </div>
+</div>
+
+<!-- ── Browse Content ── -->
+<main>
+  <div class="container">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:1.5rem 0 0.5rem;flex-wrap:wrap;gap:0.5rem;">
+      <p class="results-count" id="results-count">Showing <strong id="count-num">6</strong> photographers</p>
+    </div>
+    <div class="browse-grid" id="photographers-grid">
+      <!-- Photographer 1 -->
+      <div class="photographer-card animate-on-scroll" data-specialty="wedding" data-city="new-york" data-name="marcus reid">
+        <div class="photographer-card-cover">
+          <img src="assets/images/category_wedding_1790358499443.jpg" alt="Marcus Reid — Wedding Photography" loading="lazy">
+        </div>
+        <div class="photographer-card-body">
+          <div class="photographer-avatar-wrap" style="display:flex;justify-content:center;">
+            <div style="position:relative;display:inline-block;">
+              <img src="assets/images/photographer_profile_1_1790358603844.jpg" alt="Marcus Reid" class="photographer-avatar">
+              <div class="verified-badge"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            </div>
+          </div>
+          <div style="text-align:center;">
+            <div class="photographer-name">Marcus Reid</div>
+            <div class="photographer-specialty">Wedding & Portrait</div>
+            <div class="photographer-location" style="justify-content:center;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              New York, NY
+            </div>
+            <div class="photographer-tags" style="justify-content:center;"><span class="tag">Wedding</span><span class="tag">Portrait</span></div>
+            <div class="photographer-rating" style="justify-content:center;">
+              <div class="rating-stars"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+              <span style="font-weight:600;">4.9</span><span class="rating-count">(148)</span>
+            </div>
+          </div>
+        </div>
+        <div class="photographer-card-footer">
+          <div><div class="price-label">Starting from</div><div class="price-value">$350 <span>/ session</span></div></div>
+          <a href="photographer-profile.html" class="btn btn-primary btn-sm">View Profile</a>
+        </div>
+      </div>
+      <!-- Photographer 2 -->
+      <div class="photographer-card animate-on-scroll" data-specialty="fashion" data-city="los-angeles" data-name="sophia lane" style="transition-delay:0.07s;">
+        <div class="photographer-card-cover">
+          <img src="assets/images/category_fashion_1790358549389.jpg" alt="Sophia Lane — Fashion Photography" loading="lazy">
+        </div>
+        <div class="photographer-card-body">
+          <div class="photographer-avatar-wrap" style="display:flex;justify-content:center;">
+            <div style="position:relative;display:inline-block;">
+              <img src="assets/images/photographer_profile_2_1790358617166.jpg" alt="Sophia Lane" class="photographer-avatar">
+              <div class="verified-badge"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            </div>
+          </div>
+          <div style="text-align:center;">
+            <div class="photographer-name">Sophia Lane</div>
+            <div class="photographer-specialty">Fashion & Editorial</div>
+            <div class="photographer-location" style="justify-content:center;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Los Angeles, CA
+            </div>
+            <div class="photographer-tags" style="justify-content:center;"><span class="tag">Fashion</span><span class="tag">Editorial</span></div>
+            <div class="photographer-rating" style="justify-content:center;">
+              <div class="rating-stars"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+              <span style="font-weight:600;">4.8</span><span class="rating-count">(203)</span>
+            </div>
+          </div>
+        </div>
+        <div class="photographer-card-footer">
+          <div><div class="price-label">Starting from</div><div class="price-value">$480 <span>/ session</span></div></div>
+          <a href="photographer-profile.html" class="btn btn-primary btn-sm">View Profile</a>
+        </div>
+      </div>
+      <!-- Photographer 3 -->
+      <div class="photographer-card animate-on-scroll" data-specialty="food" data-city="chicago" data-name="priya sharma" style="transition-delay:0.14s;">
+        <div class="photographer-card-cover">
+          <img src="assets/images/category_food_1790358513044.jpg" alt="Priya Sharma — Food Photography" loading="lazy">
+        </div>
+        <div class="photographer-card-body">
+          <div class="photographer-avatar-wrap" style="display:flex;justify-content:center;">
+            <div style="position:relative;display:inline-block;">
+              <img src="assets/images/photographer_profile_3_1790358629197.jpg" alt="Priya Sharma" class="photographer-avatar">
+              <div class="verified-badge"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            </div>
+          </div>
+          <div style="text-align:center;">
+            <div class="photographer-name">Priya Sharma</div>
+            <div class="photographer-specialty">Food & Product</div>
+            <div class="photographer-location" style="justify-content:center;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Chicago, IL
+            </div>
+            <div class="photographer-tags" style="justify-content:center;"><span class="tag">Food</span><span class="tag">Product</span></div>
+            <div class="photographer-rating" style="justify-content:center;">
+              <div class="rating-stars"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+              <span style="font-weight:600;">5.0</span><span class="rating-count">(87)</span>
+            </div>
+          </div>
+        </div>
+        <div class="photographer-card-footer">
+          <div><div class="price-label">Starting from</div><div class="price-value">$290 <span>/ session</span></div></div>
+          <a href="photographer-profile.html" class="btn btn-primary btn-sm">View Profile</a>
+        </div>
+      </div>
+      <!-- Photographer 4 -->
+      <div class="photographer-card animate-on-scroll" data-specialty="corporate" data-city="atlanta" data-name="james osei" style="transition-delay:0.21s;">
+        <div class="photographer-card-cover">
+          <img src="assets/images/category_corporate_1790358561678.jpg" alt="James Osei — Corporate Photography" loading="lazy">
+        </div>
+        <div class="photographer-card-body">
+          <div class="photographer-avatar-wrap" style="display:flex;justify-content:center;">
+            <div style="position:relative;display:inline-block;">
+              <img src="assets/images/photographer_profile_4_1790358735055.jpg" alt="James Osei" class="photographer-avatar">
+              <div class="verified-badge"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            </div>
+          </div>
+          <div style="text-align:center;">
+            <div class="photographer-name">James Osei</div>
+            <div class="photographer-specialty">Corporate & Event</div>
+            <div class="photographer-location" style="justify-content:center;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Atlanta, GA
+            </div>
+            <div class="photographer-tags" style="justify-content:center;"><span class="tag">Corporate</span><span class="tag">Headshots</span></div>
+            <div class="photographer-rating" style="justify-content:center;">
+              <div class="rating-stars"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+              <span style="font-weight:600;">4.9</span><span class="rating-count">(121)</span>
+            </div>
+          </div>
+        </div>
+        <div class="photographer-card-footer">
+          <div><div class="price-label">Starting from</div><div class="price-value">$420 <span>/ session</span></div></div>
+          <a href="photographer-profile.html" class="btn btn-primary btn-sm">View Profile</a>
+        </div>
+      </div>
+      <!-- Photographer 5 -->
+      <div class="photographer-card animate-on-scroll" data-specialty="newborn" data-city="new-york" data-name="elena ross" style="transition-delay:0.28s;">
+        <div class="photographer-card-cover">
+          <img src="assets/images/category_newborn_1790358574031.jpg" alt="Elena Ross — Newborn Photography" loading="lazy">
+        </div>
+        <div class="photographer-card-body">
+          <div class="photographer-avatar-wrap" style="display:flex;justify-content:center;">
+            <div style="position:relative;display:inline-block;">
+              <div style="width:72px;height:72px;border-radius:50%;background:var(--surface);border:3px solid var(--bg-card);display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:var(--secondary);font-weight:700;font-family:var(--font-serif);">E</div>
+            </div>
+          </div>
+          <div style="text-align:center;">
+            <div class="photographer-name">Elena Ross</div>
+            <div class="photographer-specialty">Newborn & Family</div>
+            <div class="photographer-location" style="justify-content:center;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              New York, NY
+            </div>
+            <div class="photographer-tags" style="justify-content:center;"><span class="tag">Newborn</span><span class="tag">Family</span></div>
+            <div class="photographer-rating" style="justify-content:center;">
+              <div class="rating-stars"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+              <span style="font-weight:600;">4.7</span><span class="rating-count">(64)</span>
+            </div>
+          </div>
+        </div>
+        <div class="photographer-card-footer">
+          <div><div class="price-label">Starting from</div><div class="price-value">$250 <span>/ session</span></div></div>
+          <a href="photographer-profile.html" class="btn btn-primary btn-sm">View Profile</a>
+        </div>
+      </div>
+      <!-- Photographer 6 -->
+      <div class="photographer-card animate-on-scroll" data-specialty="wedding" data-city="los-angeles" data-name="diana wu" style="transition-delay:0.35s;">
+        <div class="photographer-card-cover">
+          <img src="assets/images/portfolio_gallery_1_1790358669044.jpg" alt="Diana Wu — Wedding Photography" loading="lazy">
+        </div>
+        <div class="photographer-card-body">
+          <div class="photographer-avatar-wrap" style="display:flex;justify-content:center;">
+            <div style="position:relative;display:inline-block;">
+              <div style="width:72px;height:72px;border-radius:50%;background:var(--surface);border:3px solid var(--bg-card);display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:var(--secondary);font-weight:700;font-family:var(--font-serif);">D</div>
+            </div>
+          </div>
+          <div style="text-align:center;">
+            <div class="photographer-name">Diana Wu</div>
+            <div class="photographer-specialty">Wedding & Elopement</div>
+            <div class="photographer-location" style="justify-content:center;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Los Angeles, CA
+            </div>
+            <div class="photographer-tags" style="justify-content:center;"><span class="tag">Wedding</span><span class="tag">Elopement</span></div>
+            <div class="photographer-rating" style="justify-content:center;">
+              <div class="rating-stars"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+              <span style="font-weight:600;">4.8</span><span class="rating-count">(92)</span>
+            </div>
+          </div>
+        </div>
+        <div class="photographer-card-footer">
+          <div><div class="price-label">Starting from</div><div class="price-value">$550 <span>/ session</span></div></div>
+          <a href="photographer-profile.html" class="btn btn-primary btn-sm">View Profile</a>
+        </div>
+      </div>
+    </div>
+    <!-- No results state -->
+    <div class="no-results" id="no-results" style="display:none;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <h3 style="color:var(--text);margin:0.5rem 0 0.35rem;font-size:1.1rem;">No photographers found</h3>
+      <p style="font-size:0.9rem;">Try adjusting your filters or search term.</p>
+      <button onclick="resetFilters()" class="btn btn-primary" style="margin-top:1rem;">Reset Filters</button>
+    </div>
+  </div>
+</main>
+
+<div id="main-footer"></div>
+<script src="components.js"></script>
+<script>
+let activeSpecialty = 'all';
+let activeCity = 'all';
+let searchTerm = '';
+
+function updateGrid() {
+  const cards = document.querySelectorAll('#photographers-grid .photographer-card');
+  let visible = 0;
+  cards.forEach(card => {
+    const specialty = card.getAttribute('data-specialty');
+    const city = card.getAttribute('data-city');
+    const name = card.getAttribute('data-name') || '';
+    const matchSpec = activeSpecialty === 'all' || specialty === activeSpecialty;
+    const matchCity = activeCity === 'all' || city === activeCity;
+    const matchSearch = !searchTerm || name.includes(searchTerm.toLowerCase());
+    if (matchSpec && matchCity && matchSearch) {
+      card.style.display = '';
+      visible++;
+    } else {
+      card.style.display = 'none';
+    }
+  });
+  const countEl = document.getElementById('count-num');
+  if (countEl) countEl.textContent = visible;
+  const noRes = document.getElementById('no-results');
+  if (noRes) noRes.style.display = visible === 0 ? 'block' : 'none';
+}
+
+function filterPhotographers(type, value, btn) {
+  activeSpecialty = value;
+  document.querySelectorAll('.filter-btn[data-filter-type="specialty"]').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  updateGrid();
+}
+
+function filterByCity(value, btn) {
+  activeCity = value;
+  document.querySelectorAll('.filter-btn[data-filter-type="city"]').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  updateGrid();
+}
+
+function searchPhotographers(val) {
+  searchTerm = val;
+  updateGrid();
+}
+
+function resetFilters() {
+  activeSpecialty = 'all';
+  activeCity = 'all';
+  searchTerm = '';
+  const searchInput = document.getElementById('search-input');
+  if (searchInput) searchInput.value = '';
+  document.querySelectorAll('.filter-btn[data-filter-type="specialty"]').forEach((b,i) => b.classList.toggle('active', i===0));
+  document.querySelectorAll('.filter-btn[data-filter-type="city"]').forEach((b,i) => b.classList.toggle('active', i===0));
+  updateGrid();
+}
+</script>
+</body>
+</html>

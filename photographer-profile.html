@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en" id="root-html">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Marcus Reid — Professional wedding and portrait photographer based in New York, NY. View full portfolio, client reviews, and send an enquiry.">
+  <title>Marcus Reid — Wedding Photographer | FrameFolio</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .profile-page-layout {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 2.5rem;
+      align-items: start;
+      padding: 3rem 0 5rem;
+    }
+    .profile-main { }
+    .profile-sidebar { }
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .about-text { font-size:0.95rem; color:var(--text-muted); line-height:1.75; margin-bottom:1.5rem; font-weight:400; }
+    .services-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; }
+    .service-item {
+      padding:1.25rem;
+      border:1px solid var(--border);
+      border-radius:var(--radius-md);
+      background:var(--bg-card);
+    }
+    .service-item h4 { font-size:0.9rem; margin-bottom:0.2rem; }
+    .service-item p { font-size:0.8rem; margin:0; font-weight:400; }
+    .service-price { font-size:1rem; font-weight:700; color:var(--secondary); margin-top:0.5rem; }
+    @media (max-width:1024px) {
+      .profile-page-layout { grid-template-columns: 1fr; }
+      .profile-sidebar { order: -1; }
+      .enquiry-card { position:static; }
+    }
+    @media (max-width:768px) {
+      .services-grid { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="main-nav"></div>
+
+<!-- ── Profile Header ── -->
+<section class="profile-header">
+  <div class="container">
+    <div class="page-breadcrumb">
+      <a href="index.html">Home</a>
+      <span>›</span>
+      <a href="browse.html">Browse</a>
+      <span>›</span>
+      <span class="current">Marcus Reid</span>
+    </div>
+    <div class="profile-header-inner">
+      <div class="profile-avatar-wrap">
+        <img src="assets/images/photographer_profile_1_1790358603844.jpg" alt="Marcus Reid" class="profile-avatar" loading="eager">
+        <div class="profile-verified">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+      </div>
+      <div class="profile-info">
+        <h1>Marcus Reid</h1>
+        <div class="specialty">Wedding & Portrait Photographer</div>
+        <div class="location">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          New York, NY — Available for travel
+        </div>
+        <div class="profile-tags">
+          <span class="profile-tag">Wedding</span>
+          <span class="profile-tag">Portrait</span>
+          <span class="profile-tag">Lifestyle</span>
+          <span class="profile-tag">Elopements</span>
+          <span class="profile-tag">Engagement</span>
+        </div>
+        <div class="profile-meta">
+          <div class="profile-meta-item">
+            <div class="profile-meta-num" data-count="148">148</div>
+            <div class="profile-meta-label">Reviews</div>
+          </div>
+          <div class="profile-meta-item">
+            <div class="profile-meta-num">4.9★</div>
+            <div class="profile-meta-label">Avg. Rating</div>
+          </div>
+          <div class="profile-meta-item">
+            <div class="profile-meta-num" data-count="9" data-suffix="yr">9yr</div>
+            <div class="profile-meta-label">Experience</div>
+          </div>
+          <div class="profile-meta-item">
+            <div class="profile-meta-num" data-count="320" data-suffix="+">320+</div>
+            <div class="profile-meta-label">Weddings Shot</div>
+          </div>
+        </div>
+      </div>
+      <div class="profile-actions">
+        <a href="#enquiry" class="btn btn-primary btn-lg">Send Enquiry</a>
+        <a href="#portfolio" class="btn btn-secondary">View Portfolio</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Profile Body ── -->
+<div class="container">
+  <div class="profile-page-layout">
+    <!-- Main Content -->
+    <div class="profile-main">
+      <!-- About -->
+      <section style="margin-bottom:3rem;">
+        <h2 class="section-title">About Marcus</h2>
+        <p class="about-text">Marcus Reid is a New York-based wedding and portrait photographer with over 9 years of experience capturing the authentic emotion behind life's most meaningful moments. His signature style blends photojournalistic storytelling with artful composition — resulting in images that feel both cinematic and deeply personal.</p>
+        <p class="about-text">Having photographed over 320 weddings across the US, Europe, and Asia, Marcus brings a calm, reassuring presence to every shoot. He believes the best photographs happen when people forget the camera is there, and his clients often comment on how natural and relaxed they felt throughout their sessions.</p>
+        <p class="about-text">Marcus offers full-day wedding coverage, engagement sessions, bridal portraits, and intimate elopement packages. He delivers edited images within 4–6 weeks of the event.</p>
+      </section>
+
+      <!-- Portfolio Gallery -->
+      <section id="portfolio" style="margin-bottom:3rem;">
+        <h2 class="section-title">Portfolio Gallery</h2>
+        <div class="portfolio-grid">
+          <div class="portfolio-grid-item span-2">
+            <img src="assets/images/category_wedding_1790358499443.jpg" alt="Wedding ceremony at cathedral" loading="lazy">
+            <div class="portfolio-grid-item-overlay">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+            </div>
+          </div>
+          <div class="portfolio-grid-item">
+            <img src="assets/images/portfolio_gallery_1_1790358669044.jpg" alt="Landscape portrait" loading="lazy">
+            <div class="portfolio-grid-item-overlay">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+            </div>
+          </div>
+          <div class="portfolio-grid-item">
+            <img src="assets/images/hero_photographer_main_1790358484541.jpg" alt="Photographer at work in nature" loading="lazy">
+            <div class="portfolio-grid-item-overlay">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+            </div>
+          </div>
+          <div class="portfolio-grid-item">
+            <img src="assets/images/portfolio_gallery_2_1790358680273.jpg" alt="Urban night photography" loading="lazy">
+            <div class="portfolio-grid-item-overlay">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+            </div>
+          </div>
+          <div class="portfolio-grid-item span-2">
+            <img src="assets/images/home2_hero_cinematic_1790358657482.jpg" alt="Cinematic landscape photography" loading="lazy">
+            <div class="portfolio-grid-item-overlay">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Services & Pricing -->
+      <section style="margin-bottom:3rem;">
+        <h2 class="section-title">Services & Pricing</h2>
+        <div class="services-grid">
+          <div class="service-item">
+            <h4>Full-Day Wedding Coverage</h4>
+            <p>Up to 10 hours, 2 photographers, 600+ edited images, online gallery</p>
+            <div class="service-price">From $3,200</div>
+          </div>
+          <div class="service-item">
+            <h4>Half-Day Wedding</h4>
+            <p>Up to 6 hours, 1 photographer, 300+ edited images, online gallery</p>
+            <div class="service-price">From $1,800</div>
+          </div>
+          <div class="service-item">
+            <h4>Engagement Session</h4>
+            <p>2 hour outdoor or studio session, 100+ edited images, 2 locations</p>
+            <div class="service-price">From $450</div>
+          </div>
+          <div class="service-item">
+            <h4>Portrait Session</h4>
+            <p>1.5 hour portrait shoot, individual or couple, 50+ edited images</p>
+            <div class="service-price">From $350</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Reviews -->
+      <section>
+        <h2 class="section-title">Client Reviews</h2>
+        <div style="display:flex;flex-direction:column;gap:1.25rem;">
+          <div class="testimonial-card" style="padding:1.25rem;">
+            <div class="testimonial-text">"Marcus photographed our wedding at The Plaza and exceeded every expectation. His ability to capture raw emotion while maintaining artistic excellence is unmatched. Every photo feels like a painting."</div>
+            <div class="testimonial-author">
+              <img src="assets/images/photographer_profile_3_1790358629197.jpg" alt="Ava Thompson" loading="lazy">
+              <div>
+                <div class="testimonial-author-name">Ava & Daniel Thompson</div>
+                <div class="testimonial-author-role" style="display:flex;align-items:center;gap:0.5rem;">
+                  <span style="color:var(--secondary);">★★★★★</span> Wedding, New York
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card" style="padding:1.25rem;">
+            <div class="testimonial-text">"We chose Marcus for our engagement photos in Central Park and fell absolutely in love with the results. He made us feel so comfortable and natural. We're booking him again for our wedding!"</div>
+            <div class="testimonial-author">
+              <img src="assets/images/photographer_profile_2_1790358617166.jpg" alt="Sarah & Mike Chen" loading="lazy">
+              <div>
+                <div class="testimonial-author-name">Sarah & Mike Chen</div>
+                <div class="testimonial-author-role" style="display:flex;align-items:center;gap:0.5rem;">
+                  <span style="color:var(--secondary);">★★★★★</span> Engagement, New York
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="profile-sidebar">
+      <!-- Enquiry Form -->
+      <div class="enquiry-card" id="enquiry">
+        <h3>Send an Enquiry</h3>
+        <p>Reach out to Marcus directly. He typically responds within 24 hours.</p>
+        <form onsubmit="event.preventDefault(); alert('Your enquiry has been sent! Marcus will get back to you within 24 hours.'); this.reset();" id="enquiry-form">
+          <div class="form-group">
+            <label class="form-label" for="enq-name">Your Name</label>
+            <input type="text" id="enq-name" class="form-input" placeholder="Jane & John Smith" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="enq-email">Email Address</label>
+            <input type="email" id="enq-email" class="form-input" placeholder="your@email.com" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="enq-phone">Phone Number</label>
+            <input type="tel" id="enq-phone" class="form-input" placeholder="+1 (555) 000-0000">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="enq-type">Session Type</label>
+            <select id="enq-type" class="form-select">
+              <option value="">Select a service...</option>
+              <option>Full-Day Wedding Coverage</option>
+              <option>Half-Day Wedding</option>
+              <option>Engagement Session</option>
+              <option>Portrait Session</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="enq-date">Preferred Date</label>
+            <input type="date" id="enq-date" class="form-input">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="enq-message">Tell Marcus About Your Event</label>
+            <textarea id="enq-message" class="form-textarea" placeholder="Tell Marcus about your vision, venue, guest count, and any special requirements..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary w-full btn-lg">Send Enquiry</button>
+        </form>
+      </div>
+      <!-- Quick Info Card -->
+      <div style="background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius-md);padding:1.25rem;margin-top:1rem;">
+        <div style="display:flex;flex-direction:column;gap:0.75rem;">
+          <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.875rem;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span style="color:var(--text-muted);font-weight:400;">Based in New York, NY</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.875rem;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span style="color:var(--text-muted);font-weight:400;">Responds within 24 hours</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.875rem;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span style="color:var(--text-muted);font-weight:400;">Verified Photographer</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.875rem;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            <span style="color:var(--text-muted);font-weight:400;">Available for destination travel</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="main-footer"></div>
+<script src="components.js"></script>
+</body>
+</html>

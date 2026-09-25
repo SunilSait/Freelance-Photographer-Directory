@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 48" fill="none">
+  <!-- Camera body -->
+  <rect x="2" y="14" width="44" height="24" rx="5" fill="#1a1a2e"/>
+  <rect x="2" y="14" width="44" height="24" rx="5" stroke="#c9a96e" stroke-width="1.5"/>
+  <!-- Lens circle -->
+  <circle cx="24" cy="26" r="9" stroke="#c9a96e" stroke-width="2" fill="#0d0d1a"/>
+  <circle cx="24" cy="26" r="5" fill="#c9a96e" opacity="0.85"/>
+  <!-- Flash bump -->
+  <rect x="18" y="10" width="10" height="4" rx="2" fill="#c9a96e"/>
+  <!-- Brand text -->
+  <text x="52" y="22" font-family="'Georgia', serif" font-size="12" font-weight="700" fill="#1a1a2e">FRAME</text>
+  <text x="52" y="36" font-family="'Georgia', serif" font-size="10" font-weight="400" fill="#c9a96e">FOLIO</text>
+</svg>

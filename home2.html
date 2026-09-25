@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en" id="root-html">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="FrameFolio Premium — Discover elite freelance photographers. Our curated directory features the world's finest wedding, fashion, corporate, food, and newborn photographers.">
+  <title>Home 2 — Premium | FrameFolio Photographer Directory</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Home 2 specific overrides */
+    .marquee-wrapper { overflow: hidden; padding: 1rem 0; }
+    .marquee-track {
+      display: flex;
+      gap: 1.5rem;
+      animation: marquee 30s linear infinite;
+      white-space: nowrap;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .marquee-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.5rem 1.2rem;
+      background: rgba(201,169,110,0.08);
+      border: 1px solid rgba(201,169,110,0.2);
+      border-radius: 50px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-weight: 500;
+      flex-shrink: 0;
+    }
+    .marquee-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--secondary); }
+    /* Process timeline */
+    .process-timeline {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .process-step {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 1.5rem;
+      position: relative;
+    }
+    .process-step-side {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+    .process-num {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--secondary);
+      color: var(--primary-dark);
+      font-weight: 700;
+      font-size: 1.1rem;
+      font-family: var(--font-serif);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      z-index: 1;
+    }
+    .process-line {
+      width: 2px;
+      flex: 1;
+      background: linear-gradient(to bottom, var(--secondary), transparent);
+      opacity: 0.3;
+      min-height: 40px;
+    }
+    .process-step:last-child .process-line { display: none; }
+    .process-content {
+      padding: 0 0 2.5rem 0;
+    }
+    .process-content h3 { font-size: 1.05rem; margin-bottom: 0.35rem; }
+    .process-content p { font-size: 0.875rem; font-weight: 400; }
+    /* Bento grid */
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto auto;
+      gap: 1.25rem;
+    }
+    .bento-cell {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      position: relative;
+    }
+    .bento-cell img { width: 100%; height: 100%; object-fit: cover; }
+    .bento-cell-1 { grid-column: span 2; aspect-ratio: 16/9; }
+    .bento-cell-2 { aspect-ratio: 3/4; }
+    .bento-cell-3 { aspect-ratio: 1/1; }
+    .bento-cell-4 { aspect-ratio: 1/1; }
+    .bento-cell-5 { grid-column: span 1; aspect-ratio: 3/4; }
+    .bento-img-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(13,13,26,0.7) 0%, transparent 60%);
+      display: flex;
+      align-items: flex-end;
+      padding: 1rem;
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+    .bento-cell:hover .bento-img-overlay { opacity: 1; }
+    .bento-label { color: #fff; font-size: 0.85rem; font-weight: 600; }
+    /* Photographer showcase cards — horizontal */
+    .showcase-list { display: flex; flex-direction: column; gap: 1rem; }
+    .showcase-card {
+      display: grid;
+      grid-template-columns: 80px 1fr auto;
+      gap: 1.25rem;
+      align-items: center;
+      padding: 1.25rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      transition: all var(--transition);
+      cursor: pointer;
+    }
+    .showcase-card:hover { border-color: var(--secondary); box-shadow: var(--shadow-md); transform: translateX(4px); }
+    .showcase-avatar { width: 72px; height: 72px; border-radius: var(--radius-md); object-fit: cover; }
+    .showcase-info h3 { font-size: 1rem; margin-bottom: 0.2rem; }
+    .showcase-info .spec { font-size: 0.8rem; color: var(--secondary); font-weight: 500; }
+    .showcase-info .loc { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.15rem; display: flex; align-items: center; gap: 0.3rem; font-weight: 400; }
+    .showcase-rating { display: flex; align-items: center; gap: 0.3rem; font-size: 0.82rem; margin-top: 0.3rem; }
+    /* Specialty Pills strip */
+    .specialty-pills {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .specialty-pill {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1.25rem 1.75rem;
+      background: var(--bg-card);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: all var(--transition);
+      min-width: 120px;
+      text-align: center;
+      text-decoration: none;
+    }
+    .specialty-pill:hover { border-color: var(--secondary); background: rgba(201,169,110,0.05); transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .specialty-pill-icon { color: var(--secondary); width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; }
+    .specialty-pill-name { font-size: 0.875rem; font-weight: 600; color: var(--text); }
+    .specialty-pill-count { font-size: 0.75rem; color: var(--text-muted); font-weight: 400; }
+    /* Guarantee strip */
+    .guarantee-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      padding: 3rem 0;
+      text-align: center;
+    }
+    .guarantee-item { }
+    .guarantee-icon {
+      width: 56px;
+      height: 56px;
+      background: rgba(201,169,110,0.1);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 0.85rem;
+      color: var(--secondary);
+    }
+    .guarantee-title { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.3rem; }
+    .guarantee-desc { font-size: 0.8rem; color: var(--text-muted); font-weight: 400; }
+    @media (max-width: 1024px) {
+      .bento-grid { grid-template-columns: repeat(2, 1fr); }
+      .bento-cell-1 { grid-column: span 2; }
+      .bento-cell-5 { grid-column: span 1; }
+      .guarantee-strip { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .bento-grid { grid-template-columns: 1fr; }
+      .bento-cell-1, .bento-cell-5 { grid-column: span 1; }
+      .bento-cell-1 { aspect-ratio: 4/3; }
+      .process-step { grid-template-columns: 56px 1fr; }
+      .process-num { width: 44px; height: 44px; font-size: 0.9rem; }
+      .guarantee-strip { grid-template-columns: repeat(2, 1fr); }
+      .specialty-pills { gap: 0.5rem; }
+      .specialty-pill { min-width: 100px; padding: 1rem 1.25rem; }
+      .showcase-card { grid-template-columns: 60px 1fr auto; }
+      .showcase-avatar { width: 56px; height: 56px; }
+    }
+    @media (max-width: 400px) {
+      .guarantee-strip { grid-template-columns: 1fr; }
+      .specialty-pills { justify-content: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="main-nav"></div>
+
+<!-- ══════════════════════════════════════
+     HERO — SPLIT CINEMATIC LAYOUT
+════════════════════════════════════════ -->
+<section class="hero-home2">
+  <div class="hero2-left">
+    <div class="hero2-content">
+      <div class="eyebrow">Premium Photography Directory</div>
+      <h1>Where <em>Vision</em><br>Meets <em>Craft</em></h1>
+      <p>Access an exclusive network of elite freelance photographers curated for discerning clients. Every portfolio, every review, every story — in one place.</p>
+      <div class="hero2-btns">
+        <a href="browse.html" class="btn btn-primary btn-xl">Explore the Directory</a>
+        <a href="list-services.html" class="btn btn-outline btn-xl">Join as a Photographer</a>
+      </div>
+      <div style="display:flex;gap:2rem;margin-top:3rem;flex-wrap:wrap;">
+        <div>
+          <div style="font-size:1.8rem;font-weight:700;color:#fff;font-family:var(--font-serif);">2,400+</div>
+          <div style="font-size:0.78rem;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.08em;font-weight:600;">Photographers</div>
+        </div>
+        <div>
+          <div style="font-size:1.8rem;font-weight:700;color:#fff;font-family:var(--font-serif);">180+</div>
+          <div style="font-size:0.78rem;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.08em;font-weight:600;">Cities</div>
+        </div>
+        <div>
+          <div style="font-size:1.8rem;font-weight:700;color:#fff;font-family:var(--font-serif);">5</div>
+          <div style="font-size:0.78rem;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.08em;font-weight:600;">Specialties</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero2-right">
+    <img src="assets/images/home2_hero_cinematic_1790358657482.jpg" alt="Professional photographer at work" loading="eager">
+    <div class="hero2-right-overlay"></div>
+    <div class="hero2-floating-card">
+      <div class="hero2-floating-card-label">Latest Booking</div>
+      <div class="hero2-floating-card-value">Wedding Shoot</div>
+      <div class="hero2-floating-card-sub">New York — just now</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SCROLLING MARQUEE SPECIALTY STRIP
+════════════════════════════════════════ -->
+<div style="background:var(--bg-alt);padding:1.5rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="marquee-wrapper">
+    <div class="marquee-track" id="marquee-track">
+      <span class="marquee-item"><span class="marquee-dot"></span>Wedding Photography</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Food Styling</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Fashion Editorial</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Corporate Headshots</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Newborn Sessions</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Product Photography</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Event Coverage</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Portrait Studio</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Architecture Shoots</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Real Estate Photography</span>
+      <!-- Duplicate for seamless loop -->
+      <span class="marquee-item"><span class="marquee-dot"></span>Wedding Photography</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Food Styling</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Fashion Editorial</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Corporate Headshots</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Newborn Sessions</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Product Photography</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Event Coverage</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Portrait Studio</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Architecture Shoots</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Real Estate Photography</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     SPECIALTY PILLS
+════════════════════════════════════════ -->
+<section class="section-sm">
+  <div class="container">
+    <div class="section-header animate-on-scroll">
+      <div class="section-badge">Specialties</div>
+      <h2>Browse by <span style="color:var(--secondary);">Category</span></h2>
+      <p>Find photographers who specialize in exactly the style you need.</p>
+    </div>
+    <div class="specialty-pills">
+      <a href="browse.html?specialty=wedding" class="specialty-pill animate-on-scroll">
+        <div class="specialty-pill-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <div class="specialty-pill-name">Wedding</div>
+        <div class="specialty-pill-count">486 photographers</div>
+      </a>
+      <a href="browse.html?specialty=food" class="specialty-pill animate-on-scroll" style="transition-delay:0.05s;">
+        <div class="specialty-pill-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+        </div>
+        <div class="specialty-pill-name">Food</div>
+        <div class="specialty-pill-count">312 photographers</div>
+      </a>
+      <a href="browse.html?specialty=fashion" class="specialty-pill animate-on-scroll" style="transition-delay:0.1s;">
+        <div class="specialty-pill-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+        </div>
+        <div class="specialty-pill-name">Fashion</div>
+        <div class="specialty-pill-count">278 photographers</div>
+      </a>
+      <a href="browse.html?specialty=corporate" class="specialty-pill animate-on-scroll" style="transition-delay:0.15s;">
+        <div class="specialty-pill-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        </div>
+        <div class="specialty-pill-name">Corporate</div>
+        <div class="specialty-pill-count">394 photographers</div>
+      </a>
+      <a href="browse.html?specialty=newborn" class="specialty-pill animate-on-scroll" style="transition-delay:0.2s;">
+        <div class="specialty-pill-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="specialty-pill-name">Newborn</div>
+        <div class="specialty-pill-count">209 photographers</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     BENTO GALLERY GRID
+════════════════════════════════════════ -->
+<section class="section" style="background:var(--bg-alt);">
+  <div class="container">
+    <div class="section-header animate-on-scroll">
+      <div class="section-badge">Portfolio Highlights</div>
+      <h2>Stunning Work from Our <span style="color:var(--secondary);">Community</span></h2>
+      <p>A curated glimpse into the calibre of work produced by photographers on FrameFolio.</p>
+    </div>
+    <div class="bento-grid">
+      <div class="bento-cell bento-cell-1 animate-on-scroll">
+        <img src="assets/images/portfolio_gallery_1_1790358669044.jpg" alt="Landscape photography portfolio" loading="lazy">
+        <div class="bento-img-overlay"><span class="bento-label">Landscape & Nature</span></div>
+      </div>
+      <div class="bento-cell bento-cell-2 animate-on-scroll" style="transition-delay:0.05s;">
+        <img src="assets/images/category_wedding_1790358499443.jpg" alt="Wedding photography" loading="lazy">
+        <div class="bento-img-overlay"><span class="bento-label">Wedding</span></div>
+      </div>
+      <div class="bento-cell bento-cell-3 animate-on-scroll" style="transition-delay:0.1s;">
+        <img src="assets/images/category_corporate_1790358561678.jpg" alt="Corporate photography" loading="lazy">
+        <div class="bento-img-overlay"><span class="bento-label">Corporate</span></div>
+      </div>
+      <div class="bento-cell bento-cell-4 animate-on-scroll" style="transition-delay:0.15s;">
+        <img src="assets/images/category_food_1790358513044.jpg" alt="Food photography" loading="lazy">
+        <div class="bento-img-overlay"><span class="bento-label">Food</span></div>
+      </div>
+      <div class="bento-cell bento-cell-5 animate-on-scroll" style="transition-delay:0.2s;">
+        <img src="assets/images/portfolio_gallery_2_1790358680273.jpg" alt="Street photography" loading="lazy">
+        <div class="bento-img-overlay"><span class="bento-label">Street & Urban</span></div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2rem;">
+      <a href="browse.html" class="btn btn-outline">Browse All Portfolios</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FEATURED PHOTOGRAPHER (PREMIUM)
+════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="featured-photographer">
+      <div class="featured-photographer-img animate-on-scroll">
+        <img src="assets/images/photographer_profile_4_1790358735055.jpg" alt="Featured Photographer — James Osei" loading="lazy">
+        <div class="featured-photographer-badge">Photographer of the Month</div>
+      </div>
+      <div class="featured-photographer-content animate-on-scroll" style="transition-delay:0.15s;">
+        <div class="section-badge">Spotlight</div>
+        <h2>James <span style="color:var(--secondary);">Osei</span></h2>
+        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem;flex-wrap:wrap;">
+          <span style="color:var(--secondary);font-weight:600;font-size:0.9rem;">Corporate & Event Photography</span>
+          <span style="color:var(--text-light);font-size:0.8rem;">•</span>
+          <span style="display:flex;align-items:center;gap:0.3rem;font-size:0.85rem;color:var(--text-muted);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Atlanta, GA
+          </span>
+        </div>
+        <p>James brings over 12 years of corporate and event photography experience to every frame. His sharp eye for authentic moments in professional environments has earned him recognition from Fortune 500 clients and growing businesses alike.</p>
+        <div class="featured-photographer-stats">
+          <div class="featured-stat">
+            <div class="featured-stat-num" data-count="12" data-suffix="yr">12yr</div>
+            <div class="featured-stat-label">Experience</div>
+          </div>
+          <div class="featured-stat">
+            <div class="featured-stat-num" data-count="340" data-suffix="+">340+</div>
+            <div class="featured-stat-label">Projects Done</div>
+          </div>
+          <div class="featured-stat">
+            <div class="featured-stat-num">4.9★</div>
+            <div class="featured-stat-label">Avg. Rating</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:1rem;">
+          <a href="photographer-profile.html" class="btn btn-primary btn-lg">View Full Profile</a>
+          <a href="photographer-profile.html#enquiry" class="btn btn-secondary btn-lg">Send Enquiry</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     TOP PHOTOGRAPHERS — HORIZONTAL LIST
+════════════════════════════════════════ -->
+<section class="section" style="background:var(--bg-alt);">
+  <div class="container">
+    <div class="section-header animate-on-scroll">
+      <div class="section-badge">Top Rated</div>
+      <h2>Highly Rated <span style="color:var(--secondary);">This Month</span></h2>
+      <p>The most loved photographers based on verified client reviews.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;" class="animate-on-scroll">
+      <div class="showcase-list">
+        <a href="photographer-profile.html" class="showcase-card">
+          <img src="assets/images/photographer_profile_1_1790358603844.jpg" alt="Marcus Reid" class="showcase-avatar" loading="lazy">
+          <div class="showcase-info">
+            <h3>Marcus Reid</h3>
+            <div class="spec">Wedding & Portrait</div>
+            <div class="loc">
+              <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              New York, NY
+            </div>
+            <div class="showcase-rating">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="var(--secondary)" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <strong>4.9</strong> <span style="color:var(--text-muted);">(148 reviews)</span>
+            </div>
+          </div>
+          <div style="text-align:right;flex-shrink:0;">
+            <div style="font-size:0.72rem;color:var(--text-muted);margin-bottom:0.2rem;font-weight:400;">from</div>
+            <div style="font-weight:700;font-size:1rem;">$350</div>
+          </div>
+        </a>
+        <a href="photographer-profile.html" class="showcase-card">
+          <img src="assets/images/photographer_profile_3_1790358629197.jpg" alt="Priya Sharma" class="showcase-avatar" loading="lazy">
+          <div class="showcase-info">
+            <h3>Priya Sharma</h3>
+            <div class="spec">Food & Product</div>
+            <div class="loc">
+              <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Chicago, IL
+            </div>
+            <div class="showcase-rating">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="var(--secondary)" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <strong>5.0</strong> <span style="color:var(--text-muted);">(87 reviews)</span>
+            </div>
+          </div>
+          <div style="text-align:right;flex-shrink:0;">
+            <div style="font-size:0.72rem;color:var(--text-muted);margin-bottom:0.2rem;font-weight:400;">from</div>
+            <div style="font-weight:700;font-size:1rem;">$290</div>
+          </div>
+        </a>
+      </div>
+      <div class="showcase-list">
+        <a href="photographer-profile.html" class="showcase-card">
+          <img src="assets/images/photographer_profile_2_1790358617166.jpg" alt="Sophia Lane" class="showcase-avatar" loading="lazy">
+          <div class="showcase-info">
+            <h3>Sophia Lane</h3>
+            <div class="spec">Fashion & Editorial</div>
+            <div class="loc">
+              <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Los Angeles, CA
+            </div>
+            <div class="showcase-rating">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="var(--secondary)" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <strong>4.8</strong> <span style="color:var(--text-muted);">(203 reviews)</span>
+            </div>
+          </div>
+          <div style="text-align:right;flex-shrink:0;">
+            <div style="font-size:0.72rem;color:var(--text-muted);margin-bottom:0.2rem;font-weight:400;">from</div>
+            <div style="font-weight:700;font-size:1rem;">$480</div>
+          </div>
+        </a>
+        <a href="photographer-profile.html" class="showcase-card">
+          <img src="assets/images/photographer_profile_4_1790358735055.jpg" alt="James Osei" class="showcase-avatar" loading="lazy">
+          <div class="showcase-info">
+            <h3>James Osei</h3>
+            <div class="spec">Corporate & Event</div>
+            <div class="loc">
+              <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Atlanta, GA
+            </div>
+            <div class="showcase-rating">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="var(--secondary)" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <strong>4.9</strong> <span style="color:var(--text-muted);">(121 reviews)</span>
+            </div>
+          </div>
+          <div style="text-align:right;flex-shrink:0;">
+            <div style="font-size:0.72rem;color:var(--text-muted);margin-bottom:0.2rem;font-weight:400;">from</div>
+            <div style="font-weight:700;font-size:1rem;">$420</div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2rem;">
+      <a href="browse.html" class="btn btn-primary">View All Photographers</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     PROCESS — VERTICAL TIMELINE
+════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;" class="home2-process-grid">
+      <div>
+        <div class="section-badge animate-on-scroll">The Process</div>
+        <h2 class="animate-on-scroll" style="font-family:var(--font-serif);margin-bottom:1rem;">How <span style="color:var(--secondary);">FrameFolio</span> Works</h2>
+        <p class="animate-on-scroll" style="margin-bottom:2.5rem;font-weight:400;">Hiring a professional photographer has never been this straightforward. Our transparent, client-first process ensures your experience is exceptional from start to finish.</p>
+        <div class="process-timeline animate-on-scroll">
+          <div class="process-step">
+            <div class="process-step-side">
+              <div class="process-num">1</div>
+              <div class="process-line"></div>
+            </div>
+            <div class="process-content">
+              <h3>Discover</h3>
+              <p>Use our advanced filters to find photographers by city, specialty, budget, and availability.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="process-step-side">
+              <div class="process-num">2</div>
+              <div class="process-line"></div>
+            </div>
+            <div class="process-content">
+              <h3>Review</h3>
+              <p>Explore full portfolios, read verified reviews, and compare pricing packages side by side.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="process-step-side">
+              <div class="process-num">3</div>
+              <div class="process-line"></div>
+            </div>
+            <div class="process-content">
+              <h3>Connect</h3>
+              <p>Send a direct enquiry. The photographer responds to your email — no platform intermediary.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="process-step-side">
+              <div class="process-num">4</div>
+              <div class="process-line"></div>
+            </div>
+            <div class="process-content">
+              <h3>Create</h3>
+              <p>Confirm your booking and collaborate with your photographer to create timeless imagery.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="animate-on-scroll" style="transition-delay:0.2s;">
+        <div style="background:var(--primary-dark);border-radius:var(--radius-xl);padding:2rem;position:sticky;top:calc(var(--navbar-h) + 1rem);">
+          <h3 style="color:#fff;margin-bottom:1.25rem;font-size:1.1rem;">Quick Search</h3>
+          <div class="form-group">
+            <label class="form-label" style="color:rgba(255,255,255,0.7);">Specialty</label>
+            <select class="form-select" id="quick-specialty">
+              <option value="">All Specialties</option>
+              <option value="wedding">Wedding</option>
+              <option value="food">Food</option>
+              <option value="fashion">Fashion</option>
+              <option value="corporate">Corporate</option>
+              <option value="newborn">Newborn</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" style="color:rgba(255,255,255,0.7);">City</label>
+            <input type="text" class="form-input" placeholder="e.g. New York, Chicago..." id="quick-city">
+          </div>
+          <div class="form-group">
+            <label class="form-label" style="color:rgba(255,255,255,0.7);">Budget Range</label>
+            <select class="form-select" id="quick-budget">
+              <option value="">Any Budget</option>
+              <option value="low">Under $200</option>
+              <option value="mid">$200 – $500</option>
+              <option value="high">$500 – $1,000</option>
+              <option value="premium">$1,000+</option>
+            </select>
+          </div>
+          <a href="browse.html" class="btn btn-primary w-full btn-lg" id="quick-search-btn" onclick="event.preventDefault(); window.location.href='browse.html';">Find Photographers</a>
+          <p style="text-align:center;margin-top:1rem;font-size:0.8rem;color:rgba(255,255,255,0.4);font-weight:400;">2,400+ photographers ready to book</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     GUARANTEE STRIP
+════════════════════════════════════════ -->
+<section style="background:var(--bg-alt);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="container">
+    <div class="guarantee-strip">
+      <div class="guarantee-item animate-on-scroll">
+        <div class="guarantee-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="guarantee-title">Verified Profiles</div>
+        <div class="guarantee-desc">Every photographer is manually reviewed before going live on the platform.</div>
+      </div>
+      <div class="guarantee-item animate-on-scroll" style="transition-delay:0.08s;">
+        <div class="guarantee-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+        </div>
+        <div class="guarantee-title">Authentic Reviews</div>
+        <div class="guarantee-desc">All ratings and testimonials come from verified, real bookings only.</div>
+      </div>
+      <div class="guarantee-item animate-on-scroll" style="transition-delay:0.16s;">
+        <div class="guarantee-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <div class="guarantee-title">Transparent Pricing</div>
+        <div class="guarantee-desc">No hidden fees. See photographer rates upfront — no surprises.</div>
+      </div>
+      <div class="guarantee-item animate-on-scroll" style="transition-delay:0.24s;">
+        <div class="guarantee-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="guarantee-title">Direct Communication</div>
+        <div class="guarantee-desc">Talk directly with photographers — no platform middlemen involved.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     CTA BANNER
+════════════════════════════════════════ -->
+<section class="cta-banner">
+  <div class="container">
+    <div class="section-badge">Join FrameFolio</div>
+    <h2>Your Vision Deserves the Best Lens</h2>
+    <p>Whether you're a client seeking the perfect photographer or a photographer ready to grow your clientele — FrameFolio is your home.</p>
+    <div class="cta-banner-btns">
+      <a href="browse.html" class="btn btn-primary btn-xl">Find a Photographer</a>
+      <a href="list-services.html" class="btn btn-outline btn-xl">List Your Services</a>
+    </div>
+  </div>
+</section>
+
+<div id="main-footer"></div>
+<script src="components.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Fix process grid for mobile
+    const grid = document.querySelector('.home2-process-grid');
+    if (grid && window.innerWidth <= 768) {
+      grid.style.gridTemplateColumns = '1fr';
+      grid.style.gap = '2rem';
+    }
+  });
+</script>
+</body>
+</html>
