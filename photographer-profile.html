@@ -3,45 +3,281 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Marcus Reid — Professional wedding and portrait photographer based in New York, NY. View full portfolio, client reviews, and send an enquiry.">
-  <title>Marcus Reid — Wedding Photographer | FrameFolio</title>
+  <meta name="description" content="Explore individual freelance photographer profiles on FrameFolio. View verified credentials, full high-resolution portfolio galleries, pricing packages, client reviews, and direct booking.">
+  <title id="page-title">Photographer Profile & Portfolio | FrameFolio</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="style.css">
   <style>
+    /* Creator Switcher Strip */
+    .creator-switcher-section {
+      background: var(--bg-alt);
+      border-bottom: 1px solid var(--border);
+      padding: 0.85rem 0;
+      position: sticky;
+      top: var(--navbar-h);
+      z-index: 95;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .creator-switcher-inner {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      overflow: hidden;
+    }
+    .creator-switcher-label {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--secondary);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .creator-switcher-scroll {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      padding: 0.2rem 0;
+      flex: 1;
+    }
+    .creator-switcher-scroll::-webkit-scrollbar { display: none; }
+    .creator-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: 50px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      white-space: nowrap;
+      cursor: pointer;
+      transition: all var(--transition);
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .creator-pill:hover {
+      border-color: var(--secondary);
+      color: var(--text);
+      transform: translateY(-1px);
+    }
+    .creator-pill.active {
+      background: var(--secondary);
+      border-color: var(--secondary);
+      color: var(--primary-dark);
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(201,169,110,0.3);
+    }
+    .creator-pill-spec {
+      font-size: 0.72rem;
+      opacity: 0.85;
+      padding-left: 0.25rem;
+      border-left: 1px solid currentColor;
+    }
+
+    /* Layout */
     .profile-page-layout {
       display: grid;
       grid-template-columns: 1fr 340px;
       gap: 2.5rem;
       align-items: start;
-      padding: 3rem 0 5rem;
+      padding: 2.5rem 0 5rem;
     }
     .profile-main { }
     .profile-sidebar { }
     .section-title {
-      font-size: 1.15rem;
-      font-weight: 600;
+      font-size: 1.25rem;
+      font-weight: 700;
+      font-family: var(--font-serif);
       margin-bottom: 1.25rem;
       padding-bottom: 0.75rem;
       border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
-    .about-text { font-size:0.95rem; color:var(--text-muted); line-height:1.75; margin-bottom:1.5rem; font-weight:400; }
-    .services-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; }
+    .about-text { font-size: 0.95rem; color: var(--text-muted); line-height: 1.75; margin-bottom: 1.25rem; font-weight: 400; }
+    
+    /* Services Grid */
+    .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
     .service-item {
-      padding:1.25rem;
-      border:1px solid var(--border);
-      border-radius:var(--radius-md);
-      background:var(--bg-card);
+      padding: 1.35rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      background: var(--bg-card);
+      transition: all var(--transition);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
-    .service-item h4 { font-size:0.9rem; margin-bottom:0.2rem; }
-    .service-item p { font-size:0.8rem; margin:0; font-weight:400; }
-    .service-price { font-size:1rem; font-weight:700; color:var(--secondary); margin-top:0.5rem; }
-    @media (max-width:1024px) {
+    .service-item:hover {
+      border-color: var(--secondary);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-sm);
+    }
+    .service-item h4 { font-size: 0.95rem; margin-bottom: 0.35rem; color: var(--text); }
+    .service-item p { font-size: 0.82rem; margin: 0 0 1rem; font-weight: 400; line-height: 1.5; color: var(--text-muted); }
+    .service-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--border);
+      padding-top: 0.75rem;
+      margin-top: auto;
+    }
+    .service-price { font-size: 1.05rem; font-weight: 700; color: var(--secondary); }
+    
+    /* Portfolio Gallery */
+    .gallery-filter-bar {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+    }
+    .gallery-filter-pill {
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 0.3rem 0.8rem;
+      border-radius: 50px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+    .gallery-filter-pill:hover, .gallery-filter-pill.active {
+      background: var(--secondary);
+      border-color: var(--secondary);
+      color: var(--primary-dark);
+    }
+    .portfolio-grid-item {
+      position: relative;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      cursor: pointer;
+      aspect-ratio: 4/3;
+      background: var(--surface);
+    }
+    .portfolio-grid-item.span-2 {
+      grid-column: span 2;
+      aspect-ratio: 16/9;
+    }
+    .portfolio-grid-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .portfolio-grid-item:hover img {
+      transform: scale(1.05);
+    }
+    .portfolio-grid-item-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(13,13,26,0.85) 0%, rgba(13,13,26,0.3) 50%, transparent 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.25rem;
+      opacity: 0;
+      transition: opacity var(--transition);
+      color: #fff;
+    }
+    .portfolio-grid-item:hover .portfolio-grid-item-overlay {
+      opacity: 1;
+    }
+    .portfolio-item-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+    }
+    .portfolio-item-tag {
+      font-size: 0.75rem;
+      color: var(--secondary);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Lightbox Modal */
+    .lightbox-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      background: rgba(13, 13, 26, 0.94);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .lightbox-modal.open {
+      display: flex;
+      opacity: 1;
+    }
+    .lightbox-content {
+      position: relative;
+      max-width: 90vw;
+      max-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .lightbox-img {
+      max-width: 100%;
+      max-height: 75vh;
+      border-radius: var(--radius-md);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+      object-fit: contain;
+    }
+    .lightbox-caption {
+      margin-top: 1rem;
+      color: #fff;
+      font-size: 0.95rem;
+      text-align: center;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: -2.5rem;
+      right: 0;
+      color: #fff;
+      background: rgba(255,255,255,0.15);
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background var(--transition);
+    }
+    .lightbox-close:hover { background: var(--secondary); color: var(--primary-dark); }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
       .profile-page-layout { grid-template-columns: 1fr; }
       .profile-sidebar { order: -1; }
-      .enquiry-card { position:static; }
+      .enquiry-card { position: static; }
+      .creator-switcher-section { top: var(--navbar-h); }
     }
-    @media (max-width:768px) {
-      .services-grid { grid-template-columns:1fr; }
+    @media (max-width: 768px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .portfolio-grid-item.span-2 { grid-column: span 1; aspect-ratio: 4/3; }
+      .creator-switcher-label { display: none; }
     }
   </style>
 </head>
@@ -49,53 +285,66 @@
 
 <div id="main-nav"></div>
 
+<!-- ── Photographer Selector Strip (Switch between all individual profiles) ── -->
+<section class="creator-switcher-section" aria-label="Photographer Profile Selector">
+  <div class="container">
+    <div class="creator-switcher-inner">
+      <div class="creator-switcher-label">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Featured Profiles:
+      </div>
+      <div class="creator-switcher-scroll" id="creator-switcher">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ── Profile Header ── -->
-<section class="profile-header">
+<section class="profile-header" id="profile-header-sec">
   <div class="container">
     <div class="page-breadcrumb">
       <a href="index.html">Home</a>
       <span>›</span>
-      <a href="browse.html">Browse</a>
+      <a href="browse.html">Browse Photographers</a>
       <span>›</span>
-      <span class="current">Marcus Reid</span>
+      <span class="current" id="breadcrumb-current-name">Marcus Reid</span>
     </div>
     <div class="profile-header-inner">
       <div class="profile-avatar-wrap">
-        <img src="assets/images/photographer_profile_1_1790358603844.jpg" alt="Marcus Reid" class="profile-avatar" loading="eager">
-        <div class="profile-verified">
+        <div id="profile-avatar-container">
+          <img src="assets/images/photographer_profile_1_1790358603844.jpg" alt="Photographer" class="profile-avatar" id="photographer-avatar" loading="eager">
+        </div>
+        <div class="profile-verified" title="Verified Professional">
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
         </div>
       </div>
       <div class="profile-info">
-        <h1>Marcus Reid</h1>
-        <div class="specialty">Wedding & Portrait Photographer</div>
-        <div class="location">
+        <h1 id="profile-name">Marcus Reid</h1>
+        <div class="specialty" id="profile-specialty">Wedding & Portrait Photographer</div>
+        <div class="location" id="profile-location">
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          New York, NY — Available for travel
+          <span id="profile-city-text">New York, NY — Available for travel</span>
         </div>
-        <div class="profile-tags">
-          <span class="profile-tag">Wedding</span>
-          <span class="profile-tag">Portrait</span>
-          <span class="profile-tag">Lifestyle</span>
-          <span class="profile-tag">Elopements</span>
-          <span class="profile-tag">Engagement</span>
+        <div class="profile-tags" id="profile-tags-container">
+          <!-- Tags injected dynamically -->
         </div>
         <div class="profile-meta">
           <div class="profile-meta-item">
-            <div class="profile-meta-num" data-count="148">148</div>
+            <div class="profile-meta-num" id="profile-reviews-num">148</div>
             <div class="profile-meta-label">Reviews</div>
           </div>
           <div class="profile-meta-item">
-            <div class="profile-meta-num">4.9★</div>
+            <div class="profile-meta-num" id="profile-rating-num">4.9★</div>
             <div class="profile-meta-label">Avg. Rating</div>
           </div>
           <div class="profile-meta-item">
-            <div class="profile-meta-num" data-count="9" data-suffix="yr">9yr</div>
+            <div class="profile-meta-num" id="profile-exp-num">9yr</div>
             <div class="profile-meta-label">Experience</div>
           </div>
           <div class="profile-meta-item">
-            <div class="profile-meta-num" data-count="320" data-suffix="+">320+</div>
-            <div class="profile-meta-label">Weddings Shot</div>
+            <div class="profile-meta-num" id="profile-shoots-num">320+</div>
+            <div class="profile-meta-label" id="profile-shoots-label">Weddings Shot</div>
           </div>
         </div>
       </div>
@@ -114,104 +363,43 @@
     <div class="profile-main">
       <!-- About -->
       <section style="margin-bottom:3rem;">
-        <h2 class="section-title">About Marcus</h2>
-        <p class="about-text">Marcus Reid is a New York-based wedding and portrait photographer with over 9 years of experience capturing the authentic emotion behind life's most meaningful moments. His signature style blends photojournalistic storytelling with artful composition — resulting in images that feel both cinematic and deeply personal.</p>
-        <p class="about-text">Having photographed over 320 weddings across the US, Europe, and Asia, Marcus brings a calm, reassuring presence to every shoot. He believes the best photographs happen when people forget the camera is there, and his clients often comment on how natural and relaxed they felt throughout their sessions.</p>
-        <p class="about-text">Marcus offers full-day wedding coverage, engagement sessions, bridal portraits, and intimate elopement packages. He delivers edited images within 4–6 weeks of the event.</p>
+        <h2 class="section-title"><span id="about-heading">About Marcus</span></h2>
+        <div id="about-bio-container">
+          <!-- Bio injected dynamically -->
+        </div>
       </section>
 
       <!-- Portfolio Gallery -->
       <section id="portfolio" style="margin-bottom:3rem;">
-        <h2 class="section-title">Portfolio Gallery</h2>
-        <div class="portfolio-grid">
-          <div class="portfolio-grid-item span-2">
-            <img src="assets/images/category_wedding_1790358499443.jpg" alt="Wedding ceremony at cathedral" loading="lazy">
-            <div class="portfolio-grid-item-overlay">
-              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
-            </div>
-          </div>
-          <div class="portfolio-grid-item">
-            <img src="assets/images/portfolio_gallery_1_1790358669044.jpg" alt="Landscape portrait" loading="lazy">
-            <div class="portfolio-grid-item-overlay">
-              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
-            </div>
-          </div>
-          <div class="portfolio-grid-item">
-            <img src="assets/images/hero_photographer_main_1790358484541.jpg" alt="Photographer at work in nature" loading="lazy">
-            <div class="portfolio-grid-item-overlay">
-              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
-            </div>
-          </div>
-          <div class="portfolio-grid-item">
-            <img src="assets/images/portfolio_gallery_2_1790358680273.jpg" alt="Urban night photography" loading="lazy">
-            <div class="portfolio-grid-item-overlay">
-              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
-            </div>
-          </div>
-          <div class="portfolio-grid-item span-2">
-            <img src="assets/images/home2_hero_cinematic_1790358657482.jpg" alt="Cinematic landscape photography" loading="lazy">
-            <div class="portfolio-grid-item-overlay">
-              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
-            </div>
-          </div>
+        <div class="section-title">
+          <span>Full Portfolio Gallery</span>
+          <span style="font-size:0.82rem;font-weight:400;color:var(--text-muted);" id="portfolio-count-text">5 Curated Works</span>
+        </div>
+        <div class="gallery-filter-bar" id="gallery-filter-bar">
+          <button class="gallery-filter-pill active" onclick="filterGallery('all', this)">All Works</button>
+          <!-- Additional filter pills injected dynamically -->
+        </div>
+        <div class="portfolio-grid" id="portfolio-grid-container">
+          <!-- Portfolio items injected dynamically -->
         </div>
       </section>
 
       <!-- Services & Pricing -->
       <section style="margin-bottom:3rem;">
-        <h2 class="section-title">Services & Pricing</h2>
-        <div class="services-grid">
-          <div class="service-item">
-            <h4>Full-Day Wedding Coverage</h4>
-            <p>Up to 10 hours, 2 photographers, 600+ edited images, online gallery</p>
-            <div class="service-price">From $3,200</div>
-          </div>
-          <div class="service-item">
-            <h4>Half-Day Wedding</h4>
-            <p>Up to 6 hours, 1 photographer, 300+ edited images, online gallery</p>
-            <div class="service-price">From $1,800</div>
-          </div>
-          <div class="service-item">
-            <h4>Engagement Session</h4>
-            <p>2 hour outdoor or studio session, 100+ edited images, 2 locations</p>
-            <div class="service-price">From $450</div>
-          </div>
-          <div class="service-item">
-            <h4>Portrait Session</h4>
-            <p>1.5 hour portrait shoot, individual or couple, 50+ edited images</p>
-            <div class="service-price">From $350</div>
-          </div>
+        <h2 class="section-title">Services & Pricing Packages</h2>
+        <div class="services-grid" id="services-grid-container">
+          <!-- Services injected dynamically -->
         </div>
       </section>
 
-      <!-- Reviews -->
+      <!-- Client Reviews -->
       <section>
-        <h2 class="section-title">Client Reviews</h2>
-        <div style="display:flex;flex-direction:column;gap:1.25rem;">
-          <div class="testimonial-card" style="padding:1.25rem;">
-            <div class="testimonial-text">"Marcus photographed our wedding at The Plaza and exceeded every expectation. His ability to capture raw emotion while maintaining artistic excellence is unmatched. Every photo feels like a painting."</div>
-            <div class="testimonial-author">
-              <img src="assets/images/photographer_profile_3_1790358629197.jpg" alt="Ava Thompson" loading="lazy">
-              <div>
-                <div class="testimonial-author-name">Ava & Daniel Thompson</div>
-                <div class="testimonial-author-role" style="display:flex;align-items:center;gap:0.5rem;">
-                  <span style="color:var(--secondary);">★★★★★</span> Wedding, New York
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="testimonial-card" style="padding:1.25rem;">
-            <div class="testimonial-text">"We chose Marcus for our engagement photos in Central Park and fell absolutely in love with the results. He made us feel so comfortable and natural. We're booking him again for our wedding!"</div>
-            <div class="testimonial-author">
-              <img src="assets/images/photographer_profile_2_1790358617166.jpg" alt="Sarah & Mike Chen" loading="lazy">
-              <div>
-                <div class="testimonial-author-name">Sarah & Mike Chen</div>
-                <div class="testimonial-author-role" style="display:flex;align-items:center;gap:0.5rem;">
-                  <span style="color:var(--secondary);">★★★★★</span> Engagement, New York
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="section-title">
+          <span>Verified Client Reviews</span>
+          <a href="#enquiry" style="font-size:0.85rem;color:var(--secondary);font-weight:600;">Leave a Review &rarr;</a>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:1.25rem;" id="reviews-container">
+          <!-- Testimonials injected dynamically -->
         </div>
       </section>
     </div>
@@ -220,11 +408,11 @@
     <div class="profile-sidebar">
       <!-- Enquiry Form -->
       <div class="enquiry-card" id="enquiry">
-        <h3>Send an Enquiry</h3>
-        <p>Reach out to Marcus directly. He typically responds within 24 hours.</p>
-        <form onsubmit="event.preventDefault(); alert('Your enquiry has been sent! Marcus will get back to you within 24 hours.'); this.reset();" id="enquiry-form">
+        <h3 id="enquiry-card-title">Send an Enquiry</h3>
+        <p id="enquiry-card-subtitle">Reach out directly. Typically responds within 24 hours.</p>
+        <form onsubmit="handleEnquirySubmit(event)" id="enquiry-form">
           <div class="form-group">
-            <label class="form-label" for="enq-name">Your Name</label>
+            <label class="form-label" for="enq-name">Your Full Name</label>
             <input type="text" id="enq-name" class="form-input" placeholder="Jane & John Smith" required>
           </div>
           <div class="form-group">
@@ -236,32 +424,29 @@
             <input type="tel" id="enq-phone" class="form-input" placeholder="+1 (555) 000-0000">
           </div>
           <div class="form-group">
-            <label class="form-label" for="enq-type">Session Type</label>
-            <select id="enq-type" class="form-select">
-              <option value="">Select a service...</option>
-              <option>Full-Day Wedding Coverage</option>
-              <option>Half-Day Wedding</option>
-              <option>Engagement Session</option>
-              <option>Portrait Session</option>
+            <label class="form-label" for="enq-type">Select Requested Service</label>
+            <select id="enq-type" class="form-select" required>
+              <!-- Populated dynamically -->
             </select>
           </div>
           <div class="form-group">
-            <label class="form-label" for="enq-date">Preferred Date</label>
+            <label class="form-label" for="enq-date">Target Date</label>
             <input type="date" id="enq-date" class="form-input">
           </div>
           <div class="form-group">
-            <label class="form-label" for="enq-message">Tell Marcus About Your Event</label>
-            <textarea id="enq-message" class="form-textarea" placeholder="Tell Marcus about your vision, venue, guest count, and any special requirements..." required></textarea>
+            <label class="form-label" for="enq-message">Project Vision & Location</label>
+            <textarea id="enq-message" class="form-textarea" placeholder="Tell us about your event, venue, guest count, and creative vision..." required></textarea>
           </div>
-          <button type="submit" class="btn btn-primary w-full btn-lg">Send Enquiry</button>
+          <button type="submit" class="btn btn-primary w-full btn-lg">Send Direct Enquiry</button>
         </form>
       </div>
+
       <!-- Quick Info Card -->
-      <div style="background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius-md);padding:1.25rem;margin-top:1rem;">
-        <div style="display:flex;flex-direction:column;gap:0.75rem;">
+      <div style="background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius-md);padding:1.35rem;margin-top:1.25rem;">
+        <div style="display:flex;flex-direction:column;gap:0.85rem;">
           <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.875rem;">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            <span style="color:var(--text-muted);font-weight:400;">Based in New York, NY</span>
+            <span style="color:var(--text-muted);font-weight:400;" id="sidebar-based-in">Based in New York, NY</span>
           </div>
           <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.875rem;">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
@@ -269,11 +454,11 @@
           </div>
           <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.875rem;">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            <span style="color:var(--text-muted);font-weight:400;">Verified Photographer</span>
+            <span style="color:var(--text-muted);font-weight:400;">Verified FrameFolio Creator</span>
           </div>
           <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.875rem;">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            <span style="color:var(--text-muted);font-weight:400;">Available for destination travel</span>
+            <span style="color:var(--text-muted);font-weight:400;" id="sidebar-travel-text">Available for destination travel</span>
           </div>
         </div>
       </div>
@@ -281,7 +466,615 @@
   </div>
 </div>
 
+<!-- ── Full-Screen Lightbox Modal ── -->
+<div class="lightbox-modal" id="lightbox-modal" onclick="closeLightbox(event)">
+  <div class="lightbox-content">
+    <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Close image preview">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <img src="" alt="Enlarged Portfolio View" class="lightbox-img" id="lightbox-img">
+    <div class="lightbox-caption" id="lightbox-caption"></div>
+  </div>
+</div>
+
 <div id="main-footer"></div>
 <script src="components.js"></script>
+<script>
+/* ─── FULL PHOTOGRAPHER PROFILES DATASET ─── */
+const PHOTOGRAPHERS = {
+  'marcus-reid': {
+    id: 'marcus-reid',
+    name: 'Marcus Reid',
+    specialty: 'Wedding & Portrait Photographer',
+    category: 'wedding',
+    city: 'New York, NY',
+    travel: 'Available for worldwide travel & elopements',
+    avatar: 'assets/images/photographer_profile_1_1790358603844.jpg',
+    tags: ['Wedding', 'Portrait', 'Lifestyle', 'Elopements', 'Engagement'],
+    rating: '4.9★',
+    reviewsCount: '148',
+    experience: '9yr',
+    completedCount: '320+',
+    completedLabel: 'Weddings Shot',
+    startingPrice: '$350',
+    bio: [
+      "Marcus Reid is a New York-based wedding and portrait photographer with over 9 years of experience capturing the authentic emotion behind life's most meaningful moments. His signature style blends photojournalistic storytelling with artful composition — resulting in images that feel both cinematic and deeply personal.",
+      "Having photographed over 320 weddings across the US, Europe, and Asia, Marcus brings a calm, reassuring presence to every shoot. He believes the best photographs happen when people forget the camera is there, and his clients often comment on how relaxed they felt.",
+      "Marcus offers full-day wedding coverage, engagement sessions, bridal portraits, and intimate elopement packages with delivery in 4–6 weeks."
+    ],
+    gallery: [
+      { url: 'assets/images/category_wedding_1790358499443.jpg', title: 'Cathedral Altar Vows', tag: 'Ceremony', span2: true },
+      { url: 'assets/images/portfolio_gallery_1_1790358669044.jpg', title: 'Sunset Couple Silhouette', tag: 'Portraits' },
+      { url: 'assets/images/hero_photographer_main_1790358484541.jpg', title: 'Forest Destination Elopement', tag: 'Elopement' },
+      { url: 'assets/images/portfolio_gallery_2_1790358680273.jpg', title: 'Manhattan Evening Reception', tag: 'Reception' },
+      { url: 'assets/images/home2_hero_cinematic_1790358657482.jpg', title: 'Editorial Bridal Portrait', tag: 'Editorial', span2: true }
+    ],
+    services: [
+      { name: 'Full-Day Wedding Coverage', desc: 'Up to 10 hours, 2 photographers, 600+ edited images, online gallery', price: 'From $3,200' },
+      { name: 'Half-Day Wedding', desc: 'Up to 6 hours, 1 photographer, 300+ edited images, online gallery', price: 'From $1,800' },
+      { name: 'Engagement Session', desc: '2 hour outdoor or studio session, 100+ edited images, 2 locations', price: 'From $450' },
+      { name: 'Portrait Session', desc: '1.5 hour portrait shoot, individual or couple, 50+ edited images', price: 'From $350' }
+    ],
+    reviews: [
+      { text: "Marcus photographed our wedding at The Plaza and exceeded every expectation. His ability to capture raw emotion while maintaining artistic excellence is unmatched. Every photo feels like a painting.", author: "Ava & Daniel Thompson", role: "Wedding, New York", avatar: 'assets/images/photographer_profile_3_1790358629197.jpg' },
+      { text: "We chose Marcus for our engagement photos in Central Park and fell absolutely in love with the results. He made us feel so comfortable and natural. We're booking him again for our wedding!", author: "Sarah & Mike Chen", role: "Engagement, New York", avatar: 'assets/images/photographer_profile_2_1790358617166.jpg' }
+    ]
+  },
+  'sophia-lane': {
+    id: 'sophia-lane',
+    name: 'Sophia Lane',
+    specialty: 'Fashion & Editorial Photographer',
+    category: 'fashion',
+    city: 'Los Angeles, CA',
+    travel: 'Available for international editorial commissions',
+    avatar: 'assets/images/photographer_profile_2_1790358617166.jpg',
+    tags: ['Fashion', 'Editorial', 'Lookbook', 'Commercial', 'Runway'],
+    rating: '4.8★',
+    reviewsCount: '203',
+    experience: '8yr',
+    completedCount: '450+',
+    completedLabel: 'Shoots Completed',
+    startingPrice: '$480',
+    bio: [
+      "Sophia Lane is an acclaimed Los Angeles fashion and commercial editorial photographer. Known for dramatic lighting, vibrant color balance, and avant-garde composition, her work has been published in leading fashion periodicals and global brand campaigns.",
+      "With a fine arts background from RISD, Sophia treats every photoshoot as a high-concept art installation. She collaborates closely with art directors, stylists, and models to produce show-stopping imagery.",
+      "Operating from her daylight studio in downtown LA, Sophia regularly travels worldwide for fashion weeks and advertising productions."
+    ],
+    gallery: [
+      { url: 'assets/images/category_fashion_1790358549389.jpg', title: 'Haute Couture Editorial Series', tag: 'Editorial', span2: true },
+      { url: 'assets/images/portfolio_gallery_2_1790358680273.jpg', title: 'Urban Avant-Garde Collection', tag: 'Commercial' },
+      { url: 'assets/images/home2_hero_cinematic_1790358657482.jpg', title: 'Sunset Silhouette Lookbook', tag: 'Lookbook' },
+      { url: 'assets/images/hero_photographer_main_1790358484541.jpg', title: 'Outdoor Brand Campaign', tag: 'Campaign' },
+      { url: 'assets/images/contact_studio_loft.jpg', title: 'Studio High Fashion Lighting', tag: 'Studio', span2: true }
+    ],
+    services: [
+      { name: 'Full Commercial Campaign', desc: 'Full-day studio & location shoot, creative direction, commercial usage rights', price: 'From $4,500' },
+      { name: 'Fashion Lookbook Shoot', desc: 'Up to 6 hours, 20 garments, model direction, high-end retouched catalog', price: 'From $2,400' },
+      { name: 'Editorial Portrait Session', desc: '3 hours, creative lighting, 3 wardrobe changes, 15 magazine-ready images', price: 'From $850' },
+      { name: 'Agency Model Portfolio', desc: '2 hours, composite card shoot, clean natural & studio looks', price: 'From $480' }
+    ],
+    reviews: [
+      { text: "Sophia brought our spring collection to life in ways we never imagined. The lighting, composition, and mood were beyond flawless. Our sales conversion jumped 40% after the launch.", author: "Claire Vance", role: "Creative Director, VANCE Studio LA", avatar: 'assets/images/photographer_profile_1_1790358603844.jpg' },
+      { text: "Hands down the most professional and visionary fashion photographer in Los Angeles. Her eye for texture and movement is extraordinary.", author: "Julian Thorne", role: "Editor, Runway Monthly", avatar: 'assets/images/photographer_profile_4_1790358735055.jpg' }
+    ]
+  },
+  'priya-sharma': {
+    id: 'priya-sharma',
+    name: 'Priya Sharma',
+    specialty: 'Food & Culinary Stylist Photographer',
+    category: 'food',
+    city: 'Chicago, IL',
+    travel: 'Available across the Midwest & nationwide',
+    avatar: 'assets/images/photographer_profile_3_1790358629197.jpg',
+    tags: ['Food', 'Culinary', 'Restaurant', 'Beverage', 'Packaging'],
+    rating: '5.0★',
+    reviewsCount: '87',
+    experience: '7yr',
+    completedCount: '190+',
+    completedLabel: 'Venues Featured',
+    startingPrice: '$290',
+    bio: [
+      "Priya Sharma is a Chicago-based culinary photographer and food stylist whose work celebrates the textures, colors, and aromas of Michelin-starred dining, artisanal baking, and boutique food brands.",
+      "Trained as both a culinary artist and photographer, Priya understands how food behaves under lights and how to craft mouthwatering sensory appeal in every single frame.",
+      "She regularly partners with restaurateurs, cookbook publishers, cocktail bars, and organic food producers to elevate their visual identity."
+    ],
+    gallery: [
+      { url: 'assets/images/category_food_1790358513044.jpg', title: 'Artisan Pastry & Bakery Showcase', tag: 'Culinary', span2: true },
+      { url: 'assets/images/portfolio_gallery_2_1790358680273.jpg', title: 'Craft Cocktail Bar Atmosphere', tag: 'Beverage' },
+      { url: 'assets/images/home2_hero_cinematic_1790358657482.jpg', title: 'Chef Preparation in Open Kitchen', tag: 'Kitchen' },
+      { url: 'assets/images/contact_studio_loft.jpg', title: 'Tabletop Product Staging', tag: 'Styling' },
+      { url: 'assets/images/category_wedding_1790358499443.jpg', title: 'Luxury Banquet Catering Spread', tag: 'Events', span2: true }
+    ],
+    services: [
+      { name: 'Complete Restaurant Menu Shoot', desc: 'Up to 25 dishes styled and shot on-site, ingredient flat-lays & staff portraits', price: 'From $1,600' },
+      { name: 'Boutique Food Brand Catalog', desc: 'Packaging hero shots, recipe creation staging, social media assets pack', price: 'From $1,100' },
+      { name: 'Beverage & Cocktail Series', desc: '10 custom drink setups with dramatic backlight and splash photography', price: 'From $650' },
+      { name: 'Editorial Restaurant Story', desc: 'Ambiance, kitchen action, interior design and signature dish highlights', price: 'From $290' }
+    ],
+    reviews: [
+      { text: "Priya made our tasting menu look like fine art. Our reservation book filled up for three months straight right after publishing her photos on our website.", author: "Chef Mateo Bianchi", role: "Executive Chef, Osteria Chicago", avatar: 'assets/images/photographer_profile_4_1790358735055.jpg' },
+      { text: "Remarkable attention to detail. She understands food styling at the deepest level. Fast turnaround and absolute pleasure to work with.", author: "Hannah Kim", role: "Brand Manager, GreenLeaf Organics", avatar: 'assets/images/photographer_profile_1_1790358603844.jpg' }
+    ]
+  },
+  'james-osei': {
+    id: 'james-osei',
+    name: 'James Osei',
+    specialty: 'Corporate, Headshot & Event Specialist',
+    category: 'corporate',
+    city: 'Atlanta, GA',
+    travel: 'Available across the Southeast & national summits',
+    avatar: 'assets/images/photographer_profile_4_1790358735055.jpg',
+    tags: ['Corporate', 'Headshots', 'Conferences', 'Architecture', 'Executive'],
+    rating: '4.9★',
+    reviewsCount: '121',
+    experience: '11yr',
+    completedCount: '500+',
+    completedLabel: 'Corporate Events',
+    startingPrice: '$420',
+    bio: [
+      "James Osei is an Atlanta corporate photographer specializing in executive headshots, Fortune 500 company conventions, and architectural corporate campus imagery.",
+      "With over a decade of experience partnering with tech leaders, law firms, and healthcare organizations, James delivers cohesive visual branding that conveys confidence, polish, and credibility.",
+      "Equipped with mobile high-speed studio strobes, James can transform any boardroom or conference lounge into an executive portrait studio."
+    ],
+    gallery: [
+      { url: 'assets/images/category_corporate_1790358561678.jpg', title: 'Annual Executive Leadership Summit', tag: 'Conference', span2: true },
+      { url: 'assets/images/home2_hero_cinematic_1790358657482.jpg', title: 'Executive Portraiture', tag: 'Headshots' },
+      { url: 'assets/images/portfolio_gallery_2_1790358680273.jpg', title: 'Modern Corporate Headquarters', tag: 'Architecture' },
+      { url: 'assets/images/contact_studio_loft.jpg', title: 'Collaborative Tech Team Session', tag: 'Culture' },
+      { url: 'assets/images/hero_photographer_main_1790358484541.jpg', title: 'Keynote Speaker Spotlight', tag: 'Events', span2: true }
+    ],
+    services: [
+      { name: 'Company-Wide Headshot Day', desc: 'Up to 40 employees on-site mobile studio, instant review screen, retouched files', price: 'From $2,800' },
+      { name: 'Corporate Convention Coverage', desc: 'Full-day coverage of keynotes, breakout sessions, networking receptions & award galas', price: 'From $2,200' },
+      { name: 'Executive Branding Package', desc: '2 hour session, 4 environmental executive portraits, editorial press release images', price: 'From $750' },
+      { name: 'Team & Culture Story', desc: 'Half-day photo documentary of office culture, team collaboration & workplace facilities', price: 'From $420' }
+    ],
+    reviews: [
+      { text: "James managed our 120-person executive headshot marathon with incredible precision and warmth. Every single team member looked professional and energized.", author: "Rachel Montgomery", role: "VP of People, Apex Technologies", avatar: 'assets/images/photographer_profile_2_1790358617166.jpg' },
+      { text: "Flawless coverage of our three-day national convention in Atlanta. Delivered high-res press photos within 4 hours each evening for our marketing team.", author: "Marcus Bell", role: "Events Director, Global Health Summit", avatar: 'assets/images/photographer_profile_1_1790358603844.jpg' }
+    ]
+  },
+  'elena-ross': {
+    id: 'elena-ross',
+    name: 'Elena Ross',
+    specialty: 'Newborn, Maternity & Family Specialist',
+    category: 'newborn',
+    city: 'New York, NY',
+    travel: 'Available for in-home sessions across the Tri-State area',
+    avatar: '',
+    tags: ['Newborn', 'Family', 'Maternity', 'Milestone', 'Lifestyle'],
+    rating: '4.7★',
+    reviewsCount: '64',
+    experience: '6yr',
+    completedCount: '280+',
+    completedLabel: 'Sessions Captured',
+    startingPrice: '$250',
+    bio: [
+      "Elena Ross is a certified newborn and family photographer based in Manhattan. She is renowned for safe, gentle baby posing, timeless neutral tones, and deeply emotive family portraits.",
+      "Elena holds pediatric safety and newborn posing certifications, ensuring baby's comfort and security are the foremost priority during every session.",
+      "Sessions can take place in her sunlit Tribeca studio or the cozy comfort of the client's home."
+    ],
+    gallery: [
+      { url: 'assets/images/category_newborn_1790358574031.jpg', title: 'Serene Sleeping Newborn Portrait', tag: 'Newborn', span2: true },
+      { url: 'assets/images/category_wedding_1790358499443.jpg', title: 'Golden Hour Maternity Session', tag: 'Maternity' },
+      { url: 'assets/images/portfolio_gallery_1_1790358669044.jpg', title: 'Family Lifestyle in Central Park', tag: 'Family' },
+      { url: 'assets/images/contact_studio_loft.jpg', title: 'Natural Light Studio Nursery', tag: 'Studio' },
+      { url: 'assets/images/hero_photographer_main_1790358484541.jpg', title: 'First Birthday Celebration', tag: 'Milestone', span2: true }
+    ],
+    services: [
+      { name: 'Posed Newborn Experience', desc: 'Up to 3 hours in Tribeca studio, full access to organic wraps & props, family photos included', price: 'From $750' },
+      { name: 'In-Home Lifestyle Newborn', desc: '2 hour relaxed documentary session in your nursery and home, 40+ edited images', price: 'From $550' },
+      { name: 'Outdoor Maternity Session', desc: '1.5 hours at sunset location, 2 gown changes, 30 edited heirloom images', price: 'From $400' },
+      { name: 'Baby Milestone Bundle', desc: '3 sessions (Newborn, Sitter 6mo, One Year Cake Smash), custom photobook included', price: 'From $250' }
+    ],
+    reviews: [
+      { text: "Elena was so incredibly patient with our 8-day-old son. She handled him with such tenderness and care. The photos are pure poetry on our walls.", author: "Jessica & Adam Vance", role: "Newborn Parents, Brooklyn", avatar: 'assets/images/photographer_profile_3_1790358629197.jpg' },
+      { text: "Our maternity and newborn photos exceeded our wildest dreams. Elena captured our sweetest memories with unmatched sensitivity.", author: "Emily Watson", role: "Maternity, New York", avatar: 'assets/images/photographer_profile_2_1790358617166.jpg' }
+    ]
+  },
+  'diana-wu': {
+    id: 'diana-wu',
+    name: 'Diana Wu',
+    specialty: 'Wedding & Elopement Artist',
+    category: 'wedding',
+    city: 'Los Angeles, CA',
+    travel: 'Specializes in California coast & desert elopements',
+    avatar: '',
+    tags: ['Wedding', 'Elopement', 'California Coast', 'Joshua Tree', 'Intimate'],
+    rating: '4.8★',
+    reviewsCount: '92',
+    experience: '8yr',
+    completedCount: '190+',
+    completedLabel: 'Elopements Shot',
+    startingPrice: '$550',
+    bio: [
+      "Diana Wu is a California elopement and wedding photographer who captures wild, untamed love stories against epic Pacific coast cliffs, Joshua Tree boulders, and redwood groves.",
+      "She helps couples plan non-traditional, stress-free weddings focused purely on their authentic connection.",
+      "Every booking includes timeline assistance, location scouting permits guidance, and custom album design."
+    ],
+    gallery: [
+      { url: 'assets/images/portfolio_gallery_1_1790358669044.jpg', title: 'Big Sur Cliffside Sunset Vows', tag: 'Coast', span2: true },
+      { url: 'assets/images/category_wedding_1790358499443.jpg', title: 'Malibu Beach Sunset Reception', tag: 'Beach' },
+      { url: 'assets/images/home2_hero_cinematic_1790358657482.jpg', title: 'Desert Golden Hour Couple', tag: 'Desert' },
+      { url: 'assets/images/hero_photographer_main_1790358484541.jpg', title: 'Redwood Forest Ceremony', tag: 'Forest' },
+      { url: 'assets/images/portfolio_gallery_2_1790358680273.jpg', title: 'Palm Springs Mid-Century Party', tag: 'Party', span2: true }
+    ],
+    services: [
+      { name: 'All-Day Adventure Elopement', desc: 'Up to 8 hours hiking & cliffside locations, permit assistance, 400+ film-toned images', price: 'From $2,800' },
+      { name: 'Half-Day Intimate Wedding', desc: '5 hours, up to 50 guests, ceremony & cocktail coverage, 250+ edited photos', price: 'From $1,900' },
+      { name: 'Engagement Adventure Session', desc: '3 hour road trip shoot in Joshua Tree or Big Sur, 80+ edited photos', price: 'From $550' }
+    ],
+    reviews: [
+      { text: "Diana made our Big Sur elopement effortless and magical. She knew every hidden cliff and secret sunset angle.", author: "Maya & Kevin Lin", role: "Elopement, Big Sur", avatar: 'assets/images/photographer_profile_3_1790358629197.jpg' }
+    ]
+  },
+  'lucas-meyer': {
+    id: 'lucas-meyer',
+    name: 'Lucas Meyer',
+    specialty: 'Fashion, Runway & Commercial Editorial',
+    category: 'fashion',
+    city: 'New York, NY',
+    travel: 'Available for Milan, Paris & NYC Fashion Weeks',
+    avatar: '',
+    tags: ['Fashion', 'Runway', 'Commercial', 'Editorial', 'Streetstyle'],
+    rating: '4.9★',
+    reviewsCount: '176',
+    experience: '10yr',
+    completedCount: '340+',
+    completedLabel: 'Productions',
+    startingPrice: '$520',
+    bio: [
+      "Lucas Meyer is a veteran New York City runway and high-fashion editorial photographer. With over a decade of front-row access at New York Fashion Week, Lucas captures the raw energy, precision tailoring, and backstage drama of high fashion.",
+      "His work is characterized by high-contrast monochrome and neon ambient palettes that make garments stand out boldly."
+    ],
+    gallery: [
+      { url: 'assets/images/portfolio_gallery_2_1790358680273.jpg', title: 'SoHo Nighttime Runway Lookbook', tag: 'Streetstyle', span2: true },
+      { url: 'assets/images/category_fashion_1790358549389.jpg', title: 'Studio High Fashion Editorial', tag: 'Studio' },
+      { url: 'assets/images/home2_hero_cinematic_1790358657482.jpg', title: 'Backstage Models in Motion', tag: 'Backstage' },
+      { url: 'assets/images/contact_studio_loft.jpg', title: 'Commercial Accessory Campaign', tag: 'Accessories' },
+      { url: 'assets/images/category_wedding_1790358499443.jpg', title: 'Evening Wear Red Carpet', tag: 'RedCarpet', span2: true }
+    ],
+    services: [
+      { name: 'Runway Show & Backstage Pass', desc: 'Front-row live runway coverage + backstage beauty prep documentary', price: 'From $3,500' },
+      { name: 'Fashion Brand Lookbook', desc: 'Full day, 25 styled looks, studio lighting & digital tech station', price: 'From $2,600' },
+      { name: 'Streetwear Campaign', desc: '4 hour urban location shoot, gritty cinematic grading, 30 deliverables', price: 'From $520' }
+    ],
+    reviews: [
+      { text: "Lucas is the most trusted runway photographer in New York. Always delivers lightning-fast turnaround for our press releases.", author: "Valerie Dupuis", role: "PR Director, NYFW Agency", avatar: 'assets/images/photographer_profile_2_1790358617166.jpg' }
+    ]
+  },
+  'mateo-silva': {
+    id: 'mateo-silva',
+    name: 'Mateo Silva',
+    specialty: 'Culinary & Beverage Specialist',
+    category: 'food',
+    city: 'Los Angeles, CA',
+    travel: 'Available across Southern California & wine country',
+    avatar: '',
+    tags: ['Food', 'Beverage', 'Wineries', 'Cocktails', 'Restaurants'],
+    rating: '4.9★',
+    reviewsCount: '115',
+    experience: '8yr',
+    completedCount: '210+',
+    completedLabel: 'Restaurants Featured',
+    startingPrice: '$380',
+    bio: [
+      "Mateo Silva specializes in cinematic culinary photography, wine cellar documentation, and mixology storytelling across Los Angeles, Santa Barbara, and Napa Valley.",
+      "His vibrant, natural-light aesthetic celebrates fresh organic ingredients, farm-to-table dining, and the craftsmanship of top sommeliers."
+    ],
+    gallery: [
+      { url: 'assets/images/category_food_1790358513044.jpg', title: 'Boutique Farm-to-Table Dish', tag: 'Cuisine', span2: true },
+      { url: 'assets/images/portfolio_gallery_2_1790358680273.jpg', title: 'Speakeasy Smoky Cocktail Craft', tag: 'Beverage' },
+      { url: 'assets/images/contact_studio_loft.jpg', title: 'Culinary Studio Ingredient Spread', tag: 'Ingredients' },
+      { url: 'assets/images/home2_hero_cinematic_1790358657482.jpg', title: 'Chef Plating at Kitchen Pass', tag: 'Kitchen' },
+      { url: 'assets/images/category_wedding_1790358499443.jpg', title: 'Winery Dining Terrace Sunset', tag: 'Winery', span2: true }
+    ],
+    services: [
+      { name: 'Restaurant Visual Makeover', desc: 'Full coverage of menu, cocktails, dining room and culinary team', price: 'From $1,750' },
+      { name: 'Winery & Tasting Room Showcase', desc: 'Vineyard golden hour, cellar barrels, bottle hero shots, tasting pairings', price: 'From $2,100' },
+      { name: 'Seasonal Menu Update', desc: '3 hour shoot for 8 new seasonal menu items & cocktails', price: 'From $380' }
+    ],
+    reviews: [
+      { text: "Mateo captured our winery in Paso Robles with incredible soul. Sales of our reserve bottles skyrocketed after redesigning our site with his images.", author: "Lorenzo Morales", role: "Owner, Sol de Oro Vineyards", avatar: 'assets/images/photographer_profile_4_1790358735055.jpg' }
+    ]
+  },
+  'chloe-bennett': {
+    id: 'chloe-bennett',
+    name: 'Chloe Bennett',
+    specialty: 'Corporate, Architecture & Brand Storyteller',
+    category: 'corporate',
+    city: 'Chicago, IL',
+    travel: 'Available for national architectural commissions',
+    avatar: '',
+    tags: ['Corporate', 'Architecture', 'Commercial', 'Interiors', 'Industrial'],
+    rating: '5.0★',
+    reviewsCount: '98',
+    experience: '9yr',
+    completedCount: '160+',
+    completedLabel: 'Projects Completed',
+    startingPrice: '$460',
+    bio: [
+      "Chloe Bennett combines an architectural background with commercial corporate photography in Chicago. She documents commercial spaces, structural engineering achievements, and corporate workplaces with geometric precision and dramatic perspective.",
+      "Her client roster includes architecture firms, real estate developers, and national brand headquarters."
+    ],
+    gallery: [
+      { url: 'assets/images/home2_hero_cinematic_1790358657482.jpg', title: 'Chicago Riverfront Glass Skyscraper', tag: 'Architecture', span2: true },
+      { url: 'assets/images/portfolio_gallery_2_1790358680273.jpg', title: 'Modern Industrial Tech Campus', tag: 'Workplace' },
+      { url: 'assets/images/category_corporate_1790358561678.jpg', title: 'Executive Boardroom Meeting', tag: 'Corporate' },
+      { url: 'assets/images/contact_studio_loft.jpg', title: 'Sunlit Architecture Studio Loft', tag: 'Interiors' },
+      { url: 'assets/images/portfolio_gallery_1_1790358669044.jpg', title: 'Civic Cultural Center Exterior', tag: 'Exteriors', span2: true }
+    ],
+    services: [
+      { name: 'Architectural Project Documentation', desc: 'Full day twilight & daylight exterior/interior survey, perspective correction', price: 'From $2,800' },
+      { name: 'Commercial Office Space & Team', desc: 'Interiors, team collaboration, executive environmental portraits', price: 'From $1,500' },
+      { name: 'Industrial & Tech Facility Tour', desc: 'Clean high-precision imaging of production lines and labs', price: 'From $460' }
+    ],
+    reviews: [
+      { text: "Chloe captured our newly designed Chicago headquarters with absolute perfection. Her understanding of lines, shadows, and interior light is masterclass level.", author: "David Sterling", role: "Principal Architect, Sterling & Co", avatar: 'assets/images/photographer_profile_1_1790358603844.jpg' }
+    ]
+  }
+};
+
+let currentPhotographerId = 'marcus-reid';
+let currentGalleryFilter = 'all';
+
+/* ─── RENDER CREATOR SWITCHER STRIP ─── */
+function renderCreatorSwitcher() {
+  const container = document.getElementById('creator-switcher');
+  if (!container) return;
+  
+  const html = Object.values(PHOTOGRAPHERS).map(p => {
+    const isActive = p.id === currentPhotographerId;
+    return `
+      <a href="photographer-profile.html?id=${p.id}" 
+         class="creator-pill ${isActive ? 'active' : ''}" 
+         data-id="${p.id}"
+         onclick="switchPhotographer(event, '${p.id}')">
+        <span>${p.name}</span>
+        <span class="creator-pill-spec">${p.tags[0]}</span>
+      </a>
+    `;
+  }).join('');
+  container.innerHTML = html;
+}
+
+/* ─── SWITCH PHOTOGRAPHER ─── */
+function switchPhotographer(e, id) {
+  if (e && e.preventDefault) e.preventDefault();
+  loadPhotographer(id);
+  const newUrl = window.location.pathname + '?id=' + id;
+  window.history.pushState({ id: id }, '', newUrl);
+}
+
+/* ─── LOAD PHOTOGRAPHER PROFILE ─── */
+function loadPhotographer(id) {
+  const p = PHOTOGRAPHERS[id] || PHOTOGRAPHERS['marcus-reid'];
+  currentPhotographerId = p.id;
+  currentGalleryFilter = 'all';
+
+  // Page Title & Meta
+  document.title = `${p.name} — ${p.specialty} | FrameFolio`;
+  const metaDesc = document.querySelector('meta[name="description"]');
+  if (metaDesc) metaDesc.content = `${p.name} — ${p.specialty} based in ${p.city}. View full portfolio gallery, client reviews, and send a booking enquiry.`;
+
+  // Breadcrumb & Headings
+  const bName = document.getElementById('breadcrumb-current-name');
+  if (bName) bName.textContent = p.name;
+  const pName = document.getElementById('profile-name');
+  if (pName) pName.textContent = p.name;
+  const pSpec = document.getElementById('profile-specialty');
+  if (pSpec) pSpec.textContent = p.specialty;
+  const pCity = document.getElementById('profile-city-text');
+  if (pCity) pCity.textContent = `${p.city} — ${p.travel}`;
+  const aboutHeading = document.getElementById('about-heading');
+  if (aboutHeading) aboutHeading.textContent = `About ${p.name.split(' ')[0]}`;
+
+  // Avatar
+  const avatarContainer = document.getElementById('profile-avatar-container');
+  if (avatarContainer) {
+    if (p.avatar) {
+      avatarContainer.innerHTML = `<img src="${p.avatar}" alt="${p.name}" class="profile-avatar" id="photographer-avatar" loading="eager">`;
+    } else {
+      const initial = p.name.charAt(0);
+      avatarContainer.innerHTML = `
+        <div style="width:104px;height:104px;border-radius:50%;background:linear-gradient(135deg, rgba(201,169,110,0.25), rgba(201,169,110,0.06));border:3px solid var(--bg-card);display:flex;align-items:center;justify-content:center;font-size:2.4rem;color:var(--secondary);font-weight:700;font-family:var(--font-serif);box-shadow:var(--shadow-md);">
+          ${initial}
+        </div>
+      `;
+    }
+  }
+
+  // Tags
+  const tagsContainer = document.getElementById('profile-tags-container');
+  if (tagsContainer) {
+    tagsContainer.innerHTML = p.tags.map(t => `<span class="profile-tag">${t}</span>`).join('');
+  }
+
+  // Meta Stats
+  const rNum = document.getElementById('profile-reviews-num');
+  if (rNum) rNum.textContent = p.reviewsCount;
+  const ratNum = document.getElementById('profile-rating-num');
+  if (ratNum) ratNum.textContent = p.rating;
+  const expNum = document.getElementById('profile-exp-num');
+  if (expNum) expNum.textContent = p.experience;
+  const shootsNum = document.getElementById('profile-shoots-num');
+  if (shootsNum) shootsNum.textContent = p.completedCount;
+  const shootsLabel = document.getElementById('profile-shoots-label');
+  if (shootsLabel) shootsLabel.textContent = p.completedLabel || 'Projects Done';
+
+  // Bio
+  const bioContainer = document.getElementById('about-bio-container');
+  if (bioContainer) {
+    bioContainer.innerHTML = p.bio.map(paragraph => `<p class="about-text">${paragraph}</p>`).join('');
+  }
+
+  // Portfolio
+  renderPortfolio(p);
+
+  // Services
+  const servicesContainer = document.getElementById('services-grid-container');
+  if (servicesContainer) {
+    servicesContainer.innerHTML = p.services.map(s => `
+      <div class="service-item">
+        <div>
+          <h4>${s.name}</h4>
+          <p>${s.desc}</p>
+        </div>
+        <div class="service-footer">
+          <div class="service-price">${s.price}</div>
+          <button class="btn btn-outline btn-sm" onclick="selectServiceForEnquiry('${s.name}')">Select Package</button>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // Reviews
+  const reviewsContainer = document.getElementById('reviews-container');
+  if (reviewsContainer) {
+    reviewsContainer.innerHTML = p.reviews.map(r => `
+      <div class="testimonial-card" style="padding:1.35rem;">
+        <div class="testimonial-text">"${r.text}"</div>
+        <div class="testimonial-author">
+          <img src="${r.avatar}" alt="${r.author}" loading="lazy">
+          <div>
+            <div class="testimonial-author-name">${r.author}</div>
+            <div class="testimonial-author-role" style="display:flex;align-items:center;gap:0.5rem;">
+              <span style="color:var(--secondary);">★★★★★</span> ${r.role}
+            </div>
+          </div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // Enquiry Form
+  const enqTitle = document.getElementById('enquiry-card-title');
+  if (enqTitle) enqTitle.textContent = `Send an Enquiry to ${p.name.split(' ')[0]}`;
+  const enqSubtitle = document.getElementById('enquiry-card-subtitle');
+  if (enqSubtitle) enqSubtitle.textContent = `Reach out to ${p.name} directly. Typically responds within 24 hours.`;
+  const enqSelect = document.getElementById('enq-type');
+  if (enqSelect) {
+    enqSelect.innerHTML = `<option value="">Select a service package...</option>` +
+      p.services.map(s => `<option value="${s.name}">${s.name} (${s.price})</option>`).join('');
+  }
+
+  // Sidebar details
+  const sbBased = document.getElementById('sidebar-based-in');
+  if (sbBased) sbBased.textContent = `Based in ${p.city}`;
+  const sbTravel = document.getElementById('sidebar-travel-text');
+  if (sbTravel) sbTravel.textContent = p.travel;
+
+  // Update Switcher Pills active state
+  document.querySelectorAll('.creator-pill').forEach(pill => {
+    pill.classList.toggle('active', pill.getAttribute('data-id') === p.id);
+  });
+}
+
+/* ─── RENDER PORTFOLIO GALLERY ─── */
+function renderPortfolio(p) {
+  const tagsSet = new Set(['all']);
+  p.gallery.forEach(g => { if (g.tag) tagsSet.add(g.tag.toLowerCase()); });
+  
+  const filterBar = document.getElementById('gallery-filter-bar');
+  if (filterBar) {
+    filterBar.innerHTML = Array.from(tagsSet).map(tag => {
+      const label = tag === 'all' ? 'All Works' : tag.charAt(0).toUpperCase() + tag.slice(1);
+      return `<button class="gallery-filter-pill ${currentGalleryFilter === tag ? 'active' : ''}" onclick="filterGallery('${tag}', this)">${label}</button>`;
+    }).join('');
+  }
+
+  const grid = document.getElementById('portfolio-grid-container');
+  if (grid) {
+    const items = p.gallery.filter(g => currentGalleryFilter === 'all' || (g.tag && g.tag.toLowerCase() === currentGalleryFilter));
+    grid.innerHTML = items.map((item, index) => `
+      <div class="portfolio-grid-item ${item.span2 ? 'span-2' : ''}" onclick="openLightbox('${item.url}', '${item.title} — ${p.name}')">
+        <img src="${item.url}" alt="${item.title}" loading="lazy">
+        <div class="portfolio-grid-item-overlay">
+          <div class="portfolio-item-tag">${item.tag || 'Photography'}</div>
+          <div class="portfolio-item-title">${item.title}</div>
+          <div style="font-size:0.75rem;opacity:0.8;">Click to expand view</div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  const countText = document.getElementById('portfolio-count-text');
+  if (countText) countText.textContent = `${p.gallery.length} Curated Works`;
+}
+
+function filterGallery(tag, btn) {
+  currentGalleryFilter = tag;
+  document.querySelectorAll('.gallery-filter-pill').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  const p = PHOTOGRAPHERS[currentPhotographerId];
+  if (p) renderPortfolio(p);
+}
+
+/* ─── LIGHTBOX ─── */
+function openLightbox(url, caption) {
+  const modal = document.getElementById('lightbox-modal');
+  const img = document.getElementById('lightbox-img');
+  const cap = document.getElementById('lightbox-caption');
+  if (modal && img) {
+    img.src = url;
+    if (cap) cap.textContent = caption || '';
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+function closeLightbox(e) {
+  if (e && e.target && (e.target.id === 'lightbox-modal' || e.target.closest('.lightbox-close'))) {
+    const modal = document.getElementById('lightbox-modal');
+    if (modal) {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  }
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    const modal = document.getElementById('lightbox-modal');
+    if (modal && modal.classList.contains('open')) {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  }
+});
+
+function selectServiceForEnquiry(serviceName) {
+  const select = document.getElementById('enq-type');
+  if (select) {
+    select.value = serviceName;
+    const formSec = document.getElementById('enquiry');
+    if (formSec) formSec.scrollIntoView({ behavior: 'smooth' });
+    select.focus();
+  }
+}
+
+function handleEnquirySubmit(e) {
+  e.preventDefault();
+  const p = PHOTOGRAPHERS[currentPhotographerId];
+  const name = document.getElementById('enq-name').value;
+  alert(`Thank you, ${name}! Your direct booking enquiry has been transmitted to ${p.name}. You will receive a response within 24 hours.`);
+  e.target.reset();
+}
+
+/* ─── INITIALIZE FROM QUERY PARAMETER ─── */
+window.addEventListener('popstate', function(e) {
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get('id') || 'marcus-reid';
+  loadPhotographer(id);
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  const params = new URLSearchParams(window.location.search);
+  const requestedId = params.get('id');
+  const targetId = (requestedId && PHOTOGRAPHERS[requestedId]) ? requestedId : 'marcus-reid';
+  renderCreatorSwitcher();
+  loadPhotographer(targetId);
+});
+</script>
 </body>
 </html>

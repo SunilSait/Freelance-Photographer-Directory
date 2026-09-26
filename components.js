@@ -78,7 +78,8 @@ function injectNav() {
   const links = [
     { href: 'index.html', label: 'Home' },
     { href: 'home2.html', label: 'Home 2' },
-    { href: 'browse.html', label: 'Browse' },
+    { href: 'browse.html', label: 'Browse Photographers' },
+    { href: 'photographer-profile.html', label: 'Photographer Profiles' },
     { href: 'list-services.html', label: 'List Your Services' },
     { href: 'contact.html', label: 'Contact' },
   ];
@@ -113,8 +114,7 @@ function injectNav() {
         <button onclick="toggleTheme()" class="nav-icon-btn" title="Toggle Theme" aria-label="Toggle dark mode">
           <span class="theme-icon-wrap">${isDark ? ICONS.sun : ICONS.moon}</span>
         </button>
-        <a href="login.html" class="btn btn-secondary btn-sm">Sign In</a>
-        <a href="browse.html" class="btn btn-primary btn-sm">Find a Photographer</a>
+        <a href="login.html" class="btn btn-primary btn-sm">Sign In</a>
         <button class="mobile-menu-btn" onclick="toggleMobileMenu(event)" aria-label="Open menu">
           <span class="mobile-menu-icon">${ICONS.menu}</span>
         </button>
@@ -124,8 +124,7 @@ function injectNav() {
     <div class="mobile-menu" id="mobile-menu">
       ${mobileLinksHTML}
       <div class="mob-actions">
-        <a href="login.html" class="btn btn-secondary w-full">Sign In</a>
-        <a href="browse.html" class="btn btn-primary w-full">Find a Photographer</a>
+        <a href="login.html" class="btn btn-primary w-full">Sign In</a>
       </div>
       <div class="mob-toggles">
         <button onclick="toggleDir()" class="nav-icon-btn" title="Toggle Direction">
@@ -203,7 +202,7 @@ function injectFooter() {
             <li><a href="index.html">Home</a></li>
             <li><a href="home2.html">Home 2 — Premium</a></li>
             <li><a href="browse.html">Browse Photographers</a></li>
-            <li><a href="photographer-profile.html">Photographer Profile</a></li>
+            <li><a href="photographer-profile.html">Photographer Profiles</a></li>
             <li><a href="list-services.html">List Your Services</a></li>
             <li><a href="contact.html">Contact Us</a></li>
           </ul>
@@ -359,10 +358,131 @@ function initCountdown(targetDateStr) {
   setInterval(update, 1000);
 }
 
+/* ─── HERO SLIDER (5-second auto-rotate) ─── */
+let heroSliderTimer = null;
+let currentHeroSlideIndex = 0;
+const HERO_INTERVAL = 5000;
+
+function initHeroSlider() {
+  const slides = document.querySelectorAll('.hero-slide');
+  const dots = document.querySelectorAll('.hero-dot');
+  if (!slides.length) return;
+
+  function showSlide(index, restartTimer = true) {
+    currentHeroSlideIndex = (index + slides.length) % slides.length;
+
+    slides.forEach((slide, i) => {
+      const isActive = i === currentHeroSlideIndex;
+      slide.classList.toggle('active', isActive);
+      if (isActive) {
+        slide.querySelectorAll('.hero-stat-num[data-count]').forEach(el => {
+          const target = parseInt(el.getAttribute('data-count'), 10);
+          if (isNaN(target)) return;
+          const suffix = el.getAttribute('data-suffix') || '';
+          const prefix = el.getAttribute('data-prefix') || '';
+          let current = 0;
+          const step = Math.max(1, Math.ceil(target / 40));
+          const t = setInterval(() => {
+            current += step;
+            if (current >= target) {
+              current = target;
+              clearInterval(t);
+            }
+            el.textContent = prefix + current.toLocaleString() + suffix;
+          }, 25);
+        });
+      }
+    });
+
+    dots.forEach((dot, i) => {
+      const isActive = i === currentHeroSlideIndex;
+      dot.classList.toggle('active', isActive);
+      dot.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      const progress = dot.querySelector('.hero-dot-progress');
+      if (progress) {
+        progress.style.transition = 'none';
+        progress.style.width = '0%';
+        if (isActive) {
+          void progress.offsetWidth;
+          progress.style.transition = `width ${HERO_INTERVAL}ms linear`;
+          progress.style.width = '100%';
+        }
+      }
+    });
+
+    if (restartTimer) {
+      startHeroAutoPlay();
+    }
+  }
+
+  function startHeroAutoPlay() {
+    if (heroSliderTimer) clearInterval(heroSliderTimer);
+    heroSliderTimer = setInterval(() => {
+      showSlide(currentHeroSlideIndex + 1, false);
+      const activeDot = dots[currentHeroSlideIndex];
+      if (activeDot) {
+        const progress = activeDot.querySelector('.hero-dot-progress');
+        if (progress) {
+          progress.style.transition = 'none';
+          progress.style.width = '0%';
+          void progress.offsetWidth;
+          progress.style.transition = `width ${HERO_INTERVAL}ms linear`;
+          progress.style.width = '100%';
+        }
+      }
+    }, HERO_INTERVAL);
+  }
+
+  window.goToHeroSlide = function(idx) {
+    showSlide(idx, true);
+  };
+
+  window.nextHeroSlide = function() {
+    showSlide(currentHeroSlideIndex + 1, true);
+  };
+
+  window.prevHeroSlide = function() {
+    showSlide(currentHeroSlideIndex - 1, true);
+  };
+
+  const heroSection = document.getElementById('hero-section');
+  if (heroSection) {
+    heroSection.addEventListener('mouseenter', () => {
+      if (heroSliderTimer) clearInterval(heroSliderTimer);
+      const activeDot = dots[currentHeroSlideIndex];
+      if (activeDot) {
+        const progress = activeDot.querySelector('.hero-dot-progress');
+        if (progress) {
+          const currentW = window.getComputedStyle(progress).width;
+          progress.style.transition = 'none';
+          progress.style.width = currentW;
+        }
+      }
+    });
+
+    heroSection.addEventListener('mouseleave', () => {
+      startHeroAutoPlay();
+      const activeDot = dots[currentHeroSlideIndex];
+      if (activeDot) {
+        const progress = activeDot.querySelector('.hero-dot-progress');
+        if (progress) {
+          void progress.offsetWidth;
+          progress.style.transition = `width ${HERO_INTERVAL}ms linear`;
+          progress.style.width = '100%';
+        }
+      }
+    });
+  }
+
+  showSlide(0, true);
+}
+
 /* ─── INIT ON DOM READY ─── */
 document.addEventListener('DOMContentLoaded', function() {
   injectNav();
   injectFooter();
   initScrollAnimations();
   animateCounters();
+  initHeroSlider();
 });
+

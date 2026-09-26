@@ -10,8 +10,8 @@
 </head>
 <body class="auth-page">
 
-<!-- Top Bar -->
-<div class="auth-topbar">
+<!-- Top Bar in left corner -->
+<header class="auth-topbar">
   <button onclick="toggleDir()" class="auth-toggle-btn" title="Toggle Direction" aria-label="Toggle RTL">
     <span class="dir-label" style="font-size:0.625rem;font-weight:600;">LTR</span>
   </button>
@@ -20,9 +20,9 @@
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
     </span>
   </button>
-</div>
+</header>
 
-<main style="flex:1;display:flex;align-items:center;justify-content:center;padding:2rem 1rem;">
+<main class="auth-main">
   <div class="auth-card" style="width:min(460px,100%);">
     <!-- Decorative orb -->
     <div style="position:absolute;top:-60px;left:-60px;width:160px;height:160px;background:rgba(201,169,110,0.06);border-radius:50%;filter:blur(40px);pointer-events:none;"></div>

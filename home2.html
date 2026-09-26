@@ -206,42 +206,155 @@
 <div id="main-nav"></div>
 
 <!-- ══════════════════════════════════════
-     HERO — SPLIT CINEMATIC LAYOUT
+     HERO — SPLIT SHOWCASE SLIDER (5s Auto-Rotate)
 ════════════════════════════════════════ -->
-<section class="hero-home2">
-  <div class="hero2-left">
-    <div class="hero2-content">
-      <div class="eyebrow">Premium Photography Directory</div>
-      <h1>Where <em>Vision</em><br>Meets <em>Craft</em></h1>
-      <p>Access an exclusive network of elite freelance photographers curated for discerning clients. Every portfolio, every review, every story — in one place.</p>
-      <div class="hero2-btns">
-        <a href="browse.html" class="btn btn-primary btn-xl">Explore the Directory</a>
-        <a href="list-services.html" class="btn btn-outline btn-xl">Join as a Photographer</a>
-      </div>
-      <div style="display:flex;gap:2rem;margin-top:3rem;flex-wrap:wrap;">
-        <div>
-          <div style="font-size:1.8rem;font-weight:700;color:#fff;font-family:var(--font-serif);">2,400+</div>
-          <div style="font-size:0.78rem;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.08em;font-weight:600;">Photographers</div>
+<section class="hero-home2-slider" id="hero-section" aria-label="Hero Showcase Slider">
+  <div class="hero-slides-wrapper">
+
+    <!-- Slide 1: Where Vision Meets Craft -->
+    <div class="hero-slide active" data-slide="0">
+      <div class="hero2-slide-split">
+        <div class="hero2-left">
+          <div class="hero2-content">
+            <div class="hero-pretitle">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+              Premium Photography Directory
+            </div>
+            <h1>Where <em>Vision</em><br>Meets <em>Craft</em></h1>
+            <p>Access an exclusive network of elite freelance photographers curated for discerning clients. Every portfolio, every review, every story — in one place.</p>
+            <div class="hero2-btns">
+              <a href="browse.html" class="btn btn-primary btn-xl">Explore the Directory</a>
+              <a href="list-services.html" class="btn btn-outline btn-xl">Join as a Photographer</a>
+            </div>
+            <div class="hero-stats">
+              <div class="hero-stat">
+                <div class="hero-stat-num" data-count="2400" data-suffix="+">2,400+</div>
+                <div class="hero-stat-label">Photographers</div>
+              </div>
+              <div class="hero-stat">
+                <div class="hero-stat-num" data-count="180" data-suffix="+">180+</div>
+                <div class="hero-stat-label">Cities</div>
+              </div>
+              <div class="hero-stat">
+                <div class="hero-stat-num" data-count="5" data-suffix="">5</div>
+                <div class="hero-stat-label">Specialties</div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div>
-          <div style="font-size:1.8rem;font-weight:700;color:#fff;font-family:var(--font-serif);">180+</div>
-          <div style="font-size:0.78rem;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.08em;font-weight:600;">Cities</div>
-        </div>
-        <div>
-          <div style="font-size:1.8rem;font-weight:700;color:#fff;font-family:var(--font-serif);">5</div>
-          <div style="font-size:0.78rem;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.08em;font-weight:600;">Specialties</div>
+        <div class="hero2-right">
+          <img src="assets/images/home2_hero_cinematic_1790358657482.jpg" alt="Where Vision Meets Craft" loading="eager">
+          <div class="hero2-right-overlay"></div>
+          <div class="hero2-floating-card">
+            <div class="hero2-floating-card-label">Latest Booking</div>
+            <div class="hero2-floating-card-value">Wedding Shoot</div>
+            <div class="hero2-floating-card-sub">New York — just now</div>
+          </div>
         </div>
       </div>
     </div>
+
+    <!-- Slide 2: Unveiling Artistry In Every Frame -->
+    <div class="hero-slide" data-slide="1">
+      <div class="hero2-slide-split">
+        <div class="hero2-left">
+          <div class="hero2-content">
+            <div class="hero-pretitle">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+              Curated Master Photographers
+            </div>
+            <h1>Unveiling Artistry In<br><em>Every Frame</em></h1>
+            <p>Discover award-winning visual storytellers specializing in bespoke portraits, high-fashion editorials, and iconic lifestyle commissions.</p>
+            <div class="hero2-btns">
+              <a href="browse.html?specialty=fashion" class="btn btn-primary btn-xl">Browse Master Artists</a>
+              <a href="browse.html" class="btn btn-outline btn-xl">Explore Portfolios</a>
+            </div>
+            <div class="hero-stats">
+              <div class="hero-stat">
+                <div class="hero-stat-num" data-count="480" data-suffix="+">480+</div>
+                <div class="hero-stat-label">Master Photographers</div>
+              </div>
+              <div class="hero-stat">
+                <div class="hero-stat-num" data-count="15000" data-suffix="+">15,000+</div>
+                <div class="hero-stat-label">Portfolio Pieces</div>
+              </div>
+              <div class="hero-stat">
+                <div class="hero-stat-num" data-count="99" data-suffix="%">99%</div>
+                <div class="hero-stat-label">5-Star Feedback</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="hero2-right">
+          <img src="assets/images/portfolio_gallery_1_1790358669044.jpg" alt="Unveiling Artistry In Every Frame" loading="lazy">
+          <div class="hero2-right-overlay"></div>
+          <div class="hero2-floating-card">
+            <div class="hero2-floating-card-label">Featured Spotlight</div>
+            <div class="hero2-floating-card-value">Fashion Editorial</div>
+            <div class="hero2-floating-card-sub">Paris — Vogue Feature</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 3: Every Story Worth Remembering -->
+    <div class="hero-slide" data-slide="2">
+      <div class="hero2-slide-split">
+        <div class="hero2-left">
+          <div class="hero2-content">
+            <div class="hero-pretitle">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              Timeless Milestones & Celebrations
+            </div>
+            <h1>Every Story<br><em>Worth Remembering</em></h1>
+            <p>Preserve your most precious life moments with world-class wedding, portrait, and documentary photographers across 180+ global cities.</p>
+            <div class="hero2-btns">
+              <a href="browse.html?specialty=wedding" class="btn btn-primary btn-xl">Find Wedding Visionaries</a>
+              <a href="contact.html" class="btn btn-outline btn-xl">Inquire Today</a>
+            </div>
+            <div class="hero-stats">
+              <div class="hero-stat">
+                <div class="hero-stat-num" data-count="500" data-suffix="+">500+</div>
+                <div class="hero-stat-label">Luxury Weddings</div>
+              </div>
+              <div class="hero-stat">
+                <div class="hero-stat-num" data-count="98" data-suffix="%">98%</div>
+                <div class="hero-stat-label">Client Satisfaction</div>
+              </div>
+              <div class="hero-stat">
+                <div class="hero-stat-num" data-count="100" data-suffix="%">100%</div>
+                <div class="hero-stat-label">Verified Quality</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="hero2-right">
+          <img src="assets/images/category_wedding_1790358499443.jpg" alt="Every Story Worth Remembering" loading="lazy">
+          <div class="hero2-right-overlay"></div>
+          <div class="hero2-floating-card">
+            <div class="hero2-floating-card-label">Recent Commission</div>
+            <div class="hero2-floating-card-value">Lake Como Estate</div>
+            <div class="hero2-floating-card-sub">Italy — Private Album</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
-  <div class="hero2-right">
-    <img src="assets/images/home2_hero_cinematic_1790358657482.jpg" alt="Professional photographer at work" loading="eager">
-    <div class="hero2-right-overlay"></div>
-    <div class="hero2-floating-card">
-      <div class="hero2-floating-card-label">Latest Booking</div>
-      <div class="hero2-floating-card-value">Wedding Shoot</div>
-      <div class="hero2-floating-card-sub">New York — just now</div>
-    </div>
+
+  <!-- Navigation Arrows -->
+  <button class="hero-nav-arrow hero-prev" aria-label="Previous slide" onclick="prevHeroSlide()">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
+  <button class="hero-nav-arrow hero-next" aria-label="Next slide" onclick="nextHeroSlide()">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+
+  <!-- Slider Dot Indicators & Progress -->
+  <div class="hero-slider-dots" role="tablist" aria-label="Hero slider pagination">
+    <button class="hero-dot active" role="tab" aria-label="Slide 1" aria-selected="true" onclick="goToHeroSlide(0)"><span class="hero-dot-progress"></span></button>
+    <button class="hero-dot" role="tab" aria-label="Slide 2" aria-selected="false" onclick="goToHeroSlide(1)"><span class="hero-dot-progress"></span></button>
+    <button class="hero-dot" role="tab" aria-label="Slide 3" aria-selected="false" onclick="goToHeroSlide(2)"><span class="hero-dot-progress"></span></button>
   </div>
 </section>
 
@@ -635,16 +748,67 @@
 </section>
 
 <!-- ══════════════════════════════════════
-     CTA BANNER
+     MINIMALIST DARK GLASS CTA CARD
 ════════════════════════════════════════ -->
-<section class="cta-banner">
+<section class="glass-cta-section" aria-label="Call to action">
   <div class="container">
-    <div class="section-badge">Join FrameFolio</div>
-    <h2>Your Vision Deserves the Best Lens</h2>
-    <p>Whether you're a client seeking the perfect photographer or a photographer ready to grow your clientele — FrameFolio is your home.</p>
-    <div class="cta-banner-btns">
-      <a href="browse.html" class="btn btn-primary btn-xl">Find a Photographer</a>
-      <a href="list-services.html" class="btn btn-outline btn-xl">List Your Services</a>
+    <div class="glass-cta-wrapper">
+      <!-- Ambient Glow Orbs -->
+      <div class="glass-cta-glow glass-glow-left" aria-hidden="true"></div>
+      <div class="glass-cta-glow glass-glow-right" aria-hidden="true"></div>
+
+      <!-- Main Glass Card -->
+      <div class="glass-cta-card">
+        <div class="glass-cta-badge">
+          <span class="glass-cta-dot"></span>
+          The Creative Directory
+        </div>
+
+        <h2>Ready to Bring Your <span class="gold-gradient-text">Vision</span> to Life?</h2>
+
+        <p class="glass-cta-desc">
+          Connect directly with verified freelance photographers, explore transparent portfolios, and commission the perfect visual storyteller for your next unforgettable shoot.
+        </p>
+
+        <!-- Dual Sleek Pill Buttons -->
+        <div class="glass-cta-actions">
+          <a href="browse.html" class="glass-pill-btn primary-pill">
+            <span>Find a Photographer</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="list-services.html" class="glass-pill-btn outline-pill">
+            <span>Join as a Photographer</span>
+          </a>
+        </div>
+
+        <!-- Client Rating & Trust Badges -->
+        <div class="glass-cta-badges">
+          <div class="glass-badge-item">
+            <div class="stars-row" aria-label="5 stars">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#c9a96e" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#c9a96e" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#c9a96e" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#c9a96e" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#c9a96e" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <span><strong>4.9/5</strong> Rating (1,200+ Reviews)</span>
+          </div>
+
+          <div class="glass-badge-divider"></div>
+
+          <div class="glass-badge-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span><strong>Verified</strong> Photographers Only</span>
+          </div>
+
+          <div class="glass-badge-divider"></div>
+
+          <div class="glass-badge-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+            <span><strong>0%</strong> Platform Commission</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
