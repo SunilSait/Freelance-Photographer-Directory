@@ -1,39 +1,39 @@
 /* ===== FRAMEFOLIO — Freelance Photographer Directory ===== */
 'use strict';
 
-/* ─── Icons (Lucide-style inline SVG, monochrome) ─── */
+/* ─── Icons (FontAwesome 6 library icons, monochrome) ─── */
 const ICONS = {
-  sun: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>',
-  moon: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>',
-  menu: '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>',
-  x: '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>',
-  eye: '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>',
-  eyeOff: '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>',
-  check: '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>',
-  plus: '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>',
-  facebook: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>',
-  instagram: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>',
-  twitter: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>',
-  pinterest: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 0 0-3.84 19.22c-.004-.49-.003-1.05.13-1.57l.96-4.08s-.25-.49-.25-1.21c0-1.14.66-2 1.66-2 .78 0 1.16.59 1.16 1.29 0 .79-.5 1.97-.76 3.06-.22.91.45 1.65 1.34 1.65 1.6 0 2.68-2.07 2.68-4.52 0-1.86-1.27-3.25-3.56-3.25a4.04 4.04 0 0 0-4.22 4.08c0 .74.22 1.26.56 1.66.16.19.18.27.12.48l-.2.8c-.06.24-.2.33-.44.2-1.24-.51-1.81-1.88-1.81-3.41 0-2.53 2.15-5.6 6.44-5.6 3.45 0 5.73 2.51 5.73 5.2 0 3.58-1.98 6.27-4.9 6.27-.98 0-1.9-.53-2.22-1.13l-.64 2.48c-.2.77-.6 1.54-.97 2.13A10 10 0 0 0 22 12 10 10 0 0 0 12 2z"/></svg>',
-  youtube: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.43z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>',
-  mapPin: '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>',
-  star: '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>',
-  camera: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>',
-  arrowDown: '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>',
-  search: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>',
-  phone: '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>',
-  mail: '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>',
-  clock: '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>',
-  award: '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>',
-  users: '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
-  trending: '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>',
-  shield: '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',
-  zap: '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>',
-  checkCircle: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>',
-  xCircle: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>',
-  expand: '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>',
-  home: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>',
-  chevRight: '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>',
+  sun: '<i class="fa-solid fa-sun"></i>',
+  moon: '<i class="fa-solid fa-moon"></i>',
+  menu: '<i class="fa-solid fa-bars"></i>',
+  x: '<i class="fa-solid fa-xmark"></i>',
+  eye: '<i class="fa-solid fa-eye"></i>',
+  eyeOff: '<i class="fa-solid fa-eye-slash"></i>',
+  check: '<i class="fa-solid fa-check"></i>',
+  plus: '<i class="fa-solid fa-plus"></i>',
+  facebook: '<i class="fa-brands fa-facebook-f"></i>',
+  instagram: '<i class="fa-brands fa-instagram"></i>',
+  twitter: '<i class="fa-brands fa-twitter"></i>',
+  pinterest: '<i class="fa-brands fa-pinterest-p"></i>',
+  youtube: '<i class="fa-brands fa-youtube"></i>',
+  mapPin: '<i class="fa-solid fa-location-dot"></i>',
+  star: '<i class="fa-solid fa-star"></i>',
+  camera: '<i class="fa-solid fa-camera"></i>',
+  arrowDown: '<i class="fa-solid fa-arrow-down"></i>',
+  search: '<i class="fa-solid fa-magnifying-glass"></i>',
+  phone: '<i class="fa-solid fa-phone"></i>',
+  mail: '<i class="fa-solid fa-envelope"></i>',
+  clock: '<i class="fa-solid fa-clock"></i>',
+  award: '<i class="fa-solid fa-award"></i>',
+  users: '<i class="fa-solid fa-users"></i>',
+  trending: '<i class="fa-solid fa-chart-line"></i>',
+  shield: '<i class="fa-solid fa-shield-halved"></i>',
+  zap: '<i class="fa-solid fa-bolt"></i>',
+  checkCircle: '<i class="fa-solid fa-circle-check"></i>',
+  xCircle: '<i class="fa-solid fa-circle-xmark"></i>',
+  expand: '<i class="fa-solid fa-expand"></i>',
+  home: '<i class="fa-solid fa-house"></i>',
+  chevRight: '<i class="fa-solid fa-chevron-right"></i>',
 };
 
 /* ─── THEME & DIRECTION ─── */
@@ -477,6 +477,105 @@ function initHeroSlider() {
   showSlide(0, true);
 }
 
+/* ─── HOME 2 CUSTOMER REVIEWS SLIDER (3-Slide Auto Switch — 5s) ─── */
+function initHome2ReviewSlider() {
+  const slides = document.querySelectorAll('.home2-review-slide');
+  const dots = document.querySelectorAll('.home2-review-dot');
+  if (!slides.length) return;
+
+  let currentSlide = 0;
+  let timer = null;
+  const REVIEW_INTERVAL = 5000;
+
+  function showSlide(index, userAction = false) {
+    if (index >= slides.length) currentSlide = 0;
+    else if (index < 0) currentSlide = slides.length - 1;
+    else currentSlide = index;
+
+    slides.forEach((s, i) => {
+      if (i === currentSlide) {
+        s.classList.add('active');
+      } else {
+        s.classList.remove('active');
+      }
+    });
+
+    dots.forEach((dot, i) => {
+      const bar = dot.querySelector('.review-dot-bar');
+      if (i === currentSlide) {
+        dot.classList.add('active');
+        if (bar) {
+          bar.style.transition = 'none';
+          bar.style.width = '0%';
+          void bar.offsetWidth;
+          bar.style.transition = `width ${REVIEW_INTERVAL}ms linear`;
+          bar.style.width = '100%';
+        }
+      } else {
+        dot.classList.remove('active');
+        if (bar) {
+          bar.style.transition = 'none';
+          bar.style.width = '0%';
+        }
+      }
+    });
+
+    if (userAction) {
+      startAutoPlay();
+    }
+  }
+
+  function startAutoPlay() {
+    if (timer) clearInterval(timer);
+    timer = setInterval(() => {
+      showSlide(currentSlide + 1);
+    }, REVIEW_INTERVAL);
+  }
+
+  window.goToReviewSlide = function(idx) {
+    showSlide(idx, true);
+  };
+
+  window.nextReviewSlide = function() {
+    showSlide(currentSlide + 1, true);
+  };
+
+  window.prevReviewSlide = function() {
+    showSlide(currentSlide - 1, true);
+  };
+
+  const sliderBox = document.querySelector('.home2-reviews-slider');
+  if (sliderBox) {
+    sliderBox.addEventListener('mouseenter', () => {
+      if (timer) clearInterval(timer);
+      const activeDot = dots[currentSlide];
+      if (activeDot) {
+        const bar = activeDot.querySelector('.review-dot-bar');
+        if (bar) {
+          const currentW = window.getComputedStyle(bar).width;
+          bar.style.transition = 'none';
+          bar.style.width = currentW;
+        }
+      }
+    });
+
+    sliderBox.addEventListener('mouseleave', () => {
+      startAutoPlay();
+      const activeDot = dots[currentSlide];
+      if (activeDot) {
+        const bar = activeDot.querySelector('.review-dot-bar');
+        if (bar) {
+          void bar.offsetWidth;
+          bar.style.transition = `width ${REVIEW_INTERVAL}ms linear`;
+          bar.style.width = '100%';
+        }
+      }
+    });
+  }
+
+  showSlide(0, true);
+}
+
 /* ─── INIT ON DOM READY ─── */
 document.addEventListener('DOMContentLoaded', function() {
   injectNav();
@@ -484,5 +583,7 @@ document.addEventListener('DOMContentLoaded', function() {
   initScrollAnimations();
   animateCounters();
   initHeroSlider();
+  initHome2ReviewSlider();
 });
+
 

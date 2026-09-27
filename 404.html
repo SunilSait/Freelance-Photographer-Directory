@@ -6,6 +6,7 @@
   <meta name="description" content="Page not found — FrameFolio. The page you're looking for doesn't exist or has been moved.">
   <title>404 — Page Not Found | FrameFolio</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="auth-page" style="background:var(--bg-alt);">
@@ -27,13 +28,15 @@
   <div class="error-code" aria-hidden="true">404</div>
 
   <!-- Logo at top -->
-  <a href="index.html" style="position:absolute;top:2rem;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:0.5rem;z-index:2;" aria-label="FrameFolio Home">
-    <img src="logo.svg" alt="FrameFolio" width="44" height="44">
-    <div style="display:flex;flex-direction:column;line-height:1.1;">
-      <span style="font-size:0.95rem;font-weight:700;color:var(--text);font-family:var(--font-serif);">FRAME</span>
-      <span style="font-size:0.65rem;font-weight:500;color:var(--secondary);letter-spacing:0.2em;text-transform:uppercase;">FOLIO</span>
-    </div>
-  </a>
+  <div class="error-logo">
+    <a href="index.html" aria-label="FrameFolio Home">
+      <img src="logo.svg" alt="FrameFolio" width="48" height="48">
+      <div style="display:flex;flex-direction:column;line-height:1.1;">
+        <span style="font-size:1.05rem;font-weight:700;color:var(--text);font-family:var(--font-serif);">FRAME</span>
+        <span style="font-size:0.68rem;font-weight:500;color:var(--secondary);letter-spacing:0.2em;text-transform:uppercase;">FOLIO</span>
+      </div>
+    </a>
+  </div>
 
   <div class="error-content">
     <div class="error-icon">

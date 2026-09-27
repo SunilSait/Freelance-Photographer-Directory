@@ -6,6 +6,7 @@
   <meta name="description" content="Browse verified freelance photographers on FrameFolio. Filter by city and specialty — wedding, food, fashion, corporate, and newborn photography.">
   <title>Browse Photographers | FrameFolio</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="style.css">
   <style>
     .results-count { font-size:0.875rem; color:var(--text-muted); font-weight:400; }
@@ -17,11 +18,17 @@
 
 <div id="main-nav"></div>
 
-<!-- ── Page Hero ── -->
-<div class="page-hero">
+<!-- ── Page Hero Banner ── -->
+<div class="page-hero-banner hero-browse-banner">
   <div class="container">
-    <h1>Browse Photographers</h1>
-    <p>Discover verified photographers filterable by city and specialty.</p>
+    <div class="page-hero-banner-content">
+      <div class="page-hero-badge">
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+        Curated Visual Artists
+      </div>
+      <h1>Browse Photographers</h1>
+      <p>Discover verified freelance photographers across all specialties — compare portfolios, packages, and connect directly.</p>
+    </div>
   </div>
 </div>
 
@@ -37,21 +44,6 @@
       <button class="filter-btn" data-filter-type="specialty" onclick="filterPhotographers('specialty','fashion',this)">Fashion</button>
       <button class="filter-btn" data-filter-type="specialty" onclick="filterPhotographers('specialty','corporate',this)">Corporate</button>
       <button class="filter-btn" data-filter-type="specialty" onclick="filterPhotographers('specialty','newborn',this)">Newborn</button>
-    </div>
-    <div class="filter-divider"></div>
-    <!-- City Filter -->
-    <div class="filter-group">
-      <span class="filter-label">City</span>
-      <button class="filter-btn active" data-filter-type="city" onclick="filterByCity('all',this)">All Cities</button>
-      <button class="filter-btn" data-filter-type="city" onclick="filterByCity('new-york',this)">New York</button>
-      <button class="filter-btn" data-filter-type="city" onclick="filterByCity('los-angeles',this)">Los Angeles</button>
-      <button class="filter-btn" data-filter-type="city" onclick="filterByCity('chicago',this)">Chicago</button>
-      <button class="filter-btn" data-filter-type="city" onclick="filterByCity('atlanta',this)">Atlanta</button>
-    </div>
-    <!-- Search -->
-    <div class="filters-search-wrap">
-      <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      <input type="text" class="filters-search" placeholder="Search photographer..." id="search-input" oninput="searchPhotographers(this.value)">
     </div>
   </div>
 </div>
@@ -367,8 +359,8 @@
 ════════════════════════════════════════ -->
 <section class="dual-cta-section" aria-label="Call to action">
   <div class="container">
-    <div class="dual-cta-grid">
-      <!-- Card 1 (Left): For Clients Seeking Photographers -->
+    <div class="dual-cta-grid single-card">
+      <!-- Card 1: For Clients Seeking Photographers -->
       <div class="dual-cta-card">
         <div class="dual-cta-bg" style="background-image: url('assets/images/category_wedding_1790358499443.jpg');"></div>
         <div class="dual-cta-overlay"></div>
@@ -397,37 +389,6 @@
               <img src="assets/images/photographer_profile_2_1790358617166.jpg" alt="Photographer avatar">
               <img src="assets/images/photographer_profile_3_1790358629197.jpg" alt="Photographer avatar">
               <span>1,400+ booked this month</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 2 (Right): For Professional Photographers -->
-      <div class="dual-cta-card">
-        <div class="dual-cta-bg" style="background-image: url('assets/images/home2_hero_cinematic_1790358657482.jpg');"></div>
-        <div class="dual-cta-overlay"></div>
-        <div class="dual-cta-content">
-          <div class="dual-cta-pill gold-pill">For Professional Photographers</div>
-          <h3>Turn Your Craft Into High-Value Bookings</h3>
-          <p>Showcase your portfolio to discerning clients looking for weddings, commercial campaigns, and editorial commissions.</p>
-          <ul class="dual-cta-features">
-            <li>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-              Keep 100% of your earnings & fees
-            </li>
-            <li>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-              SEO-optimised studio profile & showcase
-            </li>
-            <li>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-              Direct client enquiries sent to your inbox
-            </li>
-          </ul>
-          <div class="dual-cta-footer">
-            <a href="list-services.html" class="btn btn-primary btn-lg" style="background:var(--secondary);color:var(--primary-dark);">List Your Services &rarr;</a>
-            <div class="dual-cta-tagline">
-              <span class="spot-indicator"></span> Limited Founding Spots
             </div>
           </div>
         </div>

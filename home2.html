@@ -6,6 +6,7 @@
   <meta name="description" content="FrameFolio Premium — Discover elite freelance photographers. Our curated directory features the world's finest wedding, fashion, corporate, food, and newborn photographers.">
   <title>Home 2 — Premium | FrameFolio Photographer Directory</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="style.css">
   <style>
     /* Home 2 specific overrides */
@@ -83,32 +84,31 @@
     .bento-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: auto auto;
       gap: 1.25rem;
     }
     .bento-cell {
       border-radius: var(--radius-lg);
       overflow: hidden;
       position: relative;
+      height: 270px;
     }
-    .bento-cell img { width: 100%; height: 100%; object-fit: cover; }
-    .bento-cell-1 { grid-column: span 2; aspect-ratio: 16/9; }
-    .bento-cell-2 { aspect-ratio: 3/4; }
-    .bento-cell-3 { aspect-ratio: 1/1; }
-    .bento-cell-4 { aspect-ratio: 1/1; }
-    .bento-cell-5 { grid-column: span 1; aspect-ratio: 3/4; }
+    .bento-cell img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+    .bento-cell:hover img { transform: scale(1.05); }
+    .bento-cell-1 { grid-column: span 2; }
+    .bento-cell-2 { grid-column: span 1; }
+    .bento-cell-3 { grid-column: span 1; }
+    .bento-cell-4 { grid-column: span 1; }
+    .bento-cell-5 { grid-column: span 1; }
     .bento-img-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(13,13,26,0.7) 0%, transparent 60%);
+      background: linear-gradient(to top, rgba(13,13,26,0.85) 0%, rgba(13,13,26,0.1) 60%, transparent 100%);
       display: flex;
       align-items: flex-end;
-      padding: 1rem;
-      opacity: 0;
+      padding: 1.25rem;
       transition: opacity var(--transition);
     }
-    .bento-cell:hover .bento-img-overlay { opacity: 1; }
-    .bento-label { color: #fff; font-size: 0.85rem; font-weight: 600; }
+    .bento-label { color: #fff; font-size: 0.95rem; font-weight: 600; font-family: var(--font-serif); }
     /* Photographer showcase cards — horizontal */
     .showcase-list { display: flex; flex-direction: column; gap: 1rem; }
     .showcase-card {
@@ -186,7 +186,7 @@
     @media (max-width: 768px) {
       .bento-grid { grid-template-columns: 1fr; }
       .bento-cell-1, .bento-cell-5 { grid-column: span 1; }
-      .bento-cell-1 { aspect-ratio: 4/3; }
+      .bento-cell { height: 220px; }
       .process-step { grid-template-columns: 56px 1fr; }
       .process-num { width: 44px; height: 44px; font-size: 0.9rem; }
       .guarantee-strip { grid-template-columns: repeat(2, 1fr); }
@@ -704,6 +704,113 @@
           <a href="browse.html" class="btn btn-primary w-full btn-lg" id="quick-search-btn" onclick="event.preventDefault(); window.location.href='browse.html';">Find Photographers</a>
           <p style="text-align:center;margin-top:1rem;font-size:0.8rem;color:rgba(255,255,255,0.4);font-weight:400;">2,400+ photographers ready to book</p>
         </div>
+        <!-- Feature Showcase Image Card -->
+        <div style="margin-top:1.5rem;position:relative;border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow-lg);border:1px solid rgba(255,255,255,0.12);height:220px;" class="process-image-card">
+          <img src="assets/images/portfolio_gallery_1_1790358669044.jpg" alt="Master Photographer in Action" style="width:100%;height:100%;object-fit:cover;">
+          <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(13,13,26,0.88) 0%, rgba(13,13,26,0.2) 60%, transparent 100%);display:flex;align-items:flex-end;padding:1.25rem;">
+            <div>
+              <span style="color:var(--secondary);font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;">Bespoke Artistry</span>
+              <h4 style="color:#fff;font-size:1.1rem;font-family:var(--font-serif);margin-top:0.25rem;font-weight:700;">Verified Master Photographers</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     3-SLIDE CUSTOMER REVIEWS (5s Auto-Switch)
+════════════════════════════════════════ -->
+<section class="section home2-reviews-section" id="customer-reviews-section">
+  <div class="container">
+    <div class="section-header animate-on-scroll">
+      <div class="section-badge">Client Stories</div>
+      <h2>Loved by <span style="color:var(--secondary);">Clients & Brands</span></h2>
+      <p>Real experiences from discerning clients who hired master photographers through FrameFolio.</p>
+    </div>
+
+    <div class="home2-reviews-slider animate-on-scroll">
+      <div class="home2-reviews-track">
+        
+        <!-- Review 1 -->
+        <div class="home2-review-slide active" data-review-slide="0">
+          <div class="home2-review-card">
+            <div class="home2-review-stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <div class="home2-review-quote">&ldquo;</div>
+            <p class="home2-review-text">"Hiring Marcus for our destination wedding in Tuscany was the single best decision we made. Every photograph feels like a timeless piece of editorial art. The platform made communication and booking entirely effortless."</p>
+            <div class="home2-review-author">
+              <img src="assets/images/user_avatar_1_1790358639890.jpg" alt="Eleanor Vance" class="home2-review-avatar">
+              <div class="home2-review-info">
+                <div class="home2-review-name">Eleanor Vance</div>
+                <div class="home2-review-meta">Bride & Art Collector — New York, NY</div>
+              </div>
+              <div class="home2-review-verified">
+                <i class="fa-solid fa-circle-check"></i> Verified Booking
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="home2-review-slide" data-review-slide="1">
+          <div class="home2-review-card">
+            <div class="home2-review-stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <div class="home2-review-quote">&ldquo;</div>
+            <p class="home2-review-text">"As a restaurant group launching three new culinary concepts, we needed top-tier food imagery. Priya delivered catalog-quality shots that boosted our online reservation rates by 40%. Absolutely world-class experience!"</p>
+            <div class="home2-review-author">
+              <img src="assets/images/user_avatar_2_1790358649479.jpg" alt="Marcus Sterling" class="home2-review-avatar">
+              <div class="home2-review-info">
+                <div class="home2-review-name">Marcus Sterling</div>
+                <div class="home2-review-meta">Founder, Sterling Hospitality Group — Chicago, IL</div>
+              </div>
+              <div class="home2-review-verified">
+                <i class="fa-solid fa-circle-check"></i> Verified Booking
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="home2-review-slide" data-review-slide="2">
+          <div class="home2-review-card">
+            <div class="home2-review-stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <div class="home2-review-quote">&ldquo;</div>
+            <p class="home2-review-text">"Sophia shot our Autumn fashion lookbook in Los Angeles and completely captured our brand's luxury aesthetic. Direct communication with no middleman made the timeline slick and stress-free."</p>
+            <div class="home2-review-author">
+              <img src="assets/images/user_avatar_3_1790358746761.jpg" alt="Camilla Rossi" class="home2-review-avatar">
+              <div class="home2-review-info">
+                <div class="home2-review-name">Camilla Rossi</div>
+                <div class="home2-review-meta">Creative Director, Maison Rossi — Paris / LA</div>
+              </div>
+              <div class="home2-review-verified">
+                <i class="fa-solid fa-circle-check"></i> Verified Booking
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Navigation Controls -->
+      <div class="home2-review-controls">
+        <button class="home2-review-arrow prev" onclick="prevReviewSlide()" aria-label="Previous Review">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <div class="home2-review-dots" role="tablist" aria-label="Customer review pagination">
+          <button class="home2-review-dot active" role="tab" aria-selected="true" onclick="goToReviewSlide(0)" aria-label="Review 1"><span class="review-dot-bar"></span></button>
+          <button class="home2-review-dot" role="tab" aria-selected="false" onclick="goToReviewSlide(1)" aria-label="Review 2"><span class="review-dot-bar"></span></button>
+          <button class="home2-review-dot" role="tab" aria-selected="false" onclick="goToReviewSlide(2)" aria-label="Review 3"><span class="review-dot-bar"></span></button>
+        </div>
+        <button class="home2-review-arrow next" onclick="nextReviewSlide()" aria-label="Next Review">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
       </div>
     </div>
   </div>
