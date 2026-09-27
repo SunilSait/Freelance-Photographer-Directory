@@ -85,111 +85,257 @@
       border-left: 1px solid currentColor;
     }
 
-    /* Layout */
-    .profile-page-layout {
-      display: grid;
-      grid-template-columns: 1fr 340px;
-      gap: 2.5rem;
-      align-items: start;
-      padding: 2.5rem 0 5rem;
+    /* ── Full-Width Page Layout ── */
+    html {
+      scroll-behavior: smooth;
     }
-    .profile-main { }
-    .profile-sidebar { }
+    .profile-page-container {
+      padding: 3rem 1.5rem 6rem;
+      max-width: var(--container-w);
+      margin: 0 auto;
+    }
+    .profile-section {
+      margin-bottom: 4rem;
+      scroll-margin-top: calc(var(--navbar-h) + 70px);
+    }
     .section-title {
-      font-size: 1.25rem;
+      font-size: 1.45rem;
       font-weight: 700;
       font-family: var(--font-serif);
-      margin-bottom: 1.25rem;
-      padding-bottom: 0.75rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.85rem;
       border-bottom: 1px solid var(--border);
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
     }
-    .about-text { font-size: 0.95rem; color: var(--text-muted); line-height: 1.75; margin-bottom: 1.25rem; font-weight: 400; }
-    
-    /* Services Grid */
-    .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-    .service-item {
-      padding: 1.35rem;
+    .title-with-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+    .portfolio-count-pill {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--secondary);
+      background: rgba(201,169,110,0.12);
+      border: 1px solid rgba(201,169,110,0.3);
+      padding: 0.25rem 0.75rem;
+      border-radius: 50px;
+    }
+    .gallery-hint {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-weight: 400;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    /* ── About Section (Editorial Bio + Quick Creator Details) ── */
+    .profile-about-grid {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 2.75rem;
+      align-items: stretch;
+    }
+    .profile-about-main {
+      display: flex;
+      flex-direction: column;
+    }
+    .about-text {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.85;
+      margin-bottom: 1.25rem;
+      font-weight: 400;
+    }
+    .creator-quick-card {
+      background: var(--bg-card);
       border: 1px solid var(--border);
-      border-radius: var(--radius-md);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+    }
+    .quick-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .quick-card-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--secondary);
+      background: rgba(201,169,110,0.12);
+      border: 1px solid rgba(201,169,110,0.3);
+      padding: 0.35rem 0.85rem;
+      border-radius: 50px;
+    }
+    .quick-card-rating {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--secondary);
+      font-family: var(--font-serif);
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .quick-card-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.15rem;
+      margin-bottom: 1.75rem;
+    }
+    .quick-card-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+    .quick-card-item svg {
+      margin-top: 0.15rem;
+      flex-shrink: 0;
+    }
+    .quick-card-cta {
+      margin-top: auto;
+    }
+
+    /* ── Services Grid (Full-Width Responsive 4-Column Deck) ── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+    }
+    .service-item {
+      padding: 1.75rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
       background: var(--bg-card);
       transition: all var(--transition);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      box-shadow: var(--shadow-sm);
     }
     .service-item:hover {
       border-color: var(--secondary);
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-sm);
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
     }
-    .service-item h4 { font-size: 0.95rem; margin-bottom: 0.35rem; color: var(--text); }
-    .service-item p { font-size: 0.82rem; margin: 0 0 1rem; font-weight: 400; line-height: 1.5; color: var(--text-muted); }
+    .service-item h4 {
+      font-size: 1.05rem;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+      font-weight: 600;
+    }
+    .service-item p {
+      font-size: 0.85rem;
+      margin: 0 0 1.5rem;
+      font-weight: 400;
+      line-height: 1.6;
+      color: var(--text-muted);
+    }
     .service-footer {
       display: flex;
       align-items: center;
       justify-content: space-between;
       border-top: 1px solid var(--border);
-      padding-top: 0.75rem;
+      padding-top: 1rem;
       margin-top: auto;
+      gap: 0.5rem;
+      flex-wrap: wrap;
     }
-    .service-price { font-size: 1.05rem; font-weight: 700; color: var(--secondary); }
-    
-    /* Portfolio Gallery */
+    .service-price {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--secondary);
+      font-family: var(--font-serif);
+    }
+
+    /* ── Full-Width Portfolio Gallery ── */
     .gallery-filter-bar {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
-      margin-bottom: 1.25rem;
+      gap: 0.6rem;
+      margin-bottom: 1.75rem;
       flex-wrap: wrap;
     }
     .gallery-filter-pill {
-      font-size: 0.78rem;
+      font-size: 0.82rem;
       font-weight: 600;
-      padding: 0.3rem 0.8rem;
+      padding: 0.45rem 1.15rem;
       border-radius: 50px;
-      background: var(--surface);
+      background: var(--bg-card);
       border: 1px solid var(--border);
       color: var(--text-muted);
       cursor: pointer;
       transition: all var(--transition);
     }
-    .gallery-filter-pill:hover, .gallery-filter-pill.active {
+    .gallery-filter-pill:hover,
+    .gallery-filter-pill.active {
       background: var(--secondary);
       border-color: var(--secondary);
       color: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 14px rgba(201,169,110,0.3);
+    }
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
     }
     .portfolio-grid-item {
       position: relative;
-      border-radius: var(--radius-md);
+      border-radius: var(--radius-lg);
       overflow: hidden;
       cursor: pointer;
       aspect-ratio: 4/3;
       background: var(--surface);
+      border: 1px solid var(--border);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color var(--transition);
+    }
+    .portfolio-grid-item:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--secondary);
     }
     .portfolio-grid-item.span-2 {
-      grid-column: span 2;
-      aspect-ratio: 16/9;
+      grid-column: span 1;
+      aspect-ratio: 4/3;
     }
     .portfolio-grid-item img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .portfolio-grid-item:hover img {
-      transform: scale(1.05);
+      transform: scale(1.07);
     }
     .portfolio-grid-item-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(13,13,26,0.85) 0%, rgba(13,13,26,0.3) 50%, transparent 100%);
+      background: linear-gradient(to top, rgba(13, 13, 26, 0.92) 0%, rgba(13, 13, 26, 0.4) 55%, transparent 100%);
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      padding: 1.25rem;
+      padding: 1.75rem;
       opacity: 0;
       transition: opacity var(--transition);
       color: #fff;
@@ -197,20 +343,23 @@
     .portfolio-grid-item:hover .portfolio-grid-item-overlay {
       opacity: 1;
     }
-    .portfolio-item-title {
-      font-size: 0.95rem;
-      font-weight: 600;
-      margin-bottom: 0.2rem;
-    }
     .portfolio-item-tag {
       font-size: 0.75rem;
       color: var(--secondary);
-      font-weight: 500;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.3rem;
+    }
+    .portfolio-item-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+      color: #fff;
+      font-family: var(--font-serif);
     }
 
-    /* Lightbox Modal */
+    /* ── Lightbox Modal ── */
     .lightbox-modal {
       position: fixed;
       inset: 0;
@@ -268,17 +417,208 @@
     }
     .lightbox-close:hover { background: var(--secondary); color: var(--primary-dark); }
 
-    /* Responsive */
-    @media (max-width: 1024px) {
-      .profile-page-layout { grid-template-columns: 1fr; }
-      .profile-sidebar { order: -1; }
-      .enquiry-card { position: static; }
-      .creator-switcher-section { top: var(--navbar-h); }
+    /* ── Reviews Grid (Full-Width 2-Column) ── */
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+    .testimonial-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      transition: transform var(--transition), border-color var(--transition);
+    }
+    .testimonial-card:hover {
+      border-color: var(--secondary);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+    .testimonial-text {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--text);
+      font-style: italic;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .testimonial-author img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--secondary);
+    }
+    .testimonial-author-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+    .testimonial-author-role {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* ── Dedicated Direct Booking Section ── */
+    .profile-enquiry-section {
+      margin-top: 4.5rem;
+      margin-bottom: 2rem;
+      scroll-margin-top: calc(var(--navbar-h) + 70px);
+    }
+    .enquiry-card-dedicated {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+    }
+    .enquiry-layout-grid {
+      display: grid;
+      grid-template-columns: 420px 1fr;
+    }
+    .enquiry-info-panel {
+      background: linear-gradient(160deg, var(--bg-alt) 0%, rgba(201,169,110,0.08) 100%);
+      padding: 3.5rem 3rem;
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    .enquiry-panel-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--secondary);
+      background: rgba(201,169,110,0.15);
+      border: 1px solid rgba(201,169,110,0.35);
+      padding: 0.35rem 0.85rem;
+      border-radius: 50px;
+      width: fit-content;
+      margin-bottom: 1rem;
+    }
+    .enquiry-info-panel h3 {
+      font-size: 1.75rem;
+      font-family: var(--font-serif);
+      margin-bottom: 0.6rem;
+      color: var(--text);
+      line-height: 1.25;
+    }
+    .enquiry-info-panel p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 1.75rem;
+      font-weight: 400;
+    }
+    .enquiry-features-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .enquiry-feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    .feature-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: rgba(201,169,110,0.15);
+      border: 1px solid rgba(201,169,110,0.3);
+      color: var(--secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .enquiry-feature-item strong {
+      display: block;
+      font-size: 0.95rem;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+    .enquiry-feature-item p {
+      font-size: 0.825rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 0;
+    }
+    .enquiry-form-panel {
+      padding: 3.5rem 3.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    /* Date Input Calendar Icon */
+    #enq-date, input[type="date"] {
+      color-scheme: dark;
+    }
+    #enq-date::-webkit-calendar-picker-indicator,
+    input[type="date"]::-webkit-calendar-picker-indicator {
+      filter: brightness(0) invert(1);
+      cursor: pointer;
+      opacity: 0.95;
+      transition: opacity var(--transition), transform var(--transition);
+    }
+    #enq-date::-webkit-calendar-picker-indicator:hover,
+    input[type="date"]::-webkit-calendar-picker-indicator:hover {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+    html:not(.dark) #enq-date::-webkit-calendar-picker-indicator,
+    html:not(.dark) input[type="date"]::-webkit-calendar-picker-indicator {
+      filter: none;
+      opacity: 0.7;
+    }
+    html:not(.dark) #enq-date,
+    html:not(.dark) input[type="date"] {
+      color-scheme: light;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 1100px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .enquiry-layout-grid { grid-template-columns: 1fr; }
+      .enquiry-info-panel {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        padding: 2.5rem 2rem;
+      }
+      .enquiry-form-panel { padding: 2.5rem 2rem; }
+    }
+    @media (max-width: 992px) {
+      .profile-about-grid { grid-template-columns: 1fr; }
+      .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+      .portfolio-grid-item.span-2 { grid-column: span 1; }
     }
     @media (max-width: 768px) {
-      .services-grid { grid-template-columns: 1fr; }
-      .portfolio-grid-item.span-2 { grid-column: span 1; aspect-ratio: 4/3; }
+      .reviews-grid { grid-template-columns: 1fr; }
       .creator-switcher-label { display: none; }
+      .creator-switcher-section { top: var(--navbar-h); }
+      .section-title { font-size: 1.25rem; }
+    }
+    @media (max-width: 640px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .portfolio-grid { grid-template-columns: 1fr; }
+      .portfolio-grid-item.span-2 { grid-column: span 1; aspect-ratio: 4/3; }
+      .form-row { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -358,113 +698,157 @@
 </section>
 
 <!-- ── Profile Body ── -->
-<div class="container">
-  <div class="profile-page-layout">
-    <!-- Main Content -->
-    <div class="profile-main">
-      <!-- About -->
-      <section style="margin-bottom:3rem;">
+<div class="container profile-page-container">
+
+  <!-- 1. About & Creator Credentials -->
+  <section class="profile-section profile-about-section" id="about-section">
+    <div class="profile-about-grid">
+      <div class="profile-about-main">
         <h2 class="section-title"><span id="about-heading">About Marcus</span></h2>
         <div id="about-bio-container">
           <!-- Bio injected dynamically -->
         </div>
-      </section>
-
-      <!-- Portfolio Gallery -->
-      <section id="portfolio" style="margin-bottom:3rem;">
-        <div class="section-title">
-          <span>Full Portfolio Gallery</span>
-          <span style="font-size:0.82rem;font-weight:400;color:var(--text-muted);" id="portfolio-count-text">5 Curated Works</span>
-        </div>
-        <div class="gallery-filter-bar" id="gallery-filter-bar">
-          <button class="gallery-filter-pill active" onclick="filterGallery('all', this)">All Works</button>
-          <!-- Additional filter pills injected dynamically -->
-        </div>
-        <div class="portfolio-grid" id="portfolio-grid-container">
-          <!-- Portfolio items injected dynamically -->
-        </div>
-      </section>
-
-      <!-- Services & Pricing -->
-      <section style="margin-bottom:3rem;">
-        <h2 class="section-title">Services & Pricing Packages</h2>
-        <div class="services-grid" id="services-grid-container">
-          <!-- Services injected dynamically -->
-        </div>
-      </section>
-
-      <!-- Client Reviews -->
-      <section>
-        <div class="section-title">
-          <span>Verified Client Reviews</span>
-          <a href="#enquiry" style="font-size:0.85rem;color:var(--secondary);font-weight:600;">Leave a Review &rarr;</a>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:1.25rem;" id="reviews-container">
-          <!-- Testimonials injected dynamically -->
-        </div>
-      </section>
-    </div>
-
-    <!-- Sidebar -->
-    <div class="profile-sidebar">
-      <!-- Enquiry Form -->
-      <div class="enquiry-card" id="enquiry">
-        <h3 id="enquiry-card-title">Send an Enquiry</h3>
-        <p id="enquiry-card-subtitle">Reach out directly. Typically responds within 24 hours.</p>
-        <form onsubmit="handleEnquirySubmit(event)" id="enquiry-form">
-          <div class="form-group">
-            <label class="form-label" for="enq-name">Your Full Name</label>
-            <input type="text" id="enq-name" class="form-input" placeholder="Jane & John Smith" required>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="enq-email">Email Address</label>
-            <input type="email" id="enq-email" class="form-input" placeholder="your@email.com" required>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="enq-phone">Phone Number</label>
-            <input type="tel" id="enq-phone" class="form-input" placeholder="+1 (555) 000-0000">
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="enq-type">Select Requested Service</label>
-            <select id="enq-type" class="form-select" required>
-              <!-- Populated dynamically -->
-            </select>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="enq-date">Target Date</label>
-            <input type="date" id="enq-date" class="form-input">
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="enq-message">Project Vision & Location</label>
-            <textarea id="enq-message" class="form-textarea" placeholder="Tell us about your event, venue, guest count, and creative vision..." required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary w-full btn-lg">Send Direct Enquiry</button>
-        </form>
       </div>
-
-      <!-- Quick Info Card -->
-      <div style="background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius-md);padding:1.35rem;margin-top:1.25rem;">
-        <div style="display:flex;flex-direction:column;gap:0.85rem;">
-          <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.875rem;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            <span style="color:var(--text-muted);font-weight:400;" id="sidebar-based-in">Based in New York, NY</span>
+      <div class="profile-about-sidebar">
+        <div class="creator-quick-card">
+          <div class="quick-card-header">
+            <span class="quick-card-badge">Verified Creator</span>
+            <div class="quick-card-rating">
+              <span id="quick-card-rating-val">4.9★</span>
+            </div>
           </div>
-          <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.875rem;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            <span style="color:var(--text-muted);font-weight:400;">Responds within 24 hours</span>
+          <div class="quick-card-list">
+            <div class="quick-card-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span id="sidebar-based-in">Based in New York, NY</span>
+            </div>
+            <div class="quick-card-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span>Responds within 24 hours</span>
+            </div>
+            <div class="quick-card-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <span>FrameFolio Verified Professional</span>
+            </div>
+            <div class="quick-card-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              <span id="sidebar-travel-text">Available for destination travel</span>
+            </div>
           </div>
-          <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.875rem;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            <span style="color:var(--text-muted);font-weight:400;">Verified FrameFolio Creator</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.875rem;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            <span style="color:var(--text-muted);font-weight:400;" id="sidebar-travel-text">Available for destination travel</span>
+          <div class="quick-card-cta">
+            <a href="#enquiry" class="btn btn-primary w-full">Request Availability</a>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
+
+  <!-- 2. Full-Width Portfolio Showcase Gallery -->
+  <section class="profile-section profile-portfolio-section" id="portfolio">
+    <div class="section-title">
+      <div class="title-with-badge">
+        <span>Full Portfolio Gallery</span>
+        <span class="portfolio-count-pill" id="portfolio-count-text">5 Curated Works</span>
+      </div>
+      <span class="gallery-hint"><i class="fa-solid fa-expand" style="margin-right:0.35rem;"></i> Click any photo for high-res view</span>
+    </div>
+    <div class="gallery-filter-bar" id="gallery-filter-bar">
+      <button class="gallery-filter-pill active" onclick="filterGallery('all', this)">All Works</button>
+      <!-- Additional filter pills injected dynamically -->
+    </div>
+    <div class="portfolio-grid" id="portfolio-grid-container">
+      <!-- Portfolio items injected dynamically -->
+    </div>
+  </section>
+
+
+  <!-- 5. Dedicated Direct Booking & Enquiry Section (Full Width) -->
+  <section class="profile-section profile-enquiry-section" id="enquiry">
+    <div class="enquiry-card-dedicated">
+      <div class="enquiry-layout-grid">
+        <!-- Info Column -->
+        <div class="enquiry-info-panel">
+          <div>
+            <div class="enquiry-panel-badge"><i class="fa-solid fa-lock" style="margin-right:0.35rem;"></i> Direct Booking</div>
+            <h3 id="enquiry-card-title">Send an Enquiry</h3>
+            <p id="enquiry-card-subtitle">Reach out directly. Typically responds within 24 hours.</p>
+            
+            <div class="enquiry-features-list">
+              <div class="enquiry-feature-item">
+                <div class="feature-icon"><i class="fa-solid fa-bolt"></i></div>
+                <div>
+                  <strong>Direct Creator Communication</strong>
+                  <p>Coordinate directly with the artist — zero agency fees or surprise markups.</p>
+                </div>
+              </div>
+              <div class="enquiry-feature-item">
+                <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <div>
+                  <strong>Verified Quality & Protection</strong>
+                  <p>Full commercial liability coverage and authentic verified portfolio guarantee.</p>
+                </div>
+              </div>
+              <div class="enquiry-feature-item">
+                <div class="feature-icon"><i class="fa-solid fa-calendar-check"></i></div>
+                <div>
+                  <strong>Flexible Rescheduling Policy</strong>
+                  <p>Free date adjustments or venue changes up to 30 days prior to your session.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form Column -->
+        <div class="enquiry-form-panel">
+          <form onsubmit="handleEnquirySubmit(event)" id="enquiry-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="enq-name">Your Full Name</label>
+                <input type="text" id="enq-name" class="form-input" placeholder="Jane & John Smith" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="enq-email">Email Address</label>
+                <input type="email" id="enq-email" class="form-input" placeholder="your@email.com" required>
+              </div>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="enq-phone">Phone Number</label>
+                <input type="tel" id="enq-phone" class="form-input" placeholder="+1 (555) 000-0000">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="enq-type">Select Requested Service</label>
+                <select id="enq-type" class="form-select" required>
+                  <!-- Populated dynamically -->
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="enq-date">Target Date</label>
+                <input type="date" id="enq-date" class="form-input">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="enq-location">Shoot Location / Venue</label>
+                <input type="text" id="enq-location" class="form-input" placeholder="e.g. Tribeca Studio, Central Park">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="enq-message">Project Vision & Location</label>
+              <textarea id="enq-message" class="form-textarea" placeholder="Tell us about your event, venue, guest count, and creative vision..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-full btn-lg">Send Direct Booking Enquiry</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </div>
 
 <!-- ── Full-Screen Lightbox Modal ── -->
@@ -504,11 +888,12 @@ const PHOTOGRAPHERS = {
       "Marcus offers full-day wedding coverage, engagement sessions, bridal portraits, and intimate elopement packages with delivery in 4–6 weeks."
     ],
     gallery: [
-      { url: 'assets/images/category_wedding_1790358499443.jpg', title: 'Cathedral Altar Vows', tag: 'Ceremony', span2: true },
+      { url: 'assets/images/category_wedding_1790358499443.jpg', title: 'Cathedral Altar Vows', tag: 'Ceremony' },
       { url: 'assets/images/portfolio_gallery_1_1790358669044.jpg', title: 'Sunset Couple Silhouette', tag: 'Portraits' },
       { url: 'assets/images/hero_photographer_main_1790358484541.jpg', title: 'Forest Destination Elopement', tag: 'Elopement' },
       { url: 'assets/images/portfolio_gallery_2_1790358680273.jpg', title: 'Manhattan Evening Reception', tag: 'Reception' },
-      { url: 'assets/images/home2_hero_cinematic_1790358657482.jpg', title: 'Editorial Bridal Portrait', tag: 'Editorial', span2: true }
+      { url: 'assets/images/home2_hero_cinematic_1790358657482.jpg', title: 'Editorial Bridal Portrait', tag: 'Editorial' },
+      { url: 'assets/images/category_wedding_unique.jpg', title: 'Golden Hour First Dance', tag: 'Romance' }
     ],
     services: [
       { name: 'Full-Day Wedding Coverage', desc: 'Up to 10 hours, 2 photographers, 600+ edited images, online gallery', price: 'From $3,200' },
@@ -542,11 +927,12 @@ const PHOTOGRAPHERS = {
       "Operating from her daylight studio in downtown LA, Sophia regularly travels worldwide for fashion weeks and advertising productions."
     ],
     gallery: [
-      { url: 'assets/images/category_fashion_1790358549389.jpg', title: 'Haute Couture Editorial Series', tag: 'Editorial', span2: true },
+      { url: 'assets/images/category_fashion_1790358549389.jpg', title: 'Haute Couture Editorial Series', tag: 'Editorial' },
       { url: 'assets/images/portfolio_gallery_2_1790358680273.jpg', title: 'Urban Avant-Garde Collection', tag: 'Commercial' },
       { url: 'assets/images/home2_hero_cinematic_1790358657482.jpg', title: 'Sunset Silhouette Lookbook', tag: 'Lookbook' },
       { url: 'assets/images/hero_photographer_main_1790358484541.jpg', title: 'Outdoor Brand Campaign', tag: 'Campaign' },
-      { url: 'assets/images/contact_studio_loft.jpg', title: 'Studio High Fashion Lighting', tag: 'Studio', span2: true }
+      { url: 'assets/images/contact_studio_loft.jpg', title: 'Studio High Fashion Lighting', tag: 'Studio' },
+      { url: 'assets/images/portfolio_gallery_1_1790358669044.jpg', title: 'Runway Backstage Spotlight', tag: 'Runway' }
     ],
     services: [
       { name: 'Full Commercial Campaign', desc: 'Full-day studio & location shoot, creative direction, commercial usage rights', price: 'From $4,500' },
@@ -580,11 +966,12 @@ const PHOTOGRAPHERS = {
       "She regularly partners with restaurateurs, cookbook publishers, cocktail bars, and organic food producers to elevate their visual identity."
     ],
     gallery: [
-      { url: 'assets/images/category_food_1790358513044.jpg', title: 'Artisan Pastry & Bakery Showcase', tag: 'Culinary', span2: true },
+      { url: 'assets/images/browse_cover_priya.jpg', title: 'Artisan Pastry & Bakery Showcase', tag: 'Culinary' },
       { url: 'assets/images/portfolio_gallery_2_1790358680273.jpg', title: 'Craft Cocktail Bar Atmosphere', tag: 'Beverage' },
       { url: 'assets/images/home2_hero_cinematic_1790358657482.jpg', title: 'Chef Preparation in Open Kitchen', tag: 'Kitchen' },
       { url: 'assets/images/contact_studio_loft.jpg', title: 'Tabletop Product Staging', tag: 'Styling' },
-      { url: 'assets/images/category_wedding_1790358499443.jpg', title: 'Luxury Banquet Catering Spread', tag: 'Events', span2: true }
+      { url: 'assets/images/category_wedding_1790358499443.jpg', title: 'Luxury Banquet Catering Spread', tag: 'Events' },
+      { url: 'assets/images/hero_photographer_main_1790358484541.jpg', title: 'Gourmet Dessert Presentation', tag: 'Plating' }
     ],
     services: [
       { name: 'Complete Restaurant Menu Shoot', desc: 'Up to 25 dishes styled and shot on-site, ingredient flat-lays & staff portraits', price: 'From $1,600' },
@@ -618,11 +1005,12 @@ const PHOTOGRAPHERS = {
       "Equipped with mobile high-speed studio strobes, James can transform any boardroom or conference lounge into an executive portrait studio."
     ],
     gallery: [
-      { url: 'assets/images/category_corporate_1790358561678.jpg', title: 'Annual Executive Leadership Summit', tag: 'Conference', span2: true },
+      { url: 'assets/images/browse_cover_james.jpg', title: 'Annual Executive Leadership Summit', tag: 'Conference' },
       { url: 'assets/images/home2_hero_cinematic_1790358657482.jpg', title: 'Executive Portraiture', tag: 'Headshots' },
       { url: 'assets/images/portfolio_gallery_2_1790358680273.jpg', title: 'Modern Corporate Headquarters', tag: 'Architecture' },
       { url: 'assets/images/contact_studio_loft.jpg', title: 'Collaborative Tech Team Session', tag: 'Culture' },
-      { url: 'assets/images/hero_photographer_main_1790358484541.jpg', title: 'Keynote Speaker Spotlight', tag: 'Events', span2: true }
+      { url: 'assets/images/hero_photographer_main_1790358484541.jpg', title: 'Keynote Speaker Spotlight', tag: 'Events' },
+      { url: 'assets/images/portfolio_gallery_1_1790358669044.jpg', title: 'Global Tech Gala Reception', tag: 'Networking' }
     ],
     services: [
       { name: 'Company-Wide Headshot Day', desc: 'Up to 40 employees on-site mobile studio, instant review screen, retouched files', price: 'From $2,800' },
@@ -642,7 +1030,7 @@ const PHOTOGRAPHERS = {
     category: 'newborn',
     city: 'New York, NY',
     travel: 'Available for in-home sessions across the Tri-State area',
-    avatar: '',
+    avatar: 'assets/images/photographer_profile_5_elena.jpg',
     tags: ['Newborn', 'Family', 'Maternity', 'Milestone', 'Lifestyle'],
     rating: '4.7★',
     reviewsCount: '64',
@@ -656,11 +1044,12 @@ const PHOTOGRAPHERS = {
       "Sessions can take place in her sunlit Tribeca studio or the cozy comfort of the client's home."
     ],
     gallery: [
-      { url: 'assets/images/category_newborn_1790358574031.jpg', title: 'Serene Sleeping Newborn Portrait', tag: 'Newborn', span2: true },
+      { url: 'assets/images/category_newborn_1790358574031.jpg', title: 'Serene Sleeping Newborn Portrait', tag: 'Newborn' },
       { url: 'assets/images/category_wedding_1790358499443.jpg', title: 'Golden Hour Maternity Session', tag: 'Maternity' },
       { url: 'assets/images/portfolio_gallery_1_1790358669044.jpg', title: 'Family Lifestyle in Central Park', tag: 'Family' },
       { url: 'assets/images/contact_studio_loft.jpg', title: 'Natural Light Studio Nursery', tag: 'Studio' },
-      { url: 'assets/images/hero_photographer_main_1790358484541.jpg', title: 'First Birthday Celebration', tag: 'Milestone', span2: true }
+      { url: 'assets/images/hero_photographer_main_1790358484541.jpg', title: 'First Birthday Celebration', tag: 'Milestone' },
+      { url: 'assets/images/home2_hero_cinematic_1790358657482.jpg', title: 'Tender Newborn & Mother Embrace', tag: 'Embrace' }
     ],
     services: [
       { name: 'Posed Newborn Experience', desc: 'Up to 3 hours in Tribeca studio, full access to organic wraps & props, family photos included', price: 'From $750' },
@@ -673,42 +1062,6 @@ const PHOTOGRAPHERS = {
       { text: "Our maternity and newborn photos exceeded our wildest dreams. Elena captured our sweetest memories with unmatched sensitivity.", author: "Emily Watson", role: "Maternity, New York", avatar: 'assets/images/photographer_profile_2_1790358617166.jpg' }
     ]
   },
-  'diana-wu': {
-    id: 'diana-wu',
-    name: 'Diana Wu',
-    specialty: 'Wedding & Elopement Artist',
-    category: 'wedding',
-    city: 'Los Angeles, CA',
-    travel: 'Specializes in California coast & desert elopements',
-    avatar: '',
-    tags: ['Wedding', 'Elopement', 'California Coast', 'Joshua Tree', 'Intimate'],
-    rating: '4.8★',
-    reviewsCount: '92',
-    experience: '8yr',
-    completedCount: '190+',
-    completedLabel: 'Elopements Shot',
-    startingPrice: '$550',
-    bio: [
-      "Diana Wu is a California elopement and wedding photographer who captures wild, untamed love stories against epic Pacific coast cliffs, Joshua Tree boulders, and redwood groves.",
-      "She helps couples plan non-traditional, stress-free weddings focused purely on their authentic connection.",
-      "Every booking includes timeline assistance, location scouting permits guidance, and custom album design."
-    ],
-    gallery: [
-      { url: 'assets/images/portfolio_gallery_1_1790358669044.jpg', title: 'Big Sur Cliffside Sunset Vows', tag: 'Coast', span2: true },
-      { url: 'assets/images/category_wedding_1790358499443.jpg', title: 'Malibu Beach Sunset Reception', tag: 'Beach' },
-      { url: 'assets/images/home2_hero_cinematic_1790358657482.jpg', title: 'Desert Golden Hour Couple', tag: 'Desert' },
-      { url: 'assets/images/hero_photographer_main_1790358484541.jpg', title: 'Redwood Forest Ceremony', tag: 'Forest' },
-      { url: 'assets/images/portfolio_gallery_2_1790358680273.jpg', title: 'Palm Springs Mid-Century Party', tag: 'Party', span2: true }
-    ],
-    services: [
-      { name: 'All-Day Adventure Elopement', desc: 'Up to 8 hours hiking & cliffside locations, permit assistance, 400+ film-toned images', price: 'From $2,800' },
-      { name: 'Half-Day Intimate Wedding', desc: '5 hours, up to 50 guests, ceremony & cocktail coverage, 250+ edited photos', price: 'From $1,900' },
-      { name: 'Engagement Adventure Session', desc: '3 hour road trip shoot in Joshua Tree or Big Sur, 80+ edited photos', price: 'From $550' }
-    ],
-    reviews: [
-      { text: "Diana made our Big Sur elopement effortless and magical. She knew every hidden cliff and secret sunset angle.", author: "Maya & Kevin Lin", role: "Elopement, Big Sur", avatar: 'assets/images/photographer_profile_3_1790358629197.jpg' }
-    ]
-  },
   'lucas-meyer': {
     id: 'lucas-meyer',
     name: 'Lucas Meyer',
@@ -716,7 +1069,7 @@ const PHOTOGRAPHERS = {
     category: 'fashion',
     city: 'New York, NY',
     travel: 'Available for Milan, Paris & NYC Fashion Weeks',
-    avatar: '',
+    avatar: 'assets/images/photographer_profile_6_lucas.jpg',
     tags: ['Fashion', 'Runway', 'Commercial', 'Editorial', 'Streetstyle'],
     rating: '4.9★',
     reviewsCount: '176',
@@ -729,11 +1082,12 @@ const PHOTOGRAPHERS = {
       "His work is characterized by high-contrast monochrome and neon ambient palettes that make garments stand out boldly."
     ],
     gallery: [
-      { url: 'assets/images/portfolio_gallery_2_1790358680273.jpg', title: 'SoHo Nighttime Runway Lookbook', tag: 'Streetstyle', span2: true },
+      { url: 'assets/images/portfolio_gallery_2_1790358680273.jpg', title: 'SoHo Nighttime Runway Lookbook', tag: 'Streetstyle' },
       { url: 'assets/images/category_fashion_1790358549389.jpg', title: 'Studio High Fashion Editorial', tag: 'Studio' },
       { url: 'assets/images/home2_hero_cinematic_1790358657482.jpg', title: 'Backstage Models in Motion', tag: 'Backstage' },
       { url: 'assets/images/contact_studio_loft.jpg', title: 'Commercial Accessory Campaign', tag: 'Accessories' },
-      { url: 'assets/images/category_wedding_1790358499443.jpg', title: 'Evening Wear Red Carpet', tag: 'RedCarpet', span2: true }
+      { url: 'assets/images/category_wedding_1790358499443.jpg', title: 'Evening Wear Red Carpet', tag: 'RedCarpet' },
+      { url: 'assets/images/hero_photographer_main_1790358484541.jpg', title: 'High Contrast Monochromatic Stance', tag: 'Monochrome' }
     ],
     services: [
       { name: 'Runway Show & Backstage Pass', desc: 'Front-row live runway coverage + backstage beauty prep documentary', price: 'From $3,500' },
@@ -751,7 +1105,7 @@ const PHOTOGRAPHERS = {
     category: 'food',
     city: 'Los Angeles, CA',
     travel: 'Available across Southern California & wine country',
-    avatar: '',
+    avatar: 'assets/images/photographer_profile_7_mateo.jpg',
     tags: ['Food', 'Beverage', 'Wineries', 'Cocktails', 'Restaurants'],
     rating: '4.9★',
     reviewsCount: '115',
@@ -764,11 +1118,12 @@ const PHOTOGRAPHERS = {
       "His vibrant, natural-light aesthetic celebrates fresh organic ingredients, farm-to-table dining, and the craftsmanship of top sommeliers."
     ],
     gallery: [
-      { url: 'assets/images/category_food_1790358513044.jpg', title: 'Boutique Farm-to-Table Dish', tag: 'Cuisine', span2: true },
+      { url: 'assets/images/category_culinary_mateo.jpg', title: 'Boutique Farm-to-Table Dish', tag: 'Cuisine' },
       { url: 'assets/images/portfolio_gallery_2_1790358680273.jpg', title: 'Speakeasy Smoky Cocktail Craft', tag: 'Beverage' },
       { url: 'assets/images/contact_studio_loft.jpg', title: 'Culinary Studio Ingredient Spread', tag: 'Ingredients' },
       { url: 'assets/images/home2_hero_cinematic_1790358657482.jpg', title: 'Chef Plating at Kitchen Pass', tag: 'Kitchen' },
-      { url: 'assets/images/category_wedding_1790358499443.jpg', title: 'Winery Dining Terrace Sunset', tag: 'Winery', span2: true }
+      { url: 'assets/images/category_wedding_1790358499443.jpg', title: 'Winery Dining Terrace Sunset', tag: 'Winery' },
+      { url: 'assets/images/portfolio_gallery_1_1790358669044.jpg', title: 'Napa Cellar Reserve Tasting', tag: 'Tasting' }
     ],
     services: [
       { name: 'Restaurant Visual Makeover', desc: 'Full coverage of menu, cocktails, dining room and culinary team', price: 'From $1,750' },
@@ -786,7 +1141,7 @@ const PHOTOGRAPHERS = {
     category: 'corporate',
     city: 'Chicago, IL',
     travel: 'Available for national architectural commissions',
-    avatar: '',
+    avatar: 'assets/images/photographer_profile_8_chloe.jpg',
     tags: ['Corporate', 'Architecture', 'Commercial', 'Interiors', 'Industrial'],
     rating: '5.0★',
     reviewsCount: '98',
@@ -799,11 +1154,12 @@ const PHOTOGRAPHERS = {
       "Her client roster includes architecture firms, real estate developers, and national brand headquarters."
     ],
     gallery: [
-      { url: 'assets/images/home2_hero_cinematic_1790358657482.jpg', title: 'Chicago Riverfront Glass Skyscraper', tag: 'Architecture', span2: true },
+      { url: 'assets/images/category_architecture_chloe.jpg', title: 'Chicago Riverfront Glass Skyscraper', tag: 'Architecture' },
       { url: 'assets/images/portfolio_gallery_2_1790358680273.jpg', title: 'Modern Industrial Tech Campus', tag: 'Workplace' },
-      { url: 'assets/images/category_corporate_1790358561678.jpg', title: 'Executive Boardroom Meeting', tag: 'Corporate' },
+      { url: 'assets/images/category_corporate_unique.jpg', title: 'Executive Boardroom Meeting', tag: 'Corporate' },
       { url: 'assets/images/contact_studio_loft.jpg', title: 'Sunlit Architecture Studio Loft', tag: 'Interiors' },
-      { url: 'assets/images/portfolio_gallery_1_1790358669044.jpg', title: 'Civic Cultural Center Exterior', tag: 'Exteriors', span2: true }
+      { url: 'assets/images/portfolio_gallery_1_1790358669044.jpg', title: 'Civic Cultural Center Exterior', tag: 'Exteriors' },
+      { url: 'assets/images/hero_photographer_main_1790358484541.jpg', title: 'Structural Geometric Façade', tag: 'Design' }
     ],
     services: [
       { name: 'Architectural Project Documentation', desc: 'Full day twilight & daylight exterior/interior survey, perspective correction', price: 'From $2,800' },
@@ -813,6 +1169,41 @@ const PHOTOGRAPHERS = {
     reviews: [
       { text: "Chloe captured our newly designed Chicago headquarters with absolute perfection. Her understanding of lines, shadows, and interior light is masterclass level.", author: "David Sterling", role: "Principal Architect, Sterling & Co", avatar: 'assets/images/photographer_profile_1_1790358603844.jpg' }
     ]
+  },
+  'julian-vance': {
+    id: 'julian-vance',
+    name: 'Julian Vance',
+    specialty: 'Wedding & California Elopements',
+    category: 'wedding',
+    city: 'Los Angeles, CA',
+    travel: 'Available across Southern California & Pacific Coast',
+    avatar: 'assets/images/photographer_profile_9_julian.jpg',
+    tags: ['Wedding', 'Elopement', 'California Coast', 'Intimate', 'Portraits'],
+    rating: '5.0★',
+    reviewsCount: '142',
+    experience: '8yr',
+    completedCount: '190+',
+    completedLabel: 'Weddings Captured',
+    startingPrice: '$450',
+    bio: [
+      "Julian Vance is an award-winning Southern California wedding and elopement photographer who captures cinematic, emotional love stories with natural golden light.",
+      "From Big Sur cliffside vows to intimate Malibu coastal celebrations, Julian brings a calm, documentary perspective to every milestone.",
+      "Every package includes high-resolution heirloom galleries, location consultation, and timeline planning assistance."
+    ],
+    gallery: [
+      { url: 'assets/images/category_wedding_unique.jpg', title: 'Sunset Coastal Cliff Vows', tag: 'Coast' },
+      { url: 'assets/images/hero_slide2_wedding.jpg', title: 'Intimate Candlelit First Dance', tag: 'Reception' },
+      { url: 'assets/images/home2_hero_cinematic_1790358657482.jpg', title: 'Golden Hour Couple Portrait', tag: 'Portraits' },
+      { url: 'assets/images/category_wedding_1790358499443.jpg', title: 'Outdoor Garden Arch Ceremony', tag: 'Ceremony' },
+      { url: 'assets/images/portfolio_gallery_1_1790358669044.jpg', title: 'Oceanfront Sunset Walk', tag: 'Ocean' },
+      { url: 'assets/images/hero_photographer_main_1790358484541.jpg', title: 'Big Sur Cliffside Elopement', tag: 'Elopement' }
+    ],
+    services: [
+      { name: 'Full-Day Coastal Wedding', desc: 'Up to 9 hours coverage, 2 photographers, 500+ edited images, online gallery', price: 'From $3,100' },
+      { name: 'Half-Day Intimate Wedding', desc: 'Up to 5 hours, 1 photographer, 250+ edited images', price: 'From $1,800' },
+      { name: 'Sunset Elopement Session', desc: '2.5 hour coastal adventure shoot, 80+ edited photos', price: 'From $450' }
+    ],
+    reviews: []
   }
 };
 
@@ -824,18 +1215,21 @@ function renderCreatorSwitcher() {
   const container = document.getElementById('creator-switcher');
   if (!container) return;
   
-  const html = Object.values(PHOTOGRAPHERS).map(p => {
-    const isActive = p.id === currentPhotographerId;
-    return `
-      <a href="photographer-profile.html?id=${p.id}" 
-         class="creator-pill ${isActive ? 'active' : ''}" 
-         data-id="${p.id}"
-         onclick="switchPhotographer(event, '${p.id}')">
-        <span>${p.name}</span>
-        <span class="creator-pill-spec">${p.tags[0]}</span>
-      </a>
-    `;
-  }).join('');
+  const excludedIds = ['lucas-meyer', 'mateo-silva', 'chloe-bennett', 'julian-vance'];
+  const html = Object.values(PHOTOGRAPHERS)
+    .filter(p => !excludedIds.includes(p.id))
+    .map(p => {
+      const isActive = p.id === currentPhotographerId;
+      return `
+        <a href="photographer-profile.html?id=${p.id}" 
+           class="creator-pill ${isActive ? 'active' : ''}" 
+           data-id="${p.id}"
+           onclick="switchPhotographer(event, '${p.id}')">
+          <span>${p.name}</span>
+          <span class="creator-pill-spec">${p.tags[0]}</span>
+        </a>
+      `;
+    }).join('');
   container.innerHTML = html;
 }
 
@@ -856,7 +1250,7 @@ function loadPhotographer(id) {
   // Page Title & Meta
   document.title = `${p.name} — ${p.specialty} | FrameFolio`;
   const metaDesc = document.querySelector('meta[name="description"]');
-  if (metaDesc) metaDesc.content = `${p.name} — ${p.specialty} based in ${p.city}. View full portfolio gallery, client reviews, and send a booking enquiry.`;
+  if (metaDesc) metaDesc.content = `${p.name} — ${p.specialty} based in ${p.city}. View full curated portfolio gallery and send a direct booking enquiry.`;
 
   // Breadcrumb & Headings
   const bName = document.getElementById('breadcrumb-current-name');
@@ -896,6 +1290,8 @@ function loadPhotographer(id) {
   if (rNum) rNum.textContent = p.reviewsCount;
   const ratNum = document.getElementById('profile-rating-num');
   if (ratNum) ratNum.textContent = p.rating;
+  const qcRating = document.getElementById('quick-card-rating-val');
+  if (qcRating) qcRating.textContent = p.rating;
   const expNum = document.getElementById('profile-exp-num');
   if (expNum) expNum.textContent = p.experience;
   const shootsNum = document.getElementById('profile-shoots-num');
@@ -912,41 +1308,6 @@ function loadPhotographer(id) {
   // Portfolio
   renderPortfolio(p);
 
-  // Services
-  const servicesContainer = document.getElementById('services-grid-container');
-  if (servicesContainer) {
-    servicesContainer.innerHTML = p.services.map(s => `
-      <div class="service-item">
-        <div>
-          <h4>${s.name}</h4>
-          <p>${s.desc}</p>
-        </div>
-        <div class="service-footer">
-          <div class="service-price">${s.price}</div>
-          <button class="btn btn-outline btn-sm" onclick="selectServiceForEnquiry('${s.name}')">Select Package</button>
-        </div>
-      </div>
-    `).join('');
-  }
-
-  // Reviews
-  const reviewsContainer = document.getElementById('reviews-container');
-  if (reviewsContainer) {
-    reviewsContainer.innerHTML = p.reviews.map(r => `
-      <div class="testimonial-card" style="padding:1.35rem;">
-        <div class="testimonial-text">"${r.text}"</div>
-        <div class="testimonial-author">
-          <img src="${r.avatar}" alt="${r.author}" loading="lazy">
-          <div>
-            <div class="testimonial-author-name">${r.author}</div>
-            <div class="testimonial-author-role" style="display:flex;align-items:center;gap:0.5rem;">
-              <span style="color:var(--secondary);">★★★★★</span> ${r.role}
-            </div>
-          </div>
-        </div>
-      </div>
-    `).join('');
-  }
 
   // Enquiry Form
   const enqTitle = document.getElementById('enquiry-card-title');

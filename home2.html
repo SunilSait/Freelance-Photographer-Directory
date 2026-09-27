@@ -177,6 +177,17 @@
     }
     .guarantee-title { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.3rem; }
     .guarantee-desc { font-size: 0.8rem; color: var(--text-muted); font-weight: 400; }
+    .showcase-grid-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+    .home2-process-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
     @media (max-width: 1024px) {
       .bento-grid { grid-template-columns: repeat(2, 1fr); }
       .bento-cell-1 { grid-column: span 2; }
@@ -184,6 +195,8 @@
       .guarantee-strip { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 768px) {
+      .showcase-grid-wrapper { grid-template-columns: 1fr; gap: 1rem; }
+      .home2-process-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .bento-grid { grid-template-columns: 1fr; }
       .bento-cell-1, .bento-cell-5 { grid-column: span 1; }
       .bento-cell { height: 220px; }
@@ -192,8 +205,14 @@
       .guarantee-strip { grid-template-columns: repeat(2, 1fr); }
       .specialty-pills { gap: 0.5rem; }
       .specialty-pill { min-width: 100px; padding: 1rem 1.25rem; }
-      .showcase-card { grid-template-columns: 60px 1fr auto; }
+      .showcase-card { grid-template-columns: 60px 1fr auto; gap: 0.85rem; padding: 1rem; }
       .showcase-avatar { width: 56px; height: 56px; }
+    }
+    @media (max-width: 480px) {
+      .showcase-card { grid-template-columns: 48px 1fr auto; gap: 0.65rem; padding: 0.75rem; }
+      .showcase-avatar { width: 48px; height: 48px; }
+      .showcase-info h3 { font-size: 0.9rem; }
+      .showcase-info .spec { font-size: 0.75rem; }
     }
     @media (max-width: 400px) {
       .guarantee-strip { grid-template-columns: 1fr; }
@@ -209,6 +228,29 @@
      HERO — SPLIT SHOWCASE SLIDER (5s Auto-Rotate)
 ════════════════════════════════════════ -->
 <section class="hero-home2-slider" id="hero-section" aria-label="Hero Showcase Slider">
+  <!-- Ambient Photography Background Effects & Animations -->
+  <div class="hero2-bg-effects" aria-hidden="true">
+    <div class="hero2-ambient-glow glow-gold-1"></div>
+    <div class="hero2-ambient-glow glow-gold-2"></div>
+    <div class="hero2-ambient-glow glow-warm-3"></div>
+    <div class="hero2-aperture-ring">
+      <div class="aperture-crosshair ch-tl"></div>
+      <div class="aperture-crosshair ch-tr"></div>
+      <div class="aperture-crosshair ch-bl"></div>
+      <div class="aperture-crosshair ch-br"></div>
+    </div>
+    <div class="hero2-light-shimmer"></div>
+    <div class="hero2-particles">
+      <span class="particle p1"></span>
+      <span class="particle p2"></span>
+      <span class="particle p3"></span>
+      <span class="particle p4"></span>
+      <span class="particle p5"></span>
+      <span class="particle p6"></span>
+      <span class="particle p7"></span>
+    </div>
+  </div>
+
   <div class="hero-slides-wrapper">
 
     <!-- Slide 1: Where Vision Meets Craft -->
@@ -487,10 +529,10 @@
         <img src="assets/images/photographer_profile_4_1790358735055.jpg" alt="Featured Photographer — James Osei" loading="lazy">
         <div class="featured-photographer-badge">Photographer of the Month</div>
       </div>
-      <div class="featured-photographer-content animate-on-scroll" style="transition-delay:0.15s;">
-        <div class="section-badge">Spotlight</div>
-        <h2>James <span style="color:var(--secondary);">Osei</span></h2>
-        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem;flex-wrap:wrap;">
+      <div class="featured-photographer-content animate-on-scroll" style="transition-delay:0.15s;text-align:center;">
+        <div class="section-badge" style="margin:0 auto 0.75rem auto;display:inline-flex;">Spotlight</div>
+        <h2 style="text-align:center;">James <span style="color:var(--secondary);">Osei</span></h2>
+        <div style="display:flex;align-items:center;justify-content:center;gap:0.75rem;margin-bottom:1rem;flex-wrap:wrap;">
           <span style="color:var(--secondary);font-weight:600;font-size:0.9rem;">Corporate & Event Photography</span>
           <span style="color:var(--text-light);font-size:0.8rem;">•</span>
           <span style="display:flex;align-items:center;gap:0.3rem;font-size:0.85rem;color:var(--text-muted);">
@@ -498,8 +540,8 @@
             Atlanta, GA
           </span>
         </div>
-        <p>James brings over 12 years of corporate and event photography experience to every frame. His sharp eye for authentic moments in professional environments has earned him recognition from Fortune 500 clients and growing businesses alike.</p>
-        <div class="featured-photographer-stats">
+        <p style="text-align:center;max-width:640px;margin:0 auto 1.5rem auto;">James brings over 12 years of corporate and event photography experience to every frame. His sharp eye for authentic moments in professional environments has earned him recognition from Fortune 500 clients and growing businesses alike.</p>
+        <div class="featured-photographer-stats" style="max-width:540px;margin-left:auto;margin-right:auto;">
           <div class="featured-stat">
             <div class="featured-stat-num" data-count="12" data-suffix="yr">12yr</div>
             <div class="featured-stat-label">Experience</div>
@@ -513,7 +555,7 @@
             <div class="featured-stat-label">Avg. Rating</div>
           </div>
         </div>
-        <div style="display:flex;gap:1rem;">
+        <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
           <a href="photographer-profile.html" class="btn btn-primary btn-lg">View Full Profile</a>
           <a href="photographer-profile.html#enquiry" class="btn btn-secondary btn-lg">Send Enquiry</a>
         </div>
@@ -532,7 +574,7 @@
       <h2>Highly Rated <span style="color:var(--secondary);">This Month</span></h2>
       <p>The most loved photographers based on verified client reviews.</p>
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;" class="animate-on-scroll">
+    <div class="showcase-grid-wrapper animate-on-scroll">
       <div class="showcase-list">
         <a href="photographer-profile.html" class="showcase-card">
           <img src="assets/images/photographer_profile_1_1790358603844.jpg" alt="Marcus Reid" class="showcase-avatar" loading="lazy">
@@ -625,12 +667,12 @@
 ════════════════════════════════════════ -->
 <section class="section">
   <div class="container">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;" class="home2-process-grid">
-      <div>
-        <div class="section-badge animate-on-scroll">The Process</div>
-        <h2 class="animate-on-scroll" style="font-family:var(--font-serif);margin-bottom:1rem;">How <span style="color:var(--secondary);">FrameFolio</span> Works</h2>
-        <p class="animate-on-scroll" style="margin-bottom:2.5rem;font-weight:400;">Hiring a professional photographer has never been this straightforward. Our transparent, client-first process ensures your experience is exceptional from start to finish.</p>
-        <div class="process-timeline animate-on-scroll">
+    <div class="home2-process-grid">
+      <div style="text-align:center;">
+        <div class="section-badge animate-on-scroll" style="margin:0 auto 1rem auto;display:inline-flex;">The Process</div>
+        <h2 class="animate-on-scroll" style="font-family:var(--font-serif);margin-bottom:1rem;text-align:center;">How <span style="color:var(--secondary);">FrameFolio</span> Works</h2>
+        <p class="animate-on-scroll" style="margin:0 auto 2.5rem auto;font-weight:400;text-align:center;max-width:540px;">Hiring a professional photographer has never been this straightforward. Our transparent, client-first process ensures your experience is exceptional from start to finish.</p>
+        <div class="process-timeline animate-on-scroll" style="max-width:480px;margin:0 auto;text-align:left;">
           <div class="process-step">
             <div class="process-step-side">
               <div class="process-num">1</div>
@@ -674,7 +716,7 @@
         </div>
       </div>
       <div class="animate-on-scroll" style="transition-delay:0.2s;">
-        <div style="background:var(--primary-dark);border-radius:var(--radius-xl);padding:2rem;position:sticky;top:calc(var(--navbar-h) + 1rem);">
+        <div style="background:var(--primary-dark);border-radius:var(--radius-xl);padding:2rem;">
           <h3 style="color:#fff;margin-bottom:1.25rem;font-size:1.1rem;">Quick Search</h3>
           <div class="form-group">
             <label class="form-label" style="color:rgba(255,255,255,0.7);">Specialty</label>
@@ -701,7 +743,7 @@
               <option value="premium">$1,000+</option>
             </select>
           </div>
-          <a href="browse.html" class="btn btn-primary w-full btn-lg" id="quick-search-btn" onclick="event.preventDefault(); window.location.href='browse.html';">Find Photographers</a>
+          <a href="browse.html" class="btn btn-primary w-full btn-lg" id="quick-search-btn" onclick="event.preventDefault(); (function(){ const s = document.getElementById('quick-specialty')?.value; const cRaw = document.getElementById('quick-city')?.value.trim().toLowerCase(); const c = cRaw ? cRaw.replace(/\s+/g, '-') : ''; const p = []; if (s) p.push('specialty=' + encodeURIComponent(s)); if (c) p.push('city=' + encodeURIComponent(c)); window.location.href = 'browse.html' + (p.length ? '?' + p.join('&') : ''); })();">Find Photographers</a>
           <p style="text-align:center;margin-top:1rem;font-size:0.8rem;color:rgba(255,255,255,0.4);font-weight:400;">2,400+ photographers ready to book</p>
         </div>
         <!-- Feature Showcase Image Card -->
@@ -742,7 +784,7 @@
             <div class="home2-review-quote">&ldquo;</div>
             <p class="home2-review-text">"Hiring Marcus for our destination wedding in Tuscany was the single best decision we made. Every photograph feels like a timeless piece of editorial art. The platform made communication and booking entirely effortless."</p>
             <div class="home2-review-author">
-              <img src="assets/images/user_avatar_1_1790358639890.jpg" alt="Eleanor Vance" class="home2-review-avatar">
+              <img src="assets/images/photographer_profile_2_1790358617166.jpg" alt="Eleanor Vance" class="home2-review-avatar">
               <div class="home2-review-info">
                 <div class="home2-review-name">Eleanor Vance</div>
                 <div class="home2-review-meta">Bride & Art Collector — New York, NY</div>
@@ -763,7 +805,7 @@
             <div class="home2-review-quote">&ldquo;</div>
             <p class="home2-review-text">"As a restaurant group launching three new culinary concepts, we needed top-tier food imagery. Priya delivered catalog-quality shots that boosted our online reservation rates by 40%. Absolutely world-class experience!"</p>
             <div class="home2-review-author">
-              <img src="assets/images/user_avatar_2_1790358649479.jpg" alt="Marcus Sterling" class="home2-review-avatar">
+              <img src="assets/images/photographer_profile_1_1790358603844.jpg" alt="Marcus Sterling" class="home2-review-avatar">
               <div class="home2-review-info">
                 <div class="home2-review-name">Marcus Sterling</div>
                 <div class="home2-review-meta">Founder, Sterling Hospitality Group — Chicago, IL</div>
@@ -784,7 +826,7 @@
             <div class="home2-review-quote">&ldquo;</div>
             <p class="home2-review-text">"Sophia shot our Autumn fashion lookbook in Los Angeles and completely captured our brand's luxury aesthetic. Direct communication with no middleman made the timeline slick and stress-free."</p>
             <div class="home2-review-author">
-              <img src="assets/images/user_avatar_3_1790358746761.jpg" alt="Camilla Rossi" class="home2-review-avatar">
+              <img src="assets/images/photographer_profile_3_1790358629197.jpg" alt="Camilla Rossi" class="home2-review-avatar">
               <div class="home2-review-info">
                 <div class="home2-review-name">Camilla Rossi</div>
                 <div class="home2-review-meta">Creative Director, Maison Rossi — Paris / LA</div>
