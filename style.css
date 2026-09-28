@@ -748,9 +748,11 @@ html.dark .hero-slide-bg { opacity: 0.32; }
 }
 .hero-nav-arrow.hero-prev {
   left: 2rem;
+  right: auto;
 }
 .hero-nav-arrow.hero-next {
   right: 2rem;
+  left: auto;
 }
 [dir="rtl"] .hero-nav-arrow.hero-prev {
   left: auto;
@@ -761,6 +763,9 @@ html.dark .hero-slide-bg { opacity: 0.32; }
   right: auto;
   left: 2rem;
   transform: translateY(-50%) rotate(180deg);
+}
+[dir="rtl"] .hero-nav-arrow:hover {
+  transform: translateY(-50%) rotate(180deg) scale(1.08);
 }
 
 @media (max-height: 750px) {
@@ -2207,9 +2212,22 @@ html.dark .tag { color: var(--secondary); background: rgba(201,169,110,0.15); }
 }
 .hero-home2-slider .hero-nav-arrow.hero-prev {
   left: 1.5rem;
+  right: auto;
 }
 .hero-home2-slider .hero-nav-arrow.hero-next {
   right: 1.5rem;
+  left: auto;
+}
+[dir="rtl"] .hero-home2-slider .hero-nav-arrow.hero-prev {
+  left: auto;
+  right: 1.5rem;
+}
+[dir="rtl"] .hero-home2-slider .hero-nav-arrow.hero-next {
+  right: auto;
+  left: 1.5rem;
+}
+[dir="rtl"] .hero-home2-slider .hero-nav-arrow:hover {
+  transform: translateY(-50%) rotate(180deg) scale(1.08);
 }
 
 /* ── Dark Theme Overrides for Hero 2 ── */
@@ -4259,6 +4277,10 @@ html.dark .live-map-meta {
   .portfolio-grid-item.span-2 { grid-column: span 1; }
   .photographers-grid { grid-template-columns: 1fr; }
   .featured-photographer-stats { grid-template-columns: 1fr 1fr; }
+  .featured-photographer-stats .featured-stat:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    text-align: center;
+  }
   .profile-actions { flex-direction: column; }
   .gallery-masonry { columns: 1; }
   .hero-stat-num { font-size: 1.5rem; }
